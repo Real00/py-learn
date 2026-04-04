@@ -1,0 +1,86 @@
+{
+  "slug": "mini-project",
+  "order": 8,
+  "title": "综合小练习",
+  "summary": "把变量、输入输出、判断、循环和函数串起来，做一个迷你小程序。",
+  "estimatedMinutes": 18,
+  "difficultyLabel": "入门闭环",
+  "prerequisiteSlug": "lists-and-dicts",
+  "tags": ["综合应用", "小项目"],
+  "learningGoals": [
+    "知道前面学的知识如何组合使用",
+    "理解小项目不是更难，而是把基础拼起来",
+    "建立“我已经能做点东西了”的感受"
+  ],
+  "summaryPoints": [
+    "项目不是全新知识，而是旧知识的组合。",
+    "做小项目时，先拆步骤，再逐个完成。",
+    "能跑通一个迷你项目，是入门阶段很重要的信心来源。"
+  ],
+  "sections": [
+    {
+      "id": "project-intro",
+      "type": "intro",
+      "title": "项目思维：先拆开，再组合",
+      "content": "很多新手一看到“项目”就紧张，觉得一定很复杂。其实入门项目只是把前面学过的几个小知识放在一起用。关键不是一步到位，而是先拆清楚每一步要做什么。",
+      "bullets": [
+        "先想输入什么。",
+        "再想要判断什么。",
+        "最后想输出什么。"
+      ]
+    },
+    {
+      "id": "project-example",
+      "type": "example",
+      "title": "一个简单的点餐总价程序",
+      "content": "这个例子先用变量保存单价，再通过输入得到数量，最后算出总价并输出。虽然简单，但它已经把输入、变量和运算串起来了。",
+      "exampleTitle": "点餐总价",
+      "exampleCode": "price = 18\ncount = int(input(\"你要几份？\"))\ntotal = price * count\nprint(\"总价是\", total)"
+    },
+    {
+      "id": "project-upgrade",
+      "type": "example",
+      "title": "再加一个条件判断",
+      "content": "如果总价满 50 元就提示“可免配送费”，这一步就是把条件判断加入项目。你会发现，项目只是在拼积木。",
+      "exampleTitle": "带判断的版本",
+      "exampleCode": "if total >= 50:\n    print(\"你可以免配送费\")"
+    },
+    {
+      "id": "project-recap",
+      "type": "recap",
+      "title": "你已经会了什么",
+      "content": "到这里，你已经见过变量、输入输出、判断、循环、函数和数据整理。虽然每一项都还是基础版，但它们组合起来，已经足够做很多迷你练习。",
+      "bullets": [
+        "先会做小程序，再慢慢扩展复杂度。",
+        "入门阶段最重要的是“敢动手”。"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "id": "project-q1",
+      "type": "single_choice",
+      "prompt": "做小项目时，最推荐的起手方式是什么？",
+      "options": ["先把任务拆成小步骤", "先背完所有高级语法", "先写一千行代码"],
+      "answer": "先把任务拆成小步骤",
+      "explanation": "项目并不是一下子全部写出来，而是先拆步骤，再逐个完成。",
+      "knowledgePoint": "项目思维"
+    },
+    {
+      "id": "project-q2",
+      "type": "true_false",
+      "prompt": "小项目通常是把多个基础知识组合起来使用。",
+      "answer": true,
+      "explanation": "项目通常不是全新知识，而是旧知识的组合练习。",
+      "knowledgePoint": "知识整合"
+    },
+    {
+      "id": "project-q3",
+      "type": "fill_blank",
+      "prompt": "做项目时，推荐先把任务拆成很多个小 ____。",
+      "answer": "步骤",
+      "explanation": "先拆步骤，再逐个完成，是更稳的做法。",
+      "knowledgePoint": "拆解任务"
+    }
+  ]
+}

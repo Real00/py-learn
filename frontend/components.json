@@ -1,0 +1,17 @@
+{
+  "$schema": "https://www.shadcn-vue.com/schema.json",
+  "style": "nova",
+  "typescript": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/style.css",
+    "baseColor": "slate",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@/components",
+    "ui": "@/shared/ui",
+    "utils": "@/shared/lib/utils",
+    "lib": "@/shared/lib"
+  }
+}

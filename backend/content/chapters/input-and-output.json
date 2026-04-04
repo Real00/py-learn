@@ -1,0 +1,85 @@
+{
+  "slug": "input-and-output",
+  "order": 3,
+  "title": "输入、输出和简单运算",
+  "summary": "让程序学会接收用户输入，并把结果展示出来。",
+  "estimatedMinutes": 12,
+  "difficultyLabel": "循序渐进",
+  "prerequisiteSlug": "variables-and-types",
+  "tags": ["print", "input", "运算"],
+  "learningGoals": [
+    "理解输入和输出分别是什么",
+    "知道 `print()` 与 `input()` 的基本作用",
+    "掌握最常见的加减乘除写法"
+  ],
+  "summaryPoints": [
+    "`print()` 用来把结果展示出来。",
+    "`input()` 用来接收用户输入的信息。",
+    "算术运算让程序不仅能记住数据，还能处理数据。"
+  ],
+  "sections": [
+    {
+      "id": "io-intro",
+      "type": "intro",
+      "title": "程序怎么和人互动",
+      "content": "如果程序只能自己运行，却不能接收你的信息，也不能把结果告诉你，那它就很难真正帮上忙。输入和输出，就是程序和人沟通的最基础方式。",
+      "bullets": [
+        "输入：人把信息交给程序。",
+        "输出：程序把结果展示给人。"
+      ]
+    },
+    {
+      "id": "io-print",
+      "type": "explanation",
+      "title": "`print()` 和 `input()` 的分工",
+      "content": "`print()` 像程序开口说话，把内容显示在屏幕上。`input()` 像程序提问，等待用户输入答案。",
+      "exampleTitle": "输入输出配合",
+      "exampleCode": "name = input(\"你叫什么名字？\")\nprint(\"你好，\" + name)"
+    },
+    {
+      "id": "io-math",
+      "type": "example",
+      "title": "程序也会做简单运算",
+      "content": "把数字存进变量后，你可以让程序做加减乘除。这样就不只是“记住数据”，而是“处理数据”了。",
+      "exampleTitle": "简单运算",
+      "exampleCode": "price = 30\ncount = 2\ntotal = price * count\nprint(total)"
+    },
+    {
+      "id": "io-tip",
+      "type": "tip",
+      "title": "新手常见提醒",
+      "content": "`input()` 接收到的内容默认更像文字，所以如果后面要做数学计算，通常要先做类型转换。首轮入门先记住“它会先拿到文字”，等后面再慢慢深入。",
+      "bullets": [
+        "先理解交互流程，不必急着把类型转换一次吃透。",
+        "只要知道输入和输出分别做什么，就已经迈出关键一步。"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "id": "io-q1",
+      "type": "single_choice",
+      "prompt": "下面哪个函数最常用来接收用户输入？",
+      "options": ["input()", "print()", "type()"],
+      "answer": "input()",
+      "explanation": "`input()` 用来接收用户输入，`print()` 是输出内容。",
+      "knowledgePoint": "input"
+    },
+    {
+      "id": "io-q2",
+      "type": "true_false",
+      "prompt": "`print()` 的常见作用是把结果显示到屏幕上。",
+      "answer": true,
+      "explanation": "这是 `print()` 最常见的任务。",
+      "knowledgePoint": "print"
+    },
+    {
+      "id": "io-q3",
+      "type": "fill_blank",
+      "prompt": "表达式 `3 + 2` 的结果是 ____。",
+      "answer": "5",
+      "explanation": "这是最基础的加法运算。",
+      "knowledgePoint": "运算"
+    }
+  ]
+}

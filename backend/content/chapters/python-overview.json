@@ -1,0 +1,88 @@
+{
+  "slug": "python-overview",
+  "order": 1,
+  "title": "Python 到底是什么",
+  "summary": "先认识 Python 是做什么的，以及你为什么适合从它开始学。",
+  "estimatedMinutes": 8,
+  "difficultyLabel": "轻松入门",
+  "prerequisiteSlug": null,
+  "tags": ["认识 Python", "建立信心"],
+  "learningGoals": [
+    "知道 Python 是一种编程语言",
+    "理解编程语言的作用是告诉电脑做事",
+    "建立“我也能学会”的第一层信心"
+  ],
+  "summaryPoints": [
+    "Python 是一种让人比较容易读懂的编程语言。",
+    "学习 Python，不是背术语，而是学会如何一步步告诉电脑做事。",
+    "一开始只要理解大方向，不需要追求把所有细节一次学完。"
+  ],
+  "sections": [
+    {
+      "id": "overview-intro",
+      "type": "intro",
+      "title": "先别急着背定义",
+      "content": "如果把电脑想成一个特别听话但不会自己思考的助手，Python 就像你和它说话时用的一套固定规则。你写下来的代码，就是告诉它先做什么、再做什么。",
+      "bullets": [
+        "电脑不会猜你的意思，只会照规则执行。",
+        "编程语言的任务，是把你的想法翻译成电脑能执行的步骤。"
+      ]
+    },
+    {
+      "id": "overview-why-python",
+      "type": "explanation",
+      "title": "为什么很多新手从 Python 开始",
+      "content": "因为 Python 的写法相对接近日常英语，代码看起来没那么吓人。它也被广泛用在数据分析、自动化、网站后端和人工智能等方向，所以入门之后能延伸的路很多。",
+      "bullets": [
+        "写法相对简洁，容易读。",
+        "应用场景多，学完不容易“没地方用”。",
+        "社区资料多，遇到问题更容易找到解释。"
+      ]
+    },
+    {
+      "id": "overview-example",
+      "type": "example",
+      "title": "你已经见过“程序”了",
+      "content": "闹钟到了会响、外卖 App 会提示配送中、计算器会立刻出结果，这些背后都可以理解成“程序按照规则工作”。你学 Python，本质上也是在学怎么设计这样的规则。",
+      "exampleTitle": "最简单的 Python 代码",
+      "exampleCode": "print(\"你好，Python\")"
+    },
+    {
+      "id": "overview-tip",
+      "type": "tip",
+      "title": "新手最容易卡住的地方",
+      "content": "很多人不是学不会，而是一开始就想把所有概念一次性吃透。正确的节奏应该是：先看懂大意，再多看例子，再通过练习慢慢熟悉。",
+      "bullets": [
+        "看不懂时先抓主线，不要先钻细枝末节。",
+        "一个概念今天只懂 60%，很正常。"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "id": "overview-q1",
+      "type": "single_choice",
+      "prompt": "Python 更接近下面哪种东西？",
+      "options": ["一种告诉电脑做事的语言", "一台新的电脑", "一个只能画图的软件"],
+      "answer": "一种告诉电脑做事的语言",
+      "explanation": "Python 是编程语言，不是硬件，也不是单一用途的软件。",
+      "knowledgePoint": "编程语言"
+    },
+    {
+      "id": "overview-q2",
+      "type": "true_false",
+      "prompt": "学 Python 的第一天就必须把所有专业术语都记住。",
+      "answer": false,
+      "explanation": "入门阶段更重要的是先建立整体感觉，而不是硬背一堆术语。",
+      "knowledgePoint": "学习节奏"
+    },
+    {
+      "id": "overview-q3",
+      "type": "fill_blank",
+      "prompt": "代码 `print(\"你好\")` 的作用，是把内容 ____ 出来。",
+      "answer": "打印",
+      "explanation": "`print()` 最常见的作用就是把信息显示到屏幕上，也可以理解为“打印/输出”。",
+      "knowledgePoint": "print"
+    }
+  ]
+}

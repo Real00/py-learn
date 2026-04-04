@@ -1,0 +1,85 @@
+{
+  "slug": "loops",
+  "order": 5,
+  "title": "循环",
+  "summary": "让程序重复做同一类事情，而不是复制粘贴很多遍。",
+  "estimatedMinutes": 14,
+  "difficultyLabel": "效率升级",
+  "prerequisiteSlug": "conditions",
+  "tags": ["for", "while", "重复任务"],
+  "learningGoals": [
+    "理解循环就是重复执行某段逻辑",
+    "能区分 `for` 和 `while` 的大致用途",
+    "知道循环适合处理重复任务"
+  ],
+  "summaryPoints": [
+    "循环解决的是“同样的动作要做很多次”的问题。",
+    "`for` 常用于按顺序处理一组内容。",
+    "`while` 常用于条件满足时持续执行。"
+  ],
+  "sections": [
+    {
+      "id": "loops-intro",
+      "type": "intro",
+      "title": "为什么需要循环",
+      "content": "如果你想让程序连续说三次“欢迎”，一种办法是写三行 `print()`；但如果要说一百次呢？这时循环就能帮你省掉大量重复代码。",
+      "bullets": [
+        "重复任务很适合交给循环。",
+        "循环能减少复制粘贴。"
+      ]
+    },
+    {
+      "id": "loops-for",
+      "type": "explanation",
+      "title": "`for` 像按顺序点名",
+      "content": "当你有一组东西要一个个处理时，`for` 很常见。可以把它想成老师点名：名单上的人一个接一个被叫到。",
+      "exampleTitle": "`for` 示例",
+      "exampleCode": "for name in [\"小林\", \"小周\", \"小陈\"]:\n    print(name)"
+    },
+    {
+      "id": "loops-while",
+      "type": "example",
+      "title": "`while` 像“只要还没结束，就继续”",
+      "content": "`while` 更像守门员规则：只要条件还成立，就继续执行。它适合处理“满足条件就继续”的场景。",
+      "exampleTitle": "`while` 示例",
+      "exampleCode": "count = 1\nwhile count <= 3:\n    print(count)\n    count = count + 1"
+    },
+    {
+      "id": "loops-warning",
+      "type": "warning",
+      "title": "别让循环停不下来",
+      "content": "如果循环条件永远都成立，程序就可能一直转下去。特别是 `while`，一定要留意循环里有没有让条件发生变化。",
+      "bullets": [
+        "循环不是越久越好，而是该停时要停。",
+        "写 `while` 时，要想清楚它什么时候结束。"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "id": "loops-q1",
+      "type": "single_choice",
+      "prompt": "循环最适合解决哪类问题？",
+      "options": ["重复执行相似任务", "给变量起名字", "安装 Python"],
+      "answer": "重复执行相似任务",
+      "explanation": "循环的核心作用就是减少重复代码，让程序重复完成一类事情。",
+      "knowledgePoint": "循环作用"
+    },
+    {
+      "id": "loops-q2",
+      "type": "true_false",
+      "prompt": "`while` 循环通常要考虑什么时候结束。",
+      "answer": true,
+      "explanation": "如果不考虑结束条件，`while` 可能会一直执行下去。",
+      "knowledgePoint": "while"
+    },
+    {
+      "id": "loops-q3",
+      "type": "fill_blank",
+      "prompt": "如果想按顺序处理一组名单，最常见的循环关键字是 ____。",
+      "answer": "for",
+      "explanation": "处理一组有顺序的项目时，`for` 很常见。",
+      "knowledgePoint": "for"
+    }
+  ]
+}

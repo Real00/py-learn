@@ -1,0 +1,85 @@
+{
+  "slug": "functions",
+  "order": 6,
+  "title": "函数",
+  "summary": "把一段常用步骤打包起来，需要时直接调用。",
+  "estimatedMinutes": 14,
+  "difficultyLabel": "搭积木",
+  "prerequisiteSlug": "loops",
+  "tags": ["def", "参数", "复用"],
+  "learningGoals": [
+    "理解函数的核心价值是复用",
+    "知道函数可以接收参数",
+    "能读懂最基础的函数定义和调用"
+  ],
+  "summaryPoints": [
+    "函数就是给一段操作取名字。",
+    "参数让函数在不同场景下更灵活。",
+    "函数能让代码更整洁，也更容易维护。"
+  ],
+  "sections": [
+    {
+      "id": "functions-intro",
+      "type": "intro",
+      "title": "为什么要把动作打包",
+      "content": "如果你每天都要说一段固定的话，与其每次重新写，不如把这段话存成模板。函数就是代码里的模板，可以把一段动作打包起来，之后反复调用。",
+      "bullets": [
+        "函数减少重复。",
+        "函数让代码结构更清楚。"
+      ]
+    },
+    {
+      "id": "functions-def",
+      "type": "explanation",
+      "title": "`def` 在做什么",
+      "content": "`def` 是定义函数时常见的关键字。你可以把它理解成“我要给这段动作起个名字”。定义好之后，只要写函数名，就能再次使用这段动作。",
+      "exampleTitle": "定义并调用函数",
+      "exampleCode": "def say_hello():\n    print(\"你好\")\n\nsay_hello()"
+    },
+    {
+      "id": "functions-params",
+      "type": "example",
+      "title": "参数让函数更灵活",
+      "content": "如果每次问候的人不同，就可以把“名字”作为参数交给函数。这样函数不用为每个人重写一遍。",
+      "exampleTitle": "带参数的函数",
+      "exampleCode": "def say_hello(name):\n    print(\"你好，\" + name)\n\nsay_hello(\"小林\")"
+    },
+    {
+      "id": "functions-tip",
+      "type": "tip",
+      "title": "函数不是越多越好",
+      "content": "函数的重点不是“把所有东西都拆开”，而是把重复出现、逻辑独立的一段动作打包起来。这样做，代码读起来会更轻松。",
+      "bullets": [
+        "优先封装重复逻辑。",
+        "一个函数只做一件清楚的小事，会更好理解。"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "id": "functions-q1",
+      "type": "single_choice",
+      "prompt": "函数最重要的一个价值是什么？",
+      "options": ["复用常见操作", "让代码变成图片", "把 Python 变快十倍"],
+      "answer": "复用常见操作",
+      "explanation": "函数的核心价值之一，就是把常用步骤打包起来反复使用。",
+      "knowledgePoint": "函数作用"
+    },
+    {
+      "id": "functions-q2",
+      "type": "true_false",
+      "prompt": "参数可以让同一个函数处理不同的数据。",
+      "answer": true,
+      "explanation": "有了参数，函数就不必只写死一种情况。",
+      "knowledgePoint": "参数"
+    },
+    {
+      "id": "functions-q3",
+      "type": "fill_blank",
+      "prompt": "在 Python 中，定义函数常见的关键字是 ____。",
+      "answer": "def",
+      "explanation": "`def` 是 Python 里定义函数的常见关键字。",
+      "knowledgePoint": "def"
+    }
+  ]
+}

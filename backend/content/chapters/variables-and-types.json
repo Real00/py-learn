@@ -1,0 +1,89 @@
+{
+  "slug": "variables-and-types",
+  "order": 2,
+  "title": "变量和数据类型",
+  "summary": "学会给数据取名字，理解文字、数字和真假值分别是什么。",
+  "estimatedMinutes": 12,
+  "difficultyLabel": "打基础",
+  "prerequisiteSlug": "python-overview",
+  "tags": ["变量", "字符串", "数字"],
+  "learningGoals": [
+    "理解变量是在给数据起一个方便使用的名字",
+    "知道字符串、整数、浮点数和布尔值的基本区别",
+    "明白变量名应该尽量清楚好懂"
+  ],
+  "summaryPoints": [
+    "变量像贴了标签的盒子，方便你后面再次取用。",
+    "不同类型的数据，适合处理不同的事情。",
+    "变量名写得清楚，代码就更容易读懂。"
+  ],
+  "sections": [
+    {
+      "id": "variables-intro",
+      "type": "intro",
+      "title": "什么是变量",
+      "content": "你可以把变量想成一个有名字的盒子。盒子里装的是数据，盒子外面的名字方便你以后再找到它。比如把名字装进 `user_name`，以后想用时直接写这个名字就行。",
+      "bullets": [
+        "变量名是你起的标签。",
+        "变量里装的是具体的数据。"
+      ]
+    },
+    {
+      "id": "variables-types",
+      "type": "explanation",
+      "title": "常见数据类型",
+      "content": "字符串通常表示文字，比如姓名；整数表示没有小数的数字，比如年龄；浮点数表示带小数的数字，比如体重；布尔值只有 `True` 和 `False`，表示真或假。",
+      "bullets": [
+        "字符串：\"你好\"",
+        "整数：18",
+        "浮点数：18.5",
+        "布尔值：True / False"
+      ]
+    },
+    {
+      "id": "variables-example",
+      "type": "example",
+      "title": "给数据起名字",
+      "content": "下面这段代码把用户名字和年龄分别放进两个变量里。以后想展示这两个值时，不需要重写原始内容，直接使用变量名就可以。",
+      "exampleTitle": "变量示例",
+      "exampleCode": "user_name = \"小林\"\nage = 28\nprint(user_name)\nprint(age)"
+    },
+    {
+      "id": "variables-warning",
+      "type": "warning",
+      "title": "变量名不要太随意",
+      "content": "如果你把年龄写成 `a`，三天后你自己都可能看不懂。比起省几个字，更重要的是让代码表达清楚。",
+      "bullets": [
+        "推荐：`user_age`、`total_price`",
+        "不推荐：`a`、`x1`、`tmp123`"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "id": "variables-q1",
+      "type": "single_choice",
+      "prompt": "下面哪一个更像“变量名”？",
+      "options": ["user_name", "\"小林\"", "28"],
+      "answer": "user_name",
+      "explanation": "`user_name` 是变量名，后两项是实际数据。",
+      "knowledgePoint": "变量"
+    },
+    {
+      "id": "variables-q2",
+      "type": "true_false",
+      "prompt": "布尔值只有两种常见结果：True 和 False。",
+      "answer": true,
+      "explanation": "布尔值本来就是用来表示真假判断的，所以最常见就是这两个值。",
+      "knowledgePoint": "布尔值"
+    },
+    {
+      "id": "variables-q3",
+      "type": "fill_blank",
+      "prompt": "如果要表示文字内容，最常见的数据类型是 ____。",
+      "answer": "字符串",
+      "explanation": "表示文字、句子、名字等内容时，通常使用字符串。",
+      "knowledgePoint": "字符串"
+    }
+  ]
+}

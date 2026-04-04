@@ -1,0 +1,85 @@
+{
+  "slug": "lists-and-dicts",
+  "order": 7,
+  "title": "列表和字典",
+  "summary": "当数据不止一个时，学会把它们整理起来。",
+  "estimatedMinutes": 16,
+  "difficultyLabel": "组织数据",
+  "prerequisiteSlug": "functions",
+  "tags": ["list", "dict", "数据整理"],
+  "learningGoals": [
+    "理解列表适合保存一组同类内容",
+    "理解字典适合保存“名称-内容”对应关系",
+    "知道什么时候该用列表，什么时候该用字典"
+  ],
+  "summaryPoints": [
+    "列表像一排抽屉，按顺序放很多值。",
+    "字典像通讯录，通过名字找到对应内容。",
+    "会整理数据后，程序就能处理更真实的任务。"
+  ],
+  "sections": [
+    {
+      "id": "collections-intro",
+      "type": "intro",
+      "title": "为什么不能只靠单个变量",
+      "content": "如果你只有一个名字、一个年龄，一个变量也许够用。但当你有很多名字、很多商品、很多成绩时，单个变量就不够方便了。",
+      "bullets": [
+        "数据一多，就需要更好的整理方式。",
+        "列表和字典就是常见的整理工具。"
+      ]
+    },
+    {
+      "id": "collections-list",
+      "type": "explanation",
+      "title": "列表：一组同类内容排成队",
+      "content": "列表适合保存一组相关内容，比如购物清单、学生名单、待办事项。你可以把它理解成按顺序排好的多个盒子。",
+      "exampleTitle": "列表示例",
+      "exampleCode": "fruits = [\"苹果\", \"香蕉\", \"橙子\"]\nprint(fruits[0])"
+    },
+    {
+      "id": "collections-dict",
+      "type": "example",
+      "title": "字典：用名字找内容",
+      "content": "字典适合保存“键和值”的对应关系，比如一个人的姓名和年龄、一个商品的名字和价格。它更像一本通讯录。",
+      "exampleTitle": "字典示例",
+      "exampleCode": "user = {\"name\": \"小林\", \"age\": 28}\nprint(user[\"name\"])"
+    },
+    {
+      "id": "collections-tip",
+      "type": "tip",
+      "title": "怎么区分用列表还是字典",
+      "content": "如果你主要关心“顺序上的第几个”，更常用列表；如果你更关心“某个名字对应什么内容”，更常用字典。",
+      "bullets": [
+        "购物清单、待办事项，常用列表。",
+        "用户信息、商品属性，常用字典。"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "id": "collections-q1",
+      "type": "single_choice",
+      "prompt": "如果要保存一组水果名称，下面哪种更常见？",
+      "options": ["列表", "字典", "布尔值"],
+      "answer": "列表",
+      "explanation": "一组同类内容按顺序保存时，列表非常常见。",
+      "knowledgePoint": "列表"
+    },
+    {
+      "id": "collections-q2",
+      "type": "true_false",
+      "prompt": "字典很适合保存“字段名”和“内容”之间的对应关系。",
+      "answer": true,
+      "explanation": "例如姓名对应张三、年龄对应 28，这类结构就很适合字典。",
+      "knowledgePoint": "字典"
+    },
+    {
+      "id": "collections-q3",
+      "type": "fill_blank",
+      "prompt": "如果更关心“某个名字对应什么值”，通常更适合使用 ____。",
+      "answer": "字典",
+      "explanation": "这种按名称查内容的场景，通常更适合字典。",
+      "knowledgePoint": "使用场景"
+    }
+  ]
+}

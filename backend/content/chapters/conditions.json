@@ -1,0 +1,85 @@
+{
+  "slug": "conditions",
+  "order": 4,
+  "title": "条件判断",
+  "summary": "让程序根据不同情况，走不同的路。",
+  "estimatedMinutes": 12,
+  "difficultyLabel": "开始思考逻辑",
+  "prerequisiteSlug": "input-and-output",
+  "tags": ["if", "逻辑", "选择"],
+  "learningGoals": [
+    "知道条件判断的核心是“如果……就……”",
+    "能读懂最基本的 `if` 结构",
+    "理解条件判断通常依赖真假结果"
+  ],
+  "summaryPoints": [
+    "条件判断是程序做选择的基础能力。",
+    "`if` 后面通常跟一个真假条件。",
+    "条件成立就执行对应代码，不成立就跳过或进入别的分支。"
+  ],
+  "sections": [
+    {
+      "id": "condition-intro",
+      "type": "intro",
+      "title": "生活里处处都是条件判断",
+      "content": "如果下雨，就带伞；如果余额不够，就不能付款。程序里的条件判断也是同样的思路：先判断，再决定怎么做。",
+      "bullets": [
+        "先看条件是否成立。",
+        "再决定执行哪一段代码。"
+      ]
+    },
+    {
+      "id": "condition-if",
+      "type": "explanation",
+      "title": "`if` 在做什么",
+      "content": "`if` 可以理解成“如果”。当它后面的条件是对的，下面缩进的代码就会执行；如果条件不成立，这段代码就不会执行。",
+      "exampleTitle": "最基础的 if",
+      "exampleCode": "score = 80\nif score >= 60:\n    print(\"通过\")"
+    },
+    {
+      "id": "condition-example",
+      "type": "example",
+      "title": "程序根据输入做反应",
+      "content": "下面的代码会根据用户输入的年龄，决定是否提示“成年”。这就是程序根据条件做选择的最简单样子。",
+      "exampleTitle": "年龄判断",
+      "exampleCode": "age = 20\nif age >= 18:\n    print(\"你已经成年\")"
+    },
+    {
+      "id": "condition-warning",
+      "type": "warning",
+      "title": "不要把判断和执行混在一起看",
+      "content": "新手常常一眼看过去，以为所有代码都会执行。其实要先看 `if` 后面的条件是否成立，再看下面那几行会不会真正运行。",
+      "bullets": [
+        "先判断真假。",
+        "再看缩进代码会不会执行。"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "id": "conditions-q1",
+      "type": "single_choice",
+      "prompt": "`if` 最像下面哪句话？",
+      "options": ["如果满足条件，就做事", "一直重复做事", "定义一个函数"],
+      "answer": "如果满足条件，就做事",
+      "explanation": "`if` 的核心含义就是“如果条件成立，就执行下面的代码”。",
+      "knowledgePoint": "if"
+    },
+    {
+      "id": "conditions-q2",
+      "type": "true_false",
+      "prompt": "条件判断的结果通常可以理解成“真”或“假”。",
+      "answer": true,
+      "explanation": "程序做判断时，常见结果就是真或假。",
+      "knowledgePoint": "真假判断"
+    },
+    {
+      "id": "conditions-q3",
+      "type": "fill_blank",
+      "prompt": "在 Python 中，表示“如果”的关键字是 ____。",
+      "answer": "if",
+      "explanation": "`if` 是 Python 中最基础的条件判断关键字。",
+      "knowledgePoint": "关键字"
+    }
+  ]
+}

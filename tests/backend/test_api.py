@@ -1,0 +1,54 @@
+from app import create_app
+
+
+def test_healthcheck():
+    app = create_app()
+    client = app.test_client()
+
+    response = client.get("/api/health")
+
+    assert response.status_code == 200
+    assert response.get_json() == {"status": "ok"}
+
+
+def test_course_overview_contains_eight_chapters():
+    app = create_app()
+    client = app.test_client()
+
+    response = client.get("/api/course")
+    data = response.get_json()
+
+    assert response.status_code == 200
+    assert data["version"] == "1.0.0"
+    assert len(data["chapters"]) == 8
+
+
+def test_chapter_quiz_endpoint_returns_questions():
+    app = create_app()
+    client = app.test_client()
+
+    response = client.get("/api/course/chapters/functions/quiz")
+    data = response.get_json()
+
+    assert response.status_code == 200
+    assert data["slug"] == "functions"
+    assert len(data["quiz"]) == 3
+
+
+def test_missing_chapter_returns_404():
+    app = create_app()
+    client = app.test_client()
+
+    response = client.get("/api/course/chapters/not-found")
+
+    assert response.status_code == 404
+
+
+def test_spa_route_falls_back_to_index_when_dist_exists():
+    app = create_app()
+    client = app.test_client()
+
+    response = client.get("/course/functions")
+
+    assert response.status_code == 200
+    assert "text/html" in response.content_type

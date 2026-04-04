@@ -1,0 +1,89 @@
+{
+  "slug": "python-starter",
+  "title": "Python Starter",
+  "subtitle": "给零基础学习者的轻量 Python 路线",
+  "description": "每次只学一个小主题，先用生活化语言讲概念，再用小练习巩固。",
+  "version": "1.0.0",
+  "chapters": [
+    {
+      "slug": "python-overview",
+      "order": 1,
+      "title": "Python 到底是什么",
+      "summary": "先弄明白 Python 是一种什么工具，以及你以后会用它做什么。",
+      "estimatedMinutes": 8,
+      "difficultyLabel": "轻松入门",
+      "prerequisiteSlug": null,
+      "tags": ["认识 Python", "建立信心"]
+    },
+    {
+      "slug": "variables-and-types",
+      "order": 2,
+      "title": "变量和数据类型",
+      "summary": "理解“把东西装进盒子里”这件事，知道字符串、数字和布尔值的区别。",
+      "estimatedMinutes": 12,
+      "difficultyLabel": "打基础",
+      "prerequisiteSlug": "python-overview",
+      "tags": ["变量", "字符串", "数字"]
+    },
+    {
+      "slug": "input-and-output",
+      "order": 3,
+      "title": "输入、输出和简单运算",
+      "summary": "让程序会问问题、会显示结果，也会做最基础的计算。",
+      "estimatedMinutes": 12,
+      "difficultyLabel": "循序渐进",
+      "prerequisiteSlug": "variables-and-types",
+      "tags": ["print", "input", "运算"]
+    },
+    {
+      "slug": "conditions",
+      "order": 4,
+      "title": "条件判断",
+      "summary": "学会让程序根据不同情况做不同选择。",
+      "estimatedMinutes": 12,
+      "difficultyLabel": "开始思考逻辑",
+      "prerequisiteSlug": "input-and-output",
+      "tags": ["if", "逻辑", "选择"]
+    },
+    {
+      "slug": "loops",
+      "order": 5,
+      "title": "循环",
+      "summary": "避免重复写同样的话，让程序重复做一类事情。",
+      "estimatedMinutes": 14,
+      "difficultyLabel": "效率升级",
+      "prerequisiteSlug": "conditions",
+      "tags": ["for", "while", "重复任务"]
+    },
+    {
+      "slug": "functions",
+      "order": 6,
+      "title": "函数",
+      "summary": "把一段常用操作打包起来，下次直接调用。",
+      "estimatedMinutes": 14,
+      "difficultyLabel": "搭积木",
+      "prerequisiteSlug": "loops",
+      "tags": ["def", "参数", "复用"]
+    },
+    {
+      "slug": "lists-and-dicts",
+      "order": 7,
+      "title": "列表和字典",
+      "summary": "学会整理一组数据，而不是只处理单个值。",
+      "estimatedMinutes": 16,
+      "difficultyLabel": "组织数据",
+      "prerequisiteSlug": "functions",
+      "tags": ["list", "dict", "数据整理"]
+    },
+    {
+      "slug": "mini-project",
+      "order": 8,
+      "title": "综合小练习",
+      "summary": "用前面学过的知识做一个简单的小程序，串起整条学习路线。",
+      "estimatedMinutes": 18,
+      "difficultyLabel": "入门闭环",
+      "prerequisiteSlug": "lists-and-dicts",
+      "tags": ["综合应用", "小项目"]
+    }
+  ]
+}
