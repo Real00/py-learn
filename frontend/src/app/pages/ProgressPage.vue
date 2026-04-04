@@ -2,7 +2,7 @@
   <div class="space-y-4">
     <CardSurface class="p-6">
       <PillBadge tone="success">本地学习档案</PillBadge>
-      <h1 class="mt-4 font-[var(--font-display)] text-3xl text-[color:var(--color-foreground)]">
+      <h1 class="mt-4 text-3xl font-semibold text-[color:var(--color-foreground)]">
         你的学习进度
       </h1>
       <p class="mt-3 text-sm leading-7 text-[color:var(--color-secondary-foreground)]">
@@ -44,12 +44,19 @@
         <span>最近学习：{{ formatDate(records[chapter.slug]?.lastVisitedAt ?? null) }}</span>
         <span>得分：{{ records[chapter.slug]?.score ?? 0 }}</span>
       </div>
+
+      <div class="mt-4">
+        <RouterLink :to="`/course/${chapter.slug}`" class="text-sm font-semibold text-[color:var(--color-primary)]">
+          {{ records[chapter.slug]?.completed ? '回顾这一章' : '继续学习' }}
+        </RouterLink>
+      </div>
     </CardSurface>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { RouterLink } from 'vue-router'
 
 import { useCourseStore } from '@/features/course/model/course-store'
 import { useProgressStore } from '@/features/progress/model/progress-store'

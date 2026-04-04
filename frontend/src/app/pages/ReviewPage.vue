@@ -2,7 +2,7 @@
   <div v-if="chapter" class="space-y-4">
     <CardSurface class="p-6">
       <PillBadge tone="success">章节复习</PillBadge>
-      <h1 class="mt-4 font-[var(--font-display)] text-3xl text-[color:var(--color-foreground)]">
+      <h1 class="mt-4 text-3xl font-semibold text-[color:var(--color-foreground)]">
         {{ chapter.title }} 复习题
       </h1>
       <p class="mt-3 text-sm leading-7 text-[color:var(--color-secondary-foreground)]">
@@ -20,9 +20,13 @@
     />
 
     <CardSurface class="p-5">
-      <Button class="w-full" @click="submitQuiz">
+      <Button class="w-full" :disabled="!isQuizComplete" @click="submitQuiz">
         {{ submitted ? '重新计算结果' : '提交答案' }}
       </Button>
+
+      <p v-if="!isQuizComplete" class="mt-3 text-sm text-[color:var(--color-warning)]">
+        还有题目没完成，先把所有答案填完再提交。
+      </p>
 
       <div v-if="result" class="mt-4 rounded-[22px] bg-[color:var(--color-secondary)] p-4">
         <p class="text-lg font-bold text-[color:var(--color-foreground)]">
@@ -76,6 +80,13 @@ const currentChapterIndex = computed(() => orderedChapters.value.findIndex((item
 const nextChapter = computed(() => orderedChapters.value[currentChapterIndex.value + 1] ?? null)
 const nextChapterLink = computed(() => (nextChapter.value ? `/course/${nextChapter.value.slug}` : '/progress'))
 const nextChapterLabel = computed(() => (nextChapter.value ? '进入下一章' : '查看学习进度'))
+const isQuizComplete = computed(() => {
+  if (!chapter.value) {
+    return false
+  }
+
+  return chapter.value.quiz.every((question) => String(answers[question.id] ?? '').trim().length > 0)
+})
 
 const scoreHint = computed(() => {
   if (!result.value) {
@@ -99,7 +110,7 @@ onMounted(async () => {
 })
 
 function submitQuiz() {
-  if (!chapter.value) {
+  if (!chapter.value || !isQuizComplete.value) {
     return
   }
 

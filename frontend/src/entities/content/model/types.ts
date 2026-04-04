@@ -1,4 +1,13 @@
-export type SectionType = 'intro' | 'explanation' | 'example' | 'tip' | 'warning' | 'recap'
+export type SectionType =
+  | 'intro'
+  | 'explanation'
+  | 'example'
+  | 'tip'
+  | 'warning'
+  | 'recap'
+  | 'concept'
+  | 'analogy'
+  | 'pitfall'
 export type QuizQuestionType = 'single_choice' | 'true_false' | 'fill_blank'
 
 export interface CourseChapterSummary {
@@ -31,6 +40,19 @@ export interface ChapterSection {
   exampleTitle?: string
 }
 
+export interface PracticeTask {
+  id: string
+  title: string
+  prompt: string
+  hints: string[]
+  expectedOutcome: string
+}
+
+export interface ReviewChecklistItem {
+  id: string
+  text: string
+}
+
 export interface QuizQuestion {
   id: string
   type: QuizQuestionType
@@ -45,6 +67,8 @@ export interface ChapterDetail extends CourseChapterSummary {
   learningGoals: string[]
   summaryPoints: string[]
   sections: ChapterSection[]
+  practiceTasks: PracticeTask[]
+  reviewChecklist: ReviewChecklistItem[]
   quiz: QuizQuestion[]
 }
 

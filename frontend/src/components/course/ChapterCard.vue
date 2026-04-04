@@ -9,7 +9,7 @@
           <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--color-muted-foreground)]">
             第 {{ chapter.order }} 章
           </p>
-          <h3 class="mt-2 font-[var(--font-display)] text-xl text-[color:var(--color-foreground)]">
+          <h3 class="mt-2 text-xl font-semibold text-[color:var(--color-foreground)]">
             {{ chapter.title }}
           </h3>
         </div>
@@ -28,9 +28,15 @@
         </PillBadge>
       </div>
 
-      <div class="mt-4 flex items-center justify-between text-xs text-[color:var(--color-muted-foreground)]">
-        <span>{{ chapter.estimatedMinutes }} 分钟</span>
-        <span>{{ chapter.difficultyLabel }}</span>
+      <div class="mt-4 grid grid-cols-2 gap-3 text-xs">
+        <div class="rounded-2xl bg-[color:var(--color-secondary)]/70 px-3 py-3 text-[color:var(--color-secondary-foreground)]">
+          <p class="text-[color:var(--color-muted-foreground)]">学习时长</p>
+          <p class="mt-1 font-semibold">{{ chapter.estimatedMinutes }} 分钟</p>
+        </div>
+        <div class="rounded-2xl bg-[color:var(--color-secondary)]/70 px-3 py-3 text-[color:var(--color-secondary-foreground)]">
+          <p class="text-[color:var(--color-muted-foreground)]">难度</p>
+          <p class="mt-1 font-semibold">{{ chapter.difficultyLabel }}</p>
+        </div>
       </div>
     </CardSurface>
   </RouterLink>

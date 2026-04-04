@@ -15,10 +15,54 @@
 
 每个章节一个 JSON 文件，保存在 `backend/content/chapters/`。
 
-- `learningGoals`
-- `summaryPoints`
+- `learningGoals[]`
+- `summaryPoints[]`
 - `sections[]`
+- `practiceTasks[]`
+- `reviewChecklist[]`
 - `quiz[]`
+
+## 章节内容块
+
+`sections[]` 用来承载主线教学内容，目前支持这些类型：
+
+- `intro`
+- `explanation`
+- `example`
+- `tip`
+- `warning`
+- `recap`
+- `concept`
+- `analogy`
+- `pitfall`
+
+每个 section 至少包含：
+
+- `id`
+- `type`
+- `title`
+- `content`
+
+可选字段：
+
+- `bullets[]`
+- `exampleTitle`
+- `exampleCode`
+
+## 练习与复习
+
+`practiceTasks[]` 用来承载动手练习：
+
+- `id`
+- `title`
+- `prompt`
+- `hints[]`
+- `expectedOutcome`
+
+`reviewChecklist[]` 用来承载本章复习清单：
+
+- `id`
+- `text`
 
 ## 题型
 
@@ -28,6 +72,7 @@
 
 ## 约束
 
-- 首版所有内容统一使用 JSON。
+- 当前版本所有内容统一使用 JSON。
 - 章节 slug 必须唯一，并且文件名与 slug 保持一致。
-- 每章必须至少包含一个 section 和一个 quiz。
+- 每章必须至少包含一个 section、一个 practice task、一条复习清单和一道 quiz。
+- 每章建议至少提供 2 个练习任务和 6 道测验题。

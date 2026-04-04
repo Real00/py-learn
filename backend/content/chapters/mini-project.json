@@ -2,85 +2,179 @@
   "slug": "mini-project",
   "order": 8,
   "title": "综合小练习",
-  "summary": "把变量、输入输出、判断、循环和函数串起来，做一个迷你小程序。",
-  "estimatedMinutes": 18,
+  "summary": "把前面几章的知识拼起来，做一个像样的入门小程序。",
+  "estimatedMinutes": 32,
   "difficultyLabel": "入门闭环",
   "prerequisiteSlug": "lists-and-dicts",
-  "tags": ["综合应用", "小项目"],
+  "tags": [
+    "综合应用",
+    "小项目",
+    "拆解问题"
+  ],
   "learningGoals": [
-    "知道前面学的知识如何组合使用",
-    "理解小项目不是更难，而是把基础拼起来",
-    "建立“我已经能做点东西了”的感受"
+    "理解小项目是把前面学过的知识组合起来。",
+    "学会先拆解步骤，再一段一段实现。",
+    "知道一个入门项目通常会用到输入、判断、函数和数据结构。",
+    "建立“我已经能写出一个完整小程序”的成就感。"
   ],
   "summaryPoints": [
-    "项目不是全新知识，而是旧知识的组合。",
-    "做小项目时，先拆步骤，再逐个完成。",
-    "能跑通一个迷你项目，是入门阶段很重要的信心来源。"
+    "项目不是突然变复杂，而是基础知识的组合。",
+    "先拆步骤，再逐个实现，比直接开写更稳。",
+    "一个小项目里常会同时用到变量、判断、函数和数据结构。",
+    "能独立完成一个小项目，是入门阶段的重要里程碑。"
   ],
   "sections": [
     {
-      "id": "project-intro",
-      "type": "intro",
-      "title": "项目思维：先拆开，再组合",
-      "content": "很多新手一看到“项目”就紧张，觉得一定很复杂。其实入门项目只是把前面学过的几个小知识放在一起用。关键不是一步到位，而是先拆清楚每一步要做什么。",
-      "bullets": [
-        "先想输入什么。",
-        "再想要判断什么。",
-        "最后想输出什么。"
-      ]
+      "id": "project-concept",
+      "type": "concept",
+      "title": "项目是把知识拼起来，不是从零创造魔法",
+      "content": "很多新手一看到“项目”就紧张，其实入门项目只是把前面学过的小模块拼起来。关键不在于一下子写得多高级，而在于把每一步拆清楚。"
     },
     {
-      "id": "project-example",
-      "type": "example",
-      "title": "一个简单的点餐总价程序",
-      "content": "这个例子先用变量保存单价，再通过输入得到数量，最后算出总价并输出。虽然简单，但它已经把输入、变量和运算串起来了。",
-      "exampleTitle": "点餐总价",
-      "exampleCode": "price = 18\ncount = int(input(\"你要几份？\"))\ntotal = price * count\nprint(\"总价是\", total)"
+      "id": "project-analogy",
+      "type": "analogy",
+      "title": "像把学过的积木拼成一个小作品",
+      "content": "前面每章学的内容，像一块块积木：变量、输入输出、判断、循环、函数、数据结构。项目就是把它们组合成一个能跑的小成品。"
     },
     {
-      "id": "project-upgrade",
+      "id": "project-explanation-plan",
+      "type": "explanation",
+      "title": "先列步骤，再写代码",
+      "content": "做项目时不要一上来就敲代码。先问自己：用户会输入什么？程序要做什么判断？最后要输出什么？"
+    },
+    {
+      "id": "project-example-flow",
       "type": "example",
-      "title": "再加一个条件判断",
-      "content": "如果总价满 50 元就提示“可免配送费”，这一步就是把条件判断加入项目。你会发现，项目只是在拼积木。",
-      "exampleTitle": "带判断的版本",
-      "exampleCode": "if total >= 50:\n    print(\"你可以免配送费\")"
+      "title": "一个购物小程序的骨架",
+      "content": "这个例子会接收数量、计算总价，再根据金额给出提示。",
+      "exampleTitle": "迷你结算程序",
+      "exampleCode": "price = 12\ncount = int(input(\"请输入购买数量：\"))\ntotal = price * count\nif total >= 50:\n    print(\"总价：\", total)\n    print(\"可免配送费\")\nelse:\n    print(\"总价：\", total)"
+    },
+    {
+      "id": "project-explanation-functions",
+      "type": "explanation",
+      "title": "项目里也可以用函数整理步骤",
+      "content": "当某个步骤明显独立，比如“计算总价”或“打印订单摘要”，就可以考虑提成函数，让主流程更清楚。"
+    },
+    {
+      "id": "project-example-collections",
+      "type": "example",
+      "title": "用字典保存商品信息",
+      "content": "如果项目里需要记录商品名和价格，字典会比一堆散乱变量更清楚。",
+      "exampleTitle": "商品信息",
+      "exampleCode": "product = {\"name\": \"笔记本\", \"price\": 12}\nprint(product[\"name\"])"
+    },
+    {
+      "id": "project-tip",
+      "type": "tip",
+      "title": "项目调试时，一次只确认一小步",
+      "content": "不要等全部写完才运行。每完成一小步就跑一下，确认当前结果对不对，这样问题更容易定位。"
+    },
+    {
+      "id": "project-pitfall",
+      "type": "pitfall",
+      "title": "别急着追求“大而全”",
+      "content": "入门项目的重点不是功能多，而是能把前面知识顺畅串起来。一个能跑的小项目，比一个半截停住的大项目更有价值。"
     },
     {
       "id": "project-recap",
       "type": "recap",
-      "title": "你已经会了什么",
-      "content": "到这里，你已经见过变量、输入输出、判断、循环、函数和数据整理。虽然每一项都还是基础版，但它们组合起来，已经足够做很多迷你练习。",
-      "bullets": [
-        "先会做小程序，再慢慢扩展复杂度。",
-        "入门阶段最重要的是“敢动手”。"
-      ]
+      "title": "这一章先记住什么",
+      "content": "项目就是基础知识的组合；先拆步骤再实现；边写边验证，会比憋到最后一起调试更轻松。"
+    }
+  ],
+  "practiceTasks": [
+    {
+      "id": "project-practice-1",
+      "title": "先写步骤，不先写代码",
+      "prompt": "为“简易点餐程序”列出 4 到 5 个步骤，例如“输入数量”“计算总价”“输出结果”等。",
+      "hints": [
+        "先用自然语言列步骤。"
+      ],
+      "expectedOutcome": "能把一个小项目拆成几个连续动作。"
+    },
+    {
+      "id": "project-practice-2",
+      "title": "判断哪些知识会用到",
+      "prompt": "回想前面学过的内容，指出一个结算小程序至少会用到哪几类知识。",
+      "hints": [
+        "想想变量、输入输出、判断和函数。"
+      ],
+      "expectedOutcome": "能把项目和前面章节知识对应起来。"
+    }
+  ],
+  "reviewChecklist": [
+    {
+      "id": "project-review-1",
+      "text": "我知道项目不是新知识堆砌，而是旧知识组合。"
+    },
+    {
+      "id": "project-review-2",
+      "text": "我知道开始项目时要先拆步骤。"
+    },
+    {
+      "id": "project-review-3",
+      "text": "我知道边写边运行检查，比最后一起排错更稳。"
     }
   ],
   "quiz": [
     {
       "id": "project-q1",
       "type": "single_choice",
-      "prompt": "做小项目时，最推荐的起手方式是什么？",
-      "options": ["先把任务拆成小步骤", "先背完所有高级语法", "先写一千行代码"],
-      "answer": "先把任务拆成小步骤",
-      "explanation": "项目并不是一下子全部写出来，而是先拆步骤，再逐个完成。",
-      "knowledgePoint": "项目思维"
+      "prompt": "入门项目最重要的第一步通常是什么？",
+      "options": [
+        "先拆步骤",
+        "先把所有功能都写完",
+        "先换一个更难的题目"
+      ],
+      "answer": "先拆步骤",
+      "explanation": "先拆清楚步骤，项目就不容易乱。",
+      "knowledgePoint": "项目拆解"
     },
     {
       "id": "project-q2",
       "type": "true_false",
-      "prompt": "小项目通常是把多个基础知识组合起来使用。",
+      "prompt": "小项目本质上是把前面学过的知识组合起来。",
       "answer": true,
-      "explanation": "项目通常不是全新知识，而是旧知识的组合练习。",
-      "knowledgePoint": "知识整合"
+      "explanation": "这正是入门项目的核心价值。",
+      "knowledgePoint": "项目本质"
     },
     {
       "id": "project-q3",
       "type": "fill_blank",
-      "prompt": "做项目时，推荐先把任务拆成很多个小 ____。",
-      "answer": "步骤",
-      "explanation": "先拆步骤，再逐个完成，是更稳的做法。",
-      "knowledgePoint": "拆解任务"
+      "prompt": "边写边运行检查，可以更早发现 ______。",
+      "answer": "问题",
+      "explanation": "小步验证更容易定位问题。",
+      "knowledgePoint": "调试习惯"
+    },
+    {
+      "id": "project-q4",
+      "type": "single_choice",
+      "prompt": "下面哪项最符合入门项目的目标？",
+      "options": [
+        "把基础知识串起来",
+        "一次实现几十个功能",
+        "追求代码炫技"
+      ],
+      "answer": "把基础知识串起来",
+      "explanation": "入门项目的重点是把已有知识串成闭环。",
+      "knowledgePoint": "项目目标"
+    },
+    {
+      "id": "project-q5",
+      "type": "true_false",
+      "prompt": "如果一个步骤会反复出现，可以考虑提成函数。",
+      "answer": true,
+      "explanation": "函数能让项目主流程更清楚。",
+      "knowledgePoint": "函数在项目中的使用"
+    },
+    {
+      "id": "project-q6",
+      "type": "fill_blank",
+      "prompt": "一个能真正跑起来的简单项目，比一个停在半路的大项目更有 ______。",
+      "answer": "价值",
+      "explanation": "完整的小闭环能更好地建立理解和信心。",
+      "knowledgePoint": "项目实践"
     }
   ]
 }

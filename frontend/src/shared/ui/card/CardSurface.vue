@@ -20,7 +20,7 @@ const props = withDefaults(
 
 const cardClass = computed(() =>
   cn(
-    'surface-blur rounded-[28px] border border-[color:var(--color-border)] bg-[color:var(--color-card)] text-[color:var(--color-card-foreground)] shadow-[var(--shadow-soft)]',
+    'surface-blur rounded-3xl border border-[color:var(--color-border)] bg-[color:var(--color-card)] text-[color:var(--color-card-foreground)] shadow-[var(--shadow-soft)]',
     props.class,
   ),
 )

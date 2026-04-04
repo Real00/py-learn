@@ -2,84 +2,180 @@
   "slug": "conditions",
   "order": 4,
   "title": "条件判断",
-  "summary": "让程序根据不同情况，走不同的路。",
-  "estimatedMinutes": 12,
+  "summary": "让程序根据不同情况走不同分支，开始真正“做选择”。",
+  "estimatedMinutes": 26,
   "difficultyLabel": "开始思考逻辑",
   "prerequisiteSlug": "input-and-output",
-  "tags": ["if", "逻辑", "选择"],
+  "tags": [
+    "if",
+    "elif",
+    "else",
+    "布尔表达式"
+  ],
   "learningGoals": [
-    "知道条件判断的核心是“如果……就……”",
-    "能读懂最基本的 `if` 结构",
-    "理解条件判断通常依赖真假结果"
+    "理解条件判断是在让程序做选择。",
+    "知道 `if`、`elif`、`else` 各自的基本作用。",
+    "能读懂简单的条件表达式。",
+    "知道缩进会影响哪段代码属于条件分支。"
   ],
   "summaryPoints": [
-    "条件判断是程序做选择的基础能力。",
-    "`if` 后面通常跟一个真假条件。",
-    "条件成立就执行对应代码，不成立就跳过或进入别的分支。"
+    "条件判断本质上是“满足条件就做这件事”。",
+    "`if` 检查第一个条件，`elif` 用于追加判断，`else` 负责兜底。",
+    "缩进决定哪些代码属于某个分支。",
+    "读条件代码时，先看条件是否成立，再看哪一段会执行。"
   ],
   "sections": [
     {
-      "id": "condition-intro",
-      "type": "intro",
-      "title": "生活里处处都是条件判断",
-      "content": "如果下雨，就带伞；如果余额不够，就不能付款。程序里的条件判断也是同样的思路：先判断，再决定怎么做。",
-      "bullets": [
-        "先看条件是否成立。",
-        "再决定执行哪一段代码。"
-      ]
+      "id": "conditions-concept",
+      "type": "concept",
+      "title": "条件判断是在让程序做选择",
+      "content": "程序不是只能从上到下机械执行，它也能先判断一个条件是否成立，再决定走哪条路。"
     },
     {
-      "id": "condition-if",
+      "id": "conditions-analogy",
+      "type": "analogy",
+      "title": "像生活中的“如果……就……”",
+      "content": "如果下雨就带伞，如果余额不够就不能付款，这些日常规则都可以翻译成程序里的条件判断。"
+    },
+    {
+      "id": "conditions-explanation-if",
       "type": "explanation",
-      "title": "`if` 在做什么",
-      "content": "`if` 可以理解成“如果”。当它后面的条件是对的，下面缩进的代码就会执行；如果条件不成立，这段代码就不会执行。",
-      "exampleTitle": "最基础的 if",
-      "exampleCode": "score = 80\nif score >= 60:\n    print(\"通过\")"
+      "title": "`if` 是第一道判断门",
+      "content": "`if` 后面跟着一个条件。当条件为真时，下面缩进的代码会执行。"
     },
     {
-      "id": "condition-example",
+      "id": "conditions-example-if",
       "type": "example",
-      "title": "程序根据输入做反应",
-      "content": "下面的代码会根据用户输入的年龄，决定是否提示“成年”。这就是程序根据条件做选择的最简单样子。",
-      "exampleTitle": "年龄判断",
+      "title": "最基础的条件代码",
+      "content": "先从一个条件出发，观察满足和不满足时程序的表现。",
+      "exampleTitle": "判断是否成年",
       "exampleCode": "age = 20\nif age >= 18:\n    print(\"你已经成年\")"
     },
     {
-      "id": "condition-warning",
+      "id": "conditions-explanation-else",
+      "type": "explanation",
+      "title": "`else` 负责兜底情况",
+      "content": "当 if 条件不成立时，else 里的代码就会执行。这样程序就能覆盖“两种不同情况”。"
+    },
+    {
+      "id": "conditions-example-elif",
+      "type": "example",
+      "title": "`elif` 让分支不止两个",
+      "content": "如果需要判断多个区间或多种状态，`elif` 可以继续追加判断。",
+      "exampleTitle": "成绩等级",
+      "exampleCode": "score = 78\nif score >= 90:\n    print(\"优秀\")\nelif score >= 60:\n    print(\"及格\")\nelse:\n    print(\"需要继续努力\")"
+    },
+    {
+      "id": "conditions-pitfall",
+      "type": "pitfall",
+      "title": "新手常忽略缩进范围",
+      "content": "很多人以为 if 后面只有一行受影响，或者看漏了缩进。实际上缩进决定了哪几行代码属于这个分支。"
+    },
+    {
+      "id": "conditions-warning",
       "type": "warning",
-      "title": "不要把判断和执行混在一起看",
-      "content": "新手常常一眼看过去，以为所有代码都会执行。其实要先看 `if` 后面的条件是否成立，再看下面那几行会不会真正运行。",
-      "bullets": [
-        "先判断真假。",
-        "再看缩进代码会不会执行。"
-      ]
+      "title": "不要只看代码顺序，要看条件是否成立",
+      "content": "代码写在文件里并不代表一定执行。遇到条件判断时，要先问自己：当前条件是真是假？"
+    },
+    {
+      "id": "conditions-recap",
+      "type": "recap",
+      "title": "这一章先记住什么",
+      "content": "先记住 if 是开始判断，elif 是继续判断，else 是兜底；再记住缩进会决定分支范围。"
+    }
+  ],
+  "practiceTasks": [
+    {
+      "id": "conditions-practice-1",
+      "title": "把生活规则翻译成 if",
+      "prompt": "把“如果今天下雨，就带伞”翻译成一句简单的程序逻辑描述。",
+      "hints": [
+        "不一定非要写完整代码，先把判断和动作说清楚。"
+      ],
+      "expectedOutcome": "能说出“先判断是否下雨，成立就执行带伞动作”。"
+    },
+    {
+      "id": "conditions-practice-2",
+      "title": "判断哪一段会执行",
+      "prompt": "假设 `score = 55`，看一段 if/elif/else 代码时，判断最终会走哪个分支。",
+      "hints": [
+        "按顺序一个个看条件是否成立。"
+      ],
+      "expectedOutcome": "知道程序会进入对应的兜底分支。"
+    }
+  ],
+  "reviewChecklist": [
+    {
+      "id": "conditions-review-1",
+      "text": "我知道条件判断是在让程序根据情况做选择。"
+    },
+    {
+      "id": "conditions-review-2",
+      "text": "我知道 `if`、`elif`、`else` 的基本分工。"
+    },
+    {
+      "id": "conditions-review-3",
+      "text": "我知道缩进会影响哪一段代码真正执行。"
     }
   ],
   "quiz": [
     {
       "id": "conditions-q1",
       "type": "single_choice",
-      "prompt": "`if` 最像下面哪句话？",
-      "options": ["如果满足条件，就做事", "一直重复做事", "定义一个函数"],
-      "answer": "如果满足条件，就做事",
-      "explanation": "`if` 的核心含义就是“如果条件成立，就执行下面的代码”。",
+      "prompt": "下面哪个关键字最常用来开始条件判断？",
+      "options": [
+        "if",
+        "for",
+        "def"
+      ],
+      "answer": "if",
+      "explanation": "if 是条件判断最基础的入口。",
       "knowledgePoint": "if"
     },
     {
       "id": "conditions-q2",
       "type": "true_false",
-      "prompt": "条件判断的结果通常可以理解成“真”或“假”。",
+      "prompt": "`else` 常用于处理前面条件都不成立时的情况。",
       "answer": true,
-      "explanation": "程序做判断时，常见结果就是真或假。",
-      "knowledgePoint": "真假判断"
+      "explanation": "else 就是兜底分支。",
+      "knowledgePoint": "else"
     },
     {
       "id": "conditions-q3",
       "type": "fill_blank",
-      "prompt": "在 Python 中，表示“如果”的关键字是 ____。",
-      "answer": "if",
-      "explanation": "`if` 是 Python 中最基础的条件判断关键字。",
-      "knowledgePoint": "关键字"
+      "prompt": "条件代码里，决定分支范围的重要格式规则是 ______。",
+      "answer": "缩进",
+      "explanation": "Python 很依赖缩进来表达代码块。",
+      "knowledgePoint": "缩进"
+    },
+    {
+      "id": "conditions-q4",
+      "type": "single_choice",
+      "prompt": "如果需要在多个条件之间继续判断，通常会用哪个关键字？",
+      "options": [
+        "elif",
+        "input",
+        "while"
+      ],
+      "answer": "elif",
+      "explanation": "elif 用于追加条件分支。",
+      "knowledgePoint": "elif"
+    },
+    {
+      "id": "conditions-q5",
+      "type": "true_false",
+      "prompt": "只要代码写在 if 下面，它就一定会执行。",
+      "answer": false,
+      "explanation": "只有条件成立时，if 分支里的代码才会执行。",
+      "knowledgePoint": "条件是否成立"
+    },
+    {
+      "id": "conditions-q6",
+      "type": "fill_blank",
+      "prompt": "看条件判断代码时，应该先看条件是否 ______，再看执行哪段代码。",
+      "answer": "成立",
+      "explanation": "条件代码的关键不只是顺序，而是条件真假。",
+      "knowledgePoint": "阅读条件代码"
     }
   ]
 }

@@ -2,88 +2,185 @@
   "slug": "variables-and-types",
   "order": 2,
   "title": "变量和数据类型",
-  "summary": "学会给数据取名字，理解文字、数字和真假值分别是什么。",
-  "estimatedMinutes": 12,
+  "summary": "学会把信息存起来，并分清文字、数字和真假值各自适合做什么。",
+  "estimatedMinutes": 24,
   "difficultyLabel": "打基础",
   "prerequisiteSlug": "python-overview",
-  "tags": ["变量", "字符串", "数字"],
+  "tags": [
+    "变量",
+    "字符串",
+    "数字",
+    "布尔值"
+  ],
   "learningGoals": [
-    "理解变量是在给数据起一个方便使用的名字",
-    "知道字符串、整数、浮点数和布尔值的基本区别",
-    "明白变量名应该尽量清楚好懂"
+    "知道变量是给数据起名字的方式。",
+    "分清字符串、整数、浮点数和布尔值的基本用途。",
+    "理解“值是什么类型”会影响它能做什么操作。",
+    "能写出更有可读性的变量名。"
   ],
   "summaryPoints": [
-    "变量像贴了标签的盒子，方便你后面再次取用。",
-    "不同类型的数据，适合处理不同的事情。",
-    "变量名写得清楚，代码就更容易读懂。"
+    "变量像有名字的盒子，用来保存数据。",
+    "字符串适合文字，数字适合计算，布尔值适合真假判断。",
+    "同样的内容写成不同类型，程序的处理方式会不同。",
+    "清楚的变量名会让代码更容易读懂和维护。"
   ],
   "sections": [
     {
-      "id": "variables-intro",
-      "type": "intro",
-      "title": "什么是变量",
-      "content": "你可以把变量想成一个有名字的盒子。盒子里装的是数据，盒子外面的名字方便你以后再找到它。比如把名字装进 `user_name`，以后想用时直接写这个名字就行。",
+      "id": "variables-concept",
+      "type": "concept",
+      "title": "变量是代码里的命名盒子",
+      "content": "变量可以理解成带标签的盒子。盒子里装的是数据，盒子外面的标签让你以后还能再找到它。",
       "bullets": [
-        "变量名是你起的标签。",
-        "变量里装的是具体的数据。"
+        "盒子里的内容可以被读取。",
+        "标签起得清楚，后面就更容易看懂。"
       ]
     },
     {
-      "id": "variables-types",
+      "id": "variables-analogy",
+      "type": "analogy",
+      "title": "像在抽屉外面贴标签",
+      "content": "如果你有很多抽屉，外面写上“发票”“证件”“充电器”，以后找东西会快很多。变量名就是代码里的标签。"
+    },
+    {
+      "id": "variables-explanation",
       "type": "explanation",
-      "title": "常见数据类型",
-      "content": "字符串通常表示文字，比如姓名；整数表示没有小数的数字，比如年龄；浮点数表示带小数的数字，比如体重；布尔值只有 `True` 和 `False`，表示真或假。",
-      "bullets": [
-        "字符串：\"你好\"",
-        "整数：18",
-        "浮点数：18.5",
-        "布尔值：True / False"
-      ]
+      "title": "为什么要把数据放进变量",
+      "content": "因为现实中的信息往往会反复用到。与其每次都重写一遍，不如先保存起来，后面直接用变量名引用。"
     },
     {
       "id": "variables-example",
       "type": "example",
-      "title": "给数据起名字",
-      "content": "下面这段代码把用户名字和年龄分别放进两个变量里。以后想展示这两个值时，不需要重写原始内容，直接使用变量名就可以。",
-      "exampleTitle": "变量示例",
-      "exampleCode": "user_name = \"小林\"\nage = 28\nprint(user_name)\nprint(age)"
+      "title": "最基础的变量写法",
+      "content": "等号左边是变量名，右边是你要保存进去的值。",
+      "exampleTitle": "保存名字和年龄",
+      "exampleCode": "user_name = \"小李\"\nage = 28"
     },
     {
-      "id": "variables-warning",
-      "type": "warning",
-      "title": "变量名不要太随意",
-      "content": "如果你把年龄写成 `a`，三天后你自己都可能看不懂。比起省几个字，更重要的是让代码表达清楚。",
+      "id": "variables-concept-types",
+      "type": "concept",
+      "title": "数据类型决定“这个值像什么”",
+      "content": "字符串通常保存文字；整数保存没有小数的数字；浮点数保存带小数的数字；布尔值只有 True 和 False，表示真假。",
       "bullets": [
-        "推荐：`user_age`、`total_price`",
-        "不推荐：`a`、`x1`、`tmp123`"
+        "\"你好\" 是字符串。",
+        "18 是整数。",
+        "36.5 是浮点数。",
+        "True / False 是布尔值。"
       ]
+    },
+    {
+      "id": "variables-example-2",
+      "type": "example",
+      "title": "同样是数字，看起来也可能不一样",
+      "content": "字符串 \"18\" 看起来像数字，但它本质上还是文字；真正的整数 18 才能直接参与很多数学运算。",
+      "exampleTitle": "字符串和数字不同",
+      "exampleCode": "age_text = \"18\"\nage_number = 18"
+    },
+    {
+      "id": "variables-pitfall",
+      "type": "pitfall",
+      "title": "变量名太随意，会让自己也看不懂",
+      "content": "如果你把年龄写成 a，把用户名写成 b，代码很快就会失去可读性。变量名不是越短越好，而是越清楚越好。"
+    },
+    {
+      "id": "variables-recap",
+      "type": "recap",
+      "title": "这一章先记住什么",
+      "content": "变量是带名字的数据盒子；类型会影响后续操作；写清楚的变量名，是在给未来的自己省时间。"
+    }
+  ],
+  "practiceTasks": [
+    {
+      "id": "variables-practice-1",
+      "title": "给信息起变量名",
+      "prompt": "把“用户昵称”和“登录次数”分别起成两个变量名，要求一眼就能看懂。",
+      "hints": [
+        "尽量让变量名表达含义。",
+        "不要只用 a、b、c。"
+      ],
+      "expectedOutcome": "能写出像 `user_name`、`login_count` 这样的变量名。"
+    },
+    {
+      "id": "variables-practice-2",
+      "title": "判断数据类型",
+      "prompt": "观察 `\"北京\"`、`32`、`36.6`、`False` 这四个值，说出它们各自更接近哪种类型。",
+      "hints": [
+        "先看它是文字、整数、小数还是真假。"
+      ],
+      "expectedOutcome": "能把常见值粗略分到字符串、数字和布尔值。"
+    }
+  ],
+  "reviewChecklist": [
+    {
+      "id": "variables-review-1",
+      "text": "我知道变量是给数据起名字，而不是神秘符号。"
+    },
+    {
+      "id": "variables-review-2",
+      "text": "我知道字符串和数字看起来相似，但处理方式不同。"
+    },
+    {
+      "id": "variables-review-3",
+      "text": "我知道变量名应该尽量表达含义。"
     }
   ],
   "quiz": [
     {
       "id": "variables-q1",
       "type": "single_choice",
-      "prompt": "下面哪一个更像“变量名”？",
-      "options": ["user_name", "\"小林\"", "28"],
-      "answer": "user_name",
-      "explanation": "`user_name` 是变量名，后两项是实际数据。",
+      "prompt": "变量最适合被理解成什么？",
+      "options": [
+        "带名字的数据盒子",
+        "只能保存数字的容器",
+        "程序里的注释"
+      ],
+      "answer": "带名字的数据盒子",
+      "explanation": "变量的核心作用是用名字保存数据，后面再使用。",
       "knowledgePoint": "变量"
     },
     {
       "id": "variables-q2",
       "type": "true_false",
-      "prompt": "布尔值只有两种常见结果：True 和 False。",
-      "answer": true,
-      "explanation": "布尔值本来就是用来表示真假判断的，所以最常见就是这两个值。",
-      "knowledgePoint": "布尔值"
+      "prompt": "字符串 \"18\" 和整数 18 在程序里是一回事。",
+      "answer": false,
+      "explanation": "它们看起来像，但类型不同，程序处理方式也不同。",
+      "knowledgePoint": "数据类型"
     },
     {
       "id": "variables-q3",
       "type": "fill_blank",
-      "prompt": "如果要表示文字内容，最常见的数据类型是 ____。",
-      "answer": "字符串",
-      "explanation": "表示文字、句子、名字等内容时，通常使用字符串。",
-      "knowledgePoint": "字符串"
+      "prompt": "布尔值只有两个常见结果：True 和 ______。",
+      "answer": "False",
+      "explanation": "布尔值表示真假，最常见的两个值是 True 和 False。",
+      "knowledgePoint": "布尔值"
+    },
+    {
+      "id": "variables-q4",
+      "type": "single_choice",
+      "prompt": "下面哪个变量名更清楚？",
+      "options": [
+        "a",
+        "user_age",
+        "x1"
+      ],
+      "answer": "user_age",
+      "explanation": "清楚表达含义的变量名更容易读懂。",
+      "knowledgePoint": "命名"
+    },
+    {
+      "id": "variables-q5",
+      "type": "true_false",
+      "prompt": "浮点数通常用来表示带小数的数字。",
+      "answer": true,
+      "explanation": "像 36.6、99.5 这类带小数的值常用浮点数表示。",
+      "knowledgePoint": "浮点数"
+    },
+    {
+      "id": "variables-q6",
+      "type": "fill_blank",
+      "prompt": "变量名写得清楚，本质上是在帮未来的 ______ 看懂代码。",
+      "answer": "自己",
+      "explanation": "可读性好的代码最先帮助到的，往往是未来回头维护的自己。",
+      "knowledgePoint": "可读性"
     }
   ]
 }

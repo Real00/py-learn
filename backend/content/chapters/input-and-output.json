@@ -2,84 +2,182 @@
   "slug": "input-and-output",
   "order": 3,
   "title": "输入、输出和简单运算",
-  "summary": "让程序学会接收用户输入，并把结果展示出来。",
-  "estimatedMinutes": 12,
+  "summary": "让程序会接收输入、显示结果，并做最基础的计算。",
+  "estimatedMinutes": 24,
   "difficultyLabel": "循序渐进",
   "prerequisiteSlug": "variables-and-types",
-  "tags": ["print", "input", "运算"],
+  "tags": [
+    "print",
+    "input",
+    "运算",
+    "类型转换"
+  ],
   "learningGoals": [
-    "理解输入和输出分别是什么",
-    "知道 `print()` 与 `input()` 的基本作用",
-    "掌握最常见的加减乘除写法"
+    "知道 `print()` 和 `input()` 分别负责输出和输入。",
+    "能让程序接收用户输入并显示结果。",
+    "理解输入内容默认更像字符串。",
+    "能做最基础的加减乘除运算。"
   ],
   "summaryPoints": [
-    "`print()` 用来把结果展示出来。",
-    "`input()` 用来接收用户输入的信息。",
-    "算术运算让程序不仅能记住数据，还能处理数据。"
+    "程序和人的基本沟通方式，就是输入和输出。",
+    "`print()` 用于显示结果，`input()` 用于接收用户输入。",
+    "`input()` 拿到的内容默认是字符串。",
+    "要做数学计算时，常常需要先把输入转换成数字。"
   ],
   "sections": [
     {
-      "id": "io-intro",
-      "type": "intro",
-      "title": "程序怎么和人互动",
-      "content": "如果程序只能自己运行，却不能接收你的信息，也不能把结果告诉你，那它就很难真正帮上忙。输入和输出，就是程序和人沟通的最基础方式。",
-      "bullets": [
-        "输入：人把信息交给程序。",
-        "输出：程序把结果展示给人。"
-      ]
+      "id": "io-concept",
+      "type": "concept",
+      "title": "程序为什么需要输入和输出",
+      "content": "如果程序不能接收信息，也不能把结果告诉你，它就很难真正帮上忙。输入和输出，就是程序和人之间最基础的沟通方式。"
     },
     {
-      "id": "io-print",
+      "id": "io-analogy",
+      "type": "analogy",
+      "title": "像在和一个表单助手对话",
+      "content": "你先告诉程序一些信息，程序再根据这些信息给你回应。这很像你在填写表单、点击提交，然后页面显示结果。"
+    },
+    {
+      "id": "io-explanation-print",
       "type": "explanation",
-      "title": "`print()` 和 `input()` 的分工",
-      "content": "`print()` 像程序开口说话，把内容显示在屏幕上。`input()` 像程序提问，等待用户输入答案。",
-      "exampleTitle": "输入输出配合",
-      "exampleCode": "name = input(\"你叫什么名字？\")\nprint(\"你好，\" + name)"
+      "title": "`print()` 负责把内容说出来",
+      "content": "`print()` 可以把文字、变量值，或者计算结果显示到屏幕上。它是最常见的输出方式。"
     },
     {
-      "id": "io-math",
+      "id": "io-example-print",
       "type": "example",
-      "title": "程序也会做简单运算",
-      "content": "把数字存进变量后，你可以让程序做加减乘除。这样就不只是“记住数据”，而是“处理数据”了。",
-      "exampleTitle": "简单运算",
-      "exampleCode": "price = 30\ncount = 2\ntotal = price * count\nprint(total)"
+      "title": "最简单的输出示例",
+      "content": "先让程序把一句固定的话显示出来，再慢慢过渡到显示变量和结果。",
+      "exampleTitle": "输出欢迎语",
+      "exampleCode": "print(\"欢迎开始学习 Python\")"
     },
     {
-      "id": "io-tip",
-      "type": "tip",
-      "title": "新手常见提醒",
-      "content": "`input()` 接收到的内容默认更像文字，所以如果后面要做数学计算，通常要先做类型转换。首轮入门先记住“它会先拿到文字”，等后面再慢慢深入。",
-      "bullets": [
-        "先理解交互流程，不必急着把类型转换一次吃透。",
-        "只要知道输入和输出分别做什么，就已经迈出关键一步。"
-      ]
+      "id": "io-explanation-input",
+      "type": "explanation",
+      "title": "`input()` 负责接收用户输入",
+      "content": "当程序需要你提供名字、年龄、数量这类信息时，就可以用 `input()` 暂停下来等待输入。"
+    },
+    {
+      "id": "io-example-input",
+      "type": "example",
+      "title": "接收名字再输出",
+      "content": "把用户输入保存进变量后，你就能把它再次输出，形成最基础的交互。",
+      "exampleTitle": "问名字",
+      "exampleCode": "name = input(\"请输入你的名字：\")\nprint(\"你好，\" + name)"
+    },
+    {
+      "id": "io-pitfall",
+      "type": "pitfall",
+      "title": "输入看起来像数字，也可能只是文字",
+      "content": "`input()` 接收到的内容默认是字符串，所以 `\"5\"` 看起来像数字，但不一定能直接拿去做你想要的数学运算。"
+    },
+    {
+      "id": "io-example-math",
+      "type": "example",
+      "title": "简单运算从这里开始",
+      "content": "只要变量里装的是数字，就可以做加减乘除。等你学会类型转换后，就能把用户输入也拿来计算。",
+      "exampleTitle": "计算总价",
+      "exampleCode": "price = 12\ncount = 3\ntotal = price * count\nprint(total)"
+    },
+    {
+      "id": "io-recap",
+      "type": "recap",
+      "title": "这一章先记住什么",
+      "content": "记住 `print()` 是输出，`input()` 是输入；输入默认更像字符串；数字变量可以直接做基础运算。"
+    }
+  ],
+  "practiceTasks": [
+    {
+      "id": "io-practice-1",
+      "title": "设计一句提示语",
+      "prompt": "如果你想让用户输入年龄，请写一句清楚的提示语，适合放进 `input()` 里。",
+      "hints": [
+        "提示语越具体，用户越容易知道该输入什么。"
+      ],
+      "expectedOutcome": "能写出清楚的输入提示，比如“请输入你的年龄：”。"
+    },
+    {
+      "id": "io-practice-2",
+      "title": "读懂变量和运算",
+      "prompt": "看 `price = 12`、`count = 3`、`total = price * count`，说出 total 最终会是多少。",
+      "hints": [
+        "先看乘法。"
+      ],
+      "expectedOutcome": "知道 total 的结果是 36。"
+    }
+  ],
+  "reviewChecklist": [
+    {
+      "id": "io-review-1",
+      "text": "我知道 `print()` 用来显示信息。"
+    },
+    {
+      "id": "io-review-2",
+      "text": "我知道 `input()` 用来接收用户输入。"
+    },
+    {
+      "id": "io-review-3",
+      "text": "我知道 `input()` 得到的值默认更像字符串。"
     }
   ],
   "quiz": [
     {
       "id": "io-q1",
       "type": "single_choice",
-      "prompt": "下面哪个函数最常用来接收用户输入？",
-      "options": ["input()", "print()", "type()"],
-      "answer": "input()",
-      "explanation": "`input()` 用来接收用户输入，`print()` 是输出内容。",
-      "knowledgePoint": "input"
+      "prompt": "下面哪个函数最常用来把内容显示到屏幕上？",
+      "options": [
+        "print()",
+        "input()",
+        "type()"
+      ],
+      "answer": "print()",
+      "explanation": "print() 的核心用途就是输出信息。",
+      "knowledgePoint": "print"
     },
     {
       "id": "io-q2",
       "type": "true_false",
-      "prompt": "`print()` 的常见作用是把结果显示到屏幕上。",
+      "prompt": "`input()` 最常见的作用是等待用户输入内容。",
       "answer": true,
-      "explanation": "这是 `print()` 最常见的任务。",
-      "knowledgePoint": "print"
+      "explanation": "input() 会暂停程序，等待用户输入。",
+      "knowledgePoint": "input"
     },
     {
       "id": "io-q3",
       "type": "fill_blank",
-      "prompt": "表达式 `3 + 2` 的结果是 ____。",
-      "answer": "5",
-      "explanation": "这是最基础的加法运算。",
+      "prompt": "`input()` 接收到的内容，默认更像 ______。",
+      "answer": "字符串",
+      "explanation": "即使看起来像数字，input() 接到的内容默认也是字符串。",
+      "knowledgePoint": "字符串输入"
+    },
+    {
+      "id": "io-q4",
+      "type": "single_choice",
+      "prompt": "如果 `price = 8` 且 `count = 4`，`price * count` 的结果是？",
+      "options": [
+        "12",
+        "32",
+        "84"
+      ],
+      "answer": "32",
+      "explanation": "8 乘以 4 等于 32。",
       "knowledgePoint": "运算"
+    },
+    {
+      "id": "io-q5",
+      "type": "true_false",
+      "prompt": "程序可以一边接收输入，一边根据输入再输出结果。",
+      "answer": true,
+      "explanation": "这正是最常见的基础交互形式。",
+      "knowledgePoint": "交互流程"
+    },
+    {
+      "id": "io-q6",
+      "type": "fill_blank",
+      "prompt": "让程序先接收名字，再显示问候语，本质上是在做输入和 ______。",
+      "answer": "输出",
+      "explanation": "接收信息是输入，显示结果是输出。",
+      "knowledgePoint": "输入输出"
     }
   ]
 }

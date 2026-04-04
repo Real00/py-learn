@@ -16,11 +16,10 @@
       <label class="block text-sm text-[color:var(--color-secondary-foreground)]" :for="question.id">
         请直接写出你认为正确的答案
       </label>
-      <input
+      <Input
         :id="question.id"
         :value="String(modelValue ?? '')"
-        type="text"
-        class="mt-3 w-full rounded-2xl border border-[color:var(--color-border)] bg-white px-4 py-3 outline-none ring-0 transition-shadow focus-visible:shadow-[0_0_0_4px_var(--color-ring)]"
+        class="mt-3"
         @input="onInput(($event.target as HTMLInputElement).value)"
       />
     </div>
@@ -29,20 +28,12 @@
       <legend :id="`${question.id}-legend`" class="sr-only">
         {{ question.prompt }}
       </legend>
-      <label
-        v-for="option in normalizedOptions"
-        :key="option.value"
-        class="flex cursor-pointer items-center gap-3 rounded-2xl border border-[color:var(--color-border)] bg-white px-4 py-3 text-sm text-[color:var(--color-secondary-foreground)] transition-colors hover:border-[color:var(--color-primary)]"
-      >
-        <input
-          class="h-4 w-4"
-          :type="question.type === 'true_false' ? 'radio' : 'radio'"
-          :name="question.id"
-          :checked="String(modelValue ?? '') === option.value"
-          @change="onInput(option.value)"
-        />
-        <span>{{ option.label }}</span>
-      </label>
+      <RadioGroup
+        :model-value="String(modelValue ?? '')"
+        :name="question.id"
+        :options="normalizedOptions"
+        @update:model-value="onInput"
+      />
     </fieldset>
 
     <div v-if="showResult" class="mt-4 rounded-[20px] px-4 py-3 text-sm leading-6" :class="isCorrect ? 'bg-emerald-50 text-emerald-800' : 'bg-orange-50 text-orange-800'">
@@ -57,6 +48,8 @@ import { computed } from 'vue'
 
 import type { QuizQuestion } from '@/entities/content/model/types'
 import PillBadge from '@/shared/ui/badge/PillBadge.vue'
+import Input from '@/shared/ui/input/Input.vue'
+import RadioGroup from '@/shared/ui/radio-group/RadioGroup.vue'
 import CardSurface from '@/shared/ui/card/CardSurface.vue'
 
 const props = withDefaults(

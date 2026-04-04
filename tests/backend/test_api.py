@@ -19,7 +19,7 @@ def test_course_overview_contains_eight_chapters():
     data = response.get_json()
 
     assert response.status_code == 200
-    assert data["version"] == "1.0.0"
+    assert data["version"] == "1.1.0"
     assert len(data["chapters"]) == 8
 
 
@@ -32,7 +32,19 @@ def test_chapter_quiz_endpoint_returns_questions():
 
     assert response.status_code == 200
     assert data["slug"] == "functions"
-    assert len(data["quiz"]) == 3
+    assert len(data["quiz"]) >= 6
+
+
+def test_chapter_detail_contains_practice_and_review_fields():
+    app = create_app()
+    client = app.test_client()
+
+    response = client.get("/api/course/chapters/python-overview")
+    data = response.get_json()
+
+    assert response.status_code == 200
+    assert len(data["practiceTasks"]) >= 2
+    assert len(data["reviewChecklist"]) >= 3
 
 
 def test_missing_chapter_returns_404():

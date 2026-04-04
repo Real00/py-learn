@@ -2,60 +2,121 @@
   "slug": "python-overview",
   "order": 1,
   "title": "Python 到底是什么",
-  "summary": "先认识 Python 是做什么的，以及你为什么适合从它开始学。",
-  "estimatedMinutes": 8,
+  "summary": "先认识 Python 是什么、能做什么，以及你为什么适合从它开始学。",
+  "estimatedMinutes": 18,
   "difficultyLabel": "轻松入门",
   "prerequisiteSlug": null,
-  "tags": ["认识 Python", "建立信心"],
+  "tags": [
+    "认识 Python",
+    "建立信心",
+    "编程思维"
+  ],
   "learningGoals": [
-    "知道 Python 是一种编程语言",
-    "理解编程语言的作用是告诉电脑做事",
-    "建立“我也能学会”的第一层信心"
+    "知道 Python 是一种编程语言，而不是某个单独软件。",
+    "理解“写代码”本质上是在给电脑下达清晰步骤。",
+    "知道 Python 常见的应用方向有哪些。",
+    "建立零基础也能循序渐进学会编程的信心。"
   ],
   "summaryPoints": [
-    "Python 是一种让人比较容易读懂的编程语言。",
-    "学习 Python，不是背术语，而是学会如何一步步告诉电脑做事。",
-    "一开始只要理解大方向，不需要追求把所有细节一次学完。"
+    "Python 是一种让人相对容易读懂的编程语言。",
+    "学习编程不是背术语，而是练习把步骤表达清楚。",
+    "程序会严格按规则执行，不会猜你的真实意图。",
+    "入门阶段先抓主线，再通过练习慢慢加深理解。"
   ],
   "sections": [
     {
-      "id": "overview-intro",
-      "type": "intro",
-      "title": "先别急着背定义",
-      "content": "如果把电脑想成一个特别听话但不会自己思考的助手，Python 就像你和它说话时用的一套固定规则。你写下来的代码，就是告诉它先做什么、再做什么。",
+      "id": "overview-concept",
+      "type": "concept",
+      "title": "编程语言到底是什么",
+      "content": "编程语言是一套把人类想法翻译成电脑可执行步骤的规则。你写的代码不是魔法，而是清楚地告诉电脑先做什么、再做什么。",
       "bullets": [
-        "电脑不会猜你的意思，只会照规则执行。",
-        "编程语言的任务，是把你的想法翻译成电脑能执行的步骤。"
+        "电脑不会猜你想干什么。",
+        "规则写得越清楚，程序越稳定。"
       ]
     },
     {
-      "id": "overview-why-python",
+      "id": "overview-analogy",
+      "type": "analogy",
+      "title": "把电脑当成执行力很强的助手",
+      "content": "你可以把电脑想成一个执行力很强、速度很快，但完全不会脑补的助手。你说“帮我整理一下”它听不懂；你说“先打开表格，再把姓名列按字母排序”，它才知道怎么做。"
+    },
+    {
+      "id": "overview-explanation",
       "type": "explanation",
-      "title": "为什么很多新手从 Python 开始",
-      "content": "因为 Python 的写法相对接近日常英语，代码看起来没那么吓人。它也被广泛用在数据分析、自动化、网站后端和人工智能等方向，所以入门之后能延伸的路很多。",
+      "title": "为什么很多人从 Python 开始",
+      "content": "因为 Python 的写法比较简洁，读起来没有那么吓人。它又广泛用于自动化、网站后端、数据分析和人工智能，所以学完基础之后，延伸方向很多。",
       "bullets": [
-        "写法相对简洁，容易读。",
-        "应用场景多，学完不容易“没地方用”。",
-        "社区资料多，遇到问题更容易找到解释。"
+        "上手门槛相对友好。",
+        "资料多，遇到问题更容易找到解释。",
+        "后续能连接很多不同方向。"
       ]
     },
     {
       "id": "overview-example",
       "type": "example",
-      "title": "你已经见过“程序”了",
-      "content": "闹钟到了会响、外卖 App 会提示配送中、计算器会立刻出结果，这些背后都可以理解成“程序按照规则工作”。你学 Python，本质上也是在学怎么设计这样的规则。",
-      "exampleTitle": "最简单的 Python 代码",
+      "title": "你的第一段代码",
+      "content": "最早接触 Python 时，不需要先学复杂语法。先让程序把一句话显示出来，就已经是在体验“我写的规则真的在工作”。",
+      "exampleTitle": "最简单的输出",
       "exampleCode": "print(\"你好，Python\")"
     },
     {
       "id": "overview-tip",
       "type": "tip",
-      "title": "新手最容易卡住的地方",
-      "content": "很多人不是学不会，而是一开始就想把所有概念一次性吃透。正确的节奏应该是：先看懂大意，再多看例子，再通过练习慢慢熟悉。",
-      "bullets": [
-        "看不懂时先抓主线，不要先钻细枝末节。",
-        "一个概念今天只懂 60%，很正常。"
-      ]
+      "title": "第一阶段最重要的是保持节奏",
+      "content": "零基础时最容易犯的错，不是看不懂，而是要求自己一次全懂。更稳妥的节奏是：先理解这章的大意，再看例子，再做小练习。"
+    },
+    {
+      "id": "overview-pitfall",
+      "type": "pitfall",
+      "title": "不要把“我现在还不会”误解成“我学不会”",
+      "content": "编程不是靠一次看懂，而是靠多次接触慢慢建立熟悉感。很多看起来复杂的词，等你在例子里见过几次之后就自然会了。"
+    },
+    {
+      "id": "overview-example-2",
+      "type": "example",
+      "title": "程序早就围绕在你身边",
+      "content": "闹钟按时间响铃、计算器接收输入后立刻给出结果、外卖 App 显示配送状态，这些都可以理解成“程序按照规则处理输入并输出结果”。"
+    },
+    {
+      "id": "overview-recap",
+      "type": "recap",
+      "title": "这一章先记住什么",
+      "content": "先记住三件事：Python 是编程语言；代码是在给电脑下清楚步骤；入门阶段不需要追求一步到位。"
+    }
+  ],
+  "practiceTasks": [
+    {
+      "id": "overview-practice-1",
+      "title": "用一句话介绍 Python",
+      "prompt": "假设有人问你“Python 是什么”，请用一句简单的话回答，不要只说“很厉害”。",
+      "hints": [
+        "先说明它是不是软件。",
+        "再说明它的作用。"
+      ],
+      "expectedOutcome": "能说出 Python 是一种告诉电脑做事的编程语言。"
+    },
+    {
+      "id": "overview-practice-2",
+      "title": "读懂第一段输出代码",
+      "prompt": "看这行代码 `print(\"你好，Python\")`，说出它运行后屏幕会出现什么。",
+      "hints": [
+        "print() 的作用是把内容显示出来。"
+      ],
+      "expectedOutcome": "知道代码会把括号里的文字输出到屏幕上。"
+    }
+  ],
+  "reviewChecklist": [
+    {
+      "id": "overview-review-1",
+      "text": "我知道 Python 是编程语言，不是某个应用软件。"
+    },
+    {
+      "id": "overview-review-2",
+      "text": "我知道写代码是在把步骤说清楚给电脑执行。"
+    },
+    {
+      "id": "overview-review-3",
+      "text": "我知道入门阶段可以先理解主线，不需要一次吃透所有术语。"
     }
   ],
   "quiz": [
@@ -63,26 +124,59 @@
       "id": "overview-q1",
       "type": "single_choice",
       "prompt": "Python 更接近下面哪种东西？",
-      "options": ["一种告诉电脑做事的语言", "一台新的电脑", "一个只能画图的软件"],
+      "options": [
+        "一种告诉电脑做事的语言",
+        "一台新的电脑",
+        "只能做表格的软件"
+      ],
       "answer": "一种告诉电脑做事的语言",
-      "explanation": "Python 是编程语言，不是硬件，也不是单一用途的软件。",
+      "explanation": "Python 是编程语言，不是硬件，也不是单一用途软件。",
       "knowledgePoint": "编程语言"
     },
     {
       "id": "overview-q2",
       "type": "true_false",
-      "prompt": "学 Python 的第一天就必须把所有专业术语都记住。",
+      "prompt": "学习 Python 的第一天就必须把所有专业术语全部背下来。",
       "answer": false,
-      "explanation": "入门阶段更重要的是先建立整体感觉，而不是硬背一堆术语。",
+      "explanation": "入门阶段更重要的是先理解大意和例子，再逐步掌握术语。",
       "knowledgePoint": "学习节奏"
     },
     {
       "id": "overview-q3",
       "type": "fill_blank",
-      "prompt": "代码 `print(\"你好\")` 的作用，是把内容 ____ 出来。",
-      "answer": "打印",
-      "explanation": "`print()` 最常见的作用就是把信息显示到屏幕上，也可以理解为“打印/输出”。",
+      "prompt": "代码 `print(\"你好\")` 的作用，是把内容 ______ 到屏幕上。",
+      "answer": "输出",
+      "explanation": "print() 最常见的作用就是把内容输出到屏幕。",
       "knowledgePoint": "print"
+    },
+    {
+      "id": "overview-q4",
+      "type": "single_choice",
+      "prompt": "下面哪一项不是常见的 Python 应用方向？",
+      "options": [
+        "自动化脚本",
+        "网站后端",
+        "给冰箱通电"
+      ],
+      "answer": "给冰箱通电",
+      "explanation": "Python 常用于自动化、后端和数据处理，但“给冰箱通电”不是编程应用方向。",
+      "knowledgePoint": "应用场景"
+    },
+    {
+      "id": "overview-q5",
+      "type": "true_false",
+      "prompt": "闹钟响铃、计算器出结果，都可以理解成程序按规则工作。",
+      "answer": true,
+      "explanation": "这些都属于程序按规则接收输入并给出结果的例子。",
+      "knowledgePoint": "程序"
+    },
+    {
+      "id": "overview-q6",
+      "type": "fill_blank",
+      "prompt": "电脑不会猜你真正想表达什么，它只会按照你写下的 ______ 执行。",
+      "answer": "规则",
+      "explanation": "编程的核心之一，就是把规则写清楚给电脑执行。",
+      "knowledgePoint": "执行规则"
     }
   ]
 }

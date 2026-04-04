@@ -4,9 +4,9 @@
       <span>{{ label }}</span>
       <span>{{ displayPercent }}</span>
     </div>
-    <div class="h-3 overflow-hidden rounded-full bg-[color:var(--color-muted)]">
+    <div class="h-3 overflow-hidden rounded-full bg-[color:var(--color-muted)]/70">
       <div
-        class="h-full rounded-full bg-gradient-to-r from-[color:var(--color-primary)] to-[color:var(--color-accent)] transition-all duration-300"
+        class="h-full rounded-full bg-gradient-to-r from-[color:var(--color-primary)] via-sky-400 to-[color:var(--color-accent)] transition-all duration-300"
         :style="{ width: displayPercent }"
       />
     </div>

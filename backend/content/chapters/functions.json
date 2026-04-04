@@ -2,84 +2,188 @@
   "slug": "functions",
   "order": 6,
   "title": "函数",
-  "summary": "把一段常用步骤打包起来，需要时直接调用。",
-  "estimatedMinutes": 14,
+  "summary": "把重复步骤打包成可复用的动作，让代码更清楚、更省力。",
+  "estimatedMinutes": 28,
   "difficultyLabel": "搭积木",
   "prerequisiteSlug": "loops",
-  "tags": ["def", "参数", "复用"],
+  "tags": [
+    "def",
+    "参数",
+    "返回值",
+    "复用"
+  ],
   "learningGoals": [
-    "理解函数的核心价值是复用",
-    "知道函数可以接收参数",
-    "能读懂最基础的函数定义和调用"
+    "理解函数是在给一段动作起名字。",
+    "知道参数是把外部信息传给函数的方式。",
+    "知道返回值是函数把结果交出来的方式。",
+    "判断什么样的重复逻辑适合提成函数。"
   ],
   "summaryPoints": [
-    "函数就是给一段操作取名字。",
-    "参数让函数在不同场景下更灵活。",
-    "函数能让代码更整洁，也更容易维护。"
+    "函数可以把重复步骤打包起来，后面反复调用。",
+    "参数让同一个函数适应不同输入。",
+    "返回值让函数能把处理结果交回去继续使用。",
+    "函数不是为了炫技，而是为了让代码更清楚。"
   ],
   "sections": [
     {
-      "id": "functions-intro",
-      "type": "intro",
-      "title": "为什么要把动作打包",
-      "content": "如果你每天都要说一段固定的话，与其每次重新写，不如把这段话存成模板。函数就是代码里的模板，可以把一段动作打包起来，之后反复调用。",
-      "bullets": [
-        "函数减少重复。",
-        "函数让代码结构更清楚。"
-      ]
+      "id": "functions-concept",
+      "type": "concept",
+      "title": "函数是带名字的动作包",
+      "content": "函数可以把一段动作打包起来，并给它起一个名字。以后需要同样步骤时，不用重写，直接调用这个名字就行。"
     },
     {
-      "id": "functions-def",
+      "id": "functions-analogy",
+      "type": "analogy",
+      "title": "像把常做的流程写成模板",
+      "content": "如果你经常回复类似邮件，就会想做一个模板。函数也是一样，把经常用的步骤做成模板，以后反复用。"
+    },
+    {
+      "id": "functions-explanation-def",
       "type": "explanation",
-      "title": "`def` 在做什么",
-      "content": "`def` 是定义函数时常见的关键字。你可以把它理解成“我要给这段动作起个名字”。定义好之后，只要写函数名，就能再次使用这段动作。",
-      "exampleTitle": "定义并调用函数",
-      "exampleCode": "def say_hello():\n    print(\"你好\")\n\nsay_hello()"
+      "title": "`def` 表示“我要定义一个函数”",
+      "content": "定义函数时，先用 def 开头，再写函数名。函数名最好能说明这段动作在做什么。"
     },
     {
-      "id": "functions-params",
+      "id": "functions-example-basic",
       "type": "example",
-      "title": "参数让函数更灵活",
-      "content": "如果每次问候的人不同，就可以把“名字”作为参数交给函数。这样函数不用为每个人重写一遍。",
-      "exampleTitle": "带参数的函数",
-      "exampleCode": "def say_hello(name):\n    print(\"你好，\" + name)\n\nsay_hello(\"小林\")"
+      "title": "最简单的函数定义",
+      "content": "先从没有参数的函数开始，感受“定义”和“调用”的区别。",
+      "exampleTitle": "定义欢迎函数",
+      "exampleCode": "def say_hello():\n    print(\"你好，欢迎学习 Python\")\n\nsay_hello()"
     },
     {
-      "id": "functions-tip",
-      "type": "tip",
-      "title": "函数不是越多越好",
-      "content": "函数的重点不是“把所有东西都拆开”，而是把重复出现、逻辑独立的一段动作打包起来。这样做，代码读起来会更轻松。",
-      "bullets": [
-        "优先封装重复逻辑。",
-        "一个函数只做一件清楚的小事，会更好理解。"
-      ]
+      "id": "functions-explanation-params",
+      "type": "explanation",
+      "title": "参数让函数更通用",
+      "content": "如果每次问候的人不同，就可以把名字当作参数传进去。函数本身不变，但输入不同，结果也会不同。"
+    },
+    {
+      "id": "functions-example-params",
+      "type": "example",
+      "title": "带参数的函数",
+      "content": "通过参数，你就不需要为每个人单独写一遍函数。",
+      "exampleTitle": "带名字的问候",
+      "exampleCode": "def greet(name):\n    print(\"你好，\" + name)\n\ngreet(\"小王\")"
+    },
+    {
+      "id": "functions-explanation-return",
+      "type": "explanation",
+      "title": "返回值让函数把结果交出来",
+      "content": "有时函数不只是打印结果，而是算出一个值再交给外面继续用。这个“交出来”的结果，就是返回值。"
+    },
+    {
+      "id": "functions-example-return",
+      "type": "example",
+      "title": "返回值的最小示例",
+      "content": "当你想继续使用结果时，return 很有用。",
+      "exampleTitle": "返回总价",
+      "exampleCode": "def get_total(price, count):\n    return price * count\n\ntotal = get_total(10, 3)\nprint(total)"
+    },
+    {
+      "id": "functions-pitfall",
+      "type": "pitfall",
+      "title": "不是所有代码都要拆成函数",
+      "content": "函数的重点是复用和分清职责，不是把每两行代码都拆开。只有当一段动作会重复出现，或者逻辑上可以独立时，再考虑提函数。"
+    },
+    {
+      "id": "functions-recap",
+      "type": "recap",
+      "title": "这一章先记住什么",
+      "content": "函数是带名字的动作包；参数把信息传进来；返回值把结果交出去；拆函数的目的，是让代码更清楚。"
+    }
+  ],
+  "practiceTasks": [
+    {
+      "id": "functions-practice-1",
+      "title": "判断是否适合提函数",
+      "prompt": "当你发现一段“计算总价”的代码在三个地方重复出现时，想想它是不是适合提成函数。",
+      "hints": [
+        "重复出现通常是明显信号。"
+      ],
+      "expectedOutcome": "能意识到重复逻辑适合提成函数。"
+    },
+    {
+      "id": "functions-practice-2",
+      "title": "读懂参数作用",
+      "prompt": "看 `greet(\"小王\")` 这样的调用，解释参数在这里扮演什么角色。",
+      "hints": [
+        "参数是外部传进去的信息。"
+      ],
+      "expectedOutcome": "知道参数让同一个函数处理不同输入。"
+    }
+  ],
+  "reviewChecklist": [
+    {
+      "id": "functions-review-1",
+      "text": "我知道函数是把一段动作打包并命名。"
+    },
+    {
+      "id": "functions-review-2",
+      "text": "我知道参数是把信息传给函数。"
+    },
+    {
+      "id": "functions-review-3",
+      "text": "我知道返回值是函数把结果交出来。"
     }
   ],
   "quiz": [
     {
       "id": "functions-q1",
       "type": "single_choice",
-      "prompt": "函数最重要的一个价值是什么？",
-      "options": ["复用常见操作", "让代码变成图片", "把 Python 变快十倍"],
-      "answer": "复用常见操作",
-      "explanation": "函数的核心价值之一，就是把常用步骤打包起来反复使用。",
-      "knowledgePoint": "函数作用"
+      "prompt": "定义函数时最常见的关键字是？",
+      "options": [
+        "def",
+        "for",
+        "input"
+      ],
+      "answer": "def",
+      "explanation": "def 是定义函数的关键字。",
+      "knowledgePoint": "def"
     },
     {
       "id": "functions-q2",
       "type": "true_false",
-      "prompt": "参数可以让同一个函数处理不同的数据。",
+      "prompt": "参数可以让同一个函数适应不同输入。",
       "answer": true,
-      "explanation": "有了参数，函数就不必只写死一种情况。",
+      "explanation": "这正是参数的重要作用。",
       "knowledgePoint": "参数"
     },
     {
       "id": "functions-q3",
       "type": "fill_blank",
-      "prompt": "在 Python 中，定义函数常见的关键字是 ____。",
-      "answer": "def",
-      "explanation": "`def` 是 Python 里定义函数的常见关键字。",
-      "knowledgePoint": "def"
+      "prompt": "函数把结果交回给外部继续使用时，通常会用 ______。",
+      "answer": "return",
+      "explanation": "return 用于返回结果。",
+      "knowledgePoint": "返回值"
+    },
+    {
+      "id": "functions-q4",
+      "type": "single_choice",
+      "prompt": "下面哪种情况最适合考虑提函数？",
+      "options": [
+        "一段逻辑反复出现",
+        "只写过一次的注释",
+        "变量名太短"
+      ],
+      "answer": "一段逻辑反复出现",
+      "explanation": "重复逻辑很适合提成函数复用。",
+      "knowledgePoint": "函数适用场景"
+    },
+    {
+      "id": "functions-q5",
+      "type": "true_false",
+      "prompt": "函数的主要价值之一是让代码更清楚、更可复用。",
+      "answer": true,
+      "explanation": "函数能减少重复并表达清楚职责。",
+      "knowledgePoint": "函数价值"
+    },
+    {
+      "id": "functions-q6",
+      "type": "fill_blank",
+      "prompt": "看到 `greet(\"小王\")` 时，`\"小王\"` 是传给函数的 ______。",
+      "answer": "参数",
+      "explanation": "调用时传入的具体值，对应函数接收的参数。",
+      "knowledgePoint": "参数调用"
     }
   ]
 }

@@ -2,84 +2,180 @@
   "slug": "lists-and-dicts",
   "order": 7,
   "title": "列表和字典",
-  "summary": "当数据不止一个时，学会把它们整理起来。",
-  "estimatedMinutes": 16,
+  "summary": "当数据不止一个时，学会用列表和字典把它们组织起来。",
+  "estimatedMinutes": 30,
   "difficultyLabel": "组织数据",
   "prerequisiteSlug": "functions",
-  "tags": ["list", "dict", "数据整理"],
+  "tags": [
+    "list",
+    "dict",
+    "索引",
+    "键值对"
+  ],
   "learningGoals": [
-    "理解列表适合保存一组同类内容",
-    "理解字典适合保存“名称-内容”对应关系",
-    "知道什么时候该用列表，什么时候该用字典"
+    "理解列表适合保存一组按顺序排列的数据。",
+    "理解字典适合保存“键和值”的对应关系。",
+    "知道列表和字典的典型读取方式。",
+    "能判断一个场景更适合列表还是字典。"
   ],
   "summaryPoints": [
-    "列表像一排抽屉，按顺序放很多值。",
-    "字典像通讯录，通过名字找到对应内容。",
-    "会整理数据后，程序就能处理更真实的任务。"
+    "列表适合存一组同类数据，并按顺序访问。",
+    "字典适合根据名字快速找到对应内容。",
+    "列表常配合索引使用，字典常配合键使用。",
+    "选对数据结构，会让后续代码简单很多。"
   ],
   "sections": [
     {
-      "id": "collections-intro",
-      "type": "intro",
-      "title": "为什么不能只靠单个变量",
-      "content": "如果你只有一个名字、一个年龄，一个变量也许够用。但当你有很多名字、很多商品、很多成绩时，单个变量就不够方便了。",
-      "bullets": [
-        "数据一多，就需要更好的整理方式。",
-        "列表和字典就是常见的整理工具。"
-      ]
+      "id": "collections-concept",
+      "type": "concept",
+      "title": "当数据不止一个时，单个变量不够用了",
+      "content": "如果你只有一个名字、一个价格，一个变量就够了；但如果你有很多名字、很多价格，就需要一种能把它们组织起来的结构。"
     },
     {
-      "id": "collections-list",
+      "id": "collections-analogy-list",
+      "type": "analogy",
+      "title": "列表像排好顺序的一排盒子",
+      "content": "列表适合保存一组相关内容。你可以按第一个、第二个、第三个去访问它们。"
+    },
+    {
+      "id": "collections-explanation-list",
       "type": "explanation",
-      "title": "列表：一组同类内容排成队",
-      "content": "列表适合保存一组相关内容，比如购物清单、学生名单、待办事项。你可以把它理解成按顺序排好的多个盒子。",
-      "exampleTitle": "列表示例",
-      "exampleCode": "fruits = [\"苹果\", \"香蕉\", \"橙子\"]\nprint(fruits[0])"
+      "title": "列表适合处理一组有顺序的数据",
+      "content": "比如购物清单、学生名单、待办事项，这些都很适合用列表表示。"
     },
     {
-      "id": "collections-dict",
+      "id": "collections-example-list",
       "type": "example",
-      "title": "字典：用名字找内容",
-      "content": "字典适合保存“键和值”的对应关系，比如一个人的姓名和年龄、一个商品的名字和价格。它更像一本通讯录。",
-      "exampleTitle": "字典示例",
-      "exampleCode": "user = {\"name\": \"小林\", \"age\": 28}\nprint(user[\"name\"])"
+      "title": "列表的最小示例",
+      "content": "列表用方括号表示，里面可以放多个值。",
+      "exampleTitle": "学生名单",
+      "exampleCode": "students = [\"小李\", \"小王\", \"小周\"]\nprint(students[0])"
     },
     {
-      "id": "collections-tip",
-      "type": "tip",
-      "title": "怎么区分用列表还是字典",
-      "content": "如果你主要关心“顺序上的第几个”，更常用列表；如果你更关心“某个名字对应什么内容”，更常用字典。",
-      "bullets": [
-        "购物清单、待办事项，常用列表。",
-        "用户信息、商品属性，常用字典。"
-      ]
+      "id": "collections-analogy-dict",
+      "type": "analogy",
+      "title": "字典像一本通讯录",
+      "content": "你不是按“第几个联系人”去找，而是按名字去找。字典就是根据键快速找到对应值。"
+    },
+    {
+      "id": "collections-explanation-dict",
+      "type": "explanation",
+      "title": "字典适合“名字 -> 内容”的关系",
+      "content": "如果你想保存一个人的姓名和年龄、一个商品的名字和价格，就很适合用字典。"
+    },
+    {
+      "id": "collections-example-dict",
+      "type": "example",
+      "title": "字典的最小示例",
+      "content": "字典用花括号表示，每个键都对应一个值。",
+      "exampleTitle": "保存用户信息",
+      "exampleCode": "user = {\"name\": \"小李\", \"age\": 28}\nprint(user[\"name\"])"
+    },
+    {
+      "id": "collections-pitfall",
+      "type": "pitfall",
+      "title": "不要只按“我会不会写”选结构",
+      "content": "有时新手会把所有数据都硬塞进列表，或者所有东西都写成字典。更好的做法是先想清楚：我更关心顺序，还是更关心名字和对应关系？"
+    },
+    {
+      "id": "collections-recap",
+      "type": "recap",
+      "title": "这一章先记住什么",
+      "content": "列表更适合按顺序存一组数据；字典更适合保存键和值的对应关系；选对结构比死背语法更重要。"
+    }
+  ],
+  "practiceTasks": [
+    {
+      "id": "collections-practice-1",
+      "title": "给场景选结构",
+      "prompt": "如果你要保存“本周三件待办事项”，思考更适合列表还是字典，并说说原因。",
+      "hints": [
+        "先想你是不是主要关心顺序。"
+      ],
+      "expectedOutcome": "能判断待办事项更适合列表。"
+    },
+    {
+      "id": "collections-practice-2",
+      "title": "给信息做键值对",
+      "prompt": "如果你要保存“姓名 -> 年龄”的关系，思考更适合用哪种结构。",
+      "hints": [
+        "想想是不是通过名字找对应值。"
+      ],
+      "expectedOutcome": "能判断这类场景更适合字典。"
+    }
+  ],
+  "reviewChecklist": [
+    {
+      "id": "collections-review-1",
+      "text": "我知道列表适合保存一组按顺序的数据。"
+    },
+    {
+      "id": "collections-review-2",
+      "text": "我知道字典适合保存键和值的对应关系。"
+    },
+    {
+      "id": "collections-review-3",
+      "text": "我知道该先想场景，再决定用列表还是字典。"
     }
   ],
   "quiz": [
     {
       "id": "collections-q1",
       "type": "single_choice",
-      "prompt": "如果要保存一组水果名称，下面哪种更常见？",
-      "options": ["列表", "字典", "布尔值"],
+      "prompt": "如果你主要关心“第几个项目”，通常更适合哪种结构？",
+      "options": [
+        "列表",
+        "字典",
+        "函数"
+      ],
       "answer": "列表",
-      "explanation": "一组同类内容按顺序保存时，列表非常常见。",
+      "explanation": "列表天然强调顺序。",
       "knowledgePoint": "列表"
     },
     {
       "id": "collections-q2",
       "type": "true_false",
-      "prompt": "字典很适合保存“字段名”和“内容”之间的对应关系。",
+      "prompt": "字典很适合保存“名字 -> 内容”的对应关系。",
       "answer": true,
-      "explanation": "例如姓名对应张三、年龄对应 28，这类结构就很适合字典。",
+      "explanation": "这是字典最典型的使用场景之一。",
       "knowledgePoint": "字典"
     },
     {
       "id": "collections-q3",
       "type": "fill_blank",
-      "prompt": "如果更关心“某个名字对应什么值”，通常更适合使用 ____。",
+      "prompt": "列表中按位置取值时，常会用到 ______。",
+      "answer": "索引",
+      "explanation": "列表通常通过索引访问某个位置的元素。",
+      "knowledgePoint": "索引"
+    },
+    {
+      "id": "collections-q4",
+      "type": "single_choice",
+      "prompt": "保存 `{\"name\": \"小李\", \"age\": 28}` 这种数据，更像在使用？",
+      "options": [
+        "字典",
+        "列表",
+        "循环"
+      ],
       "answer": "字典",
-      "explanation": "这种按名称查内容的场景，通常更适合字典。",
-      "knowledgePoint": "使用场景"
+      "explanation": "它是键和值的对应关系。",
+      "knowledgePoint": "键值对"
+    },
+    {
+      "id": "collections-q5",
+      "type": "true_false",
+      "prompt": "面对一组待办事项时，列表通常比字典更自然。",
+      "answer": true,
+      "explanation": "待办事项通常更强调顺序和一组项目。",
+      "knowledgePoint": "选择结构"
+    },
+    {
+      "id": "collections-q6",
+      "type": "fill_blank",
+      "prompt": "如果你更关心“某个名字对应什么内容”，通常更适合使用 ______。",
+      "answer": "字典",
+      "explanation": "字典就是按键找值。",
+      "knowledgePoint": "结构选择"
     }
   ]
 }

@@ -2,84 +2,180 @@
   "slug": "loops",
   "order": 5,
   "title": "循环",
-  "summary": "让程序重复做同一类事情，而不是复制粘贴很多遍。",
-  "estimatedMinutes": 14,
+  "summary": "学会让程序重复执行一类任务，而不是一行一行手写重复代码。",
+  "estimatedMinutes": 28,
   "difficultyLabel": "效率升级",
   "prerequisiteSlug": "conditions",
-  "tags": ["for", "while", "重复任务"],
+  "tags": [
+    "for",
+    "while",
+    "重复任务",
+    "循环控制"
+  ],
   "learningGoals": [
-    "理解循环就是重复执行某段逻辑",
-    "能区分 `for` 和 `while` 的大致用途",
-    "知道循环适合处理重复任务"
+    "理解循环是在重复执行一类动作。",
+    "分清 `for` 和 `while` 的典型使用场景。",
+    "能读懂基础的循环结构。",
+    "知道死循环为什么危险。"
   ],
   "summaryPoints": [
-    "循环解决的是“同样的动作要做很多次”的问题。",
-    "`for` 常用于按顺序处理一组内容。",
-    "`while` 常用于条件满足时持续执行。"
+    "循环能把重复动作交给程序自动完成。",
+    "`for` 常用于“按顺序处理一组东西”，`while` 常用于“条件成立就继续”。",
+    "循环里通常会有某种变化，防止永远停不下来。",
+    "能读懂循环，比一开始就手写复杂循环更重要。"
   ],
   "sections": [
     {
-      "id": "loops-intro",
-      "type": "intro",
-      "title": "为什么需要循环",
-      "content": "如果你想让程序连续说三次“欢迎”，一种办法是写三行 `print()`；但如果要说一百次呢？这时循环就能帮你省掉大量重复代码。",
-      "bullets": [
-        "重复任务很适合交给循环。",
-        "循环能减少复制粘贴。"
-      ]
+      "id": "loops-concept",
+      "type": "concept",
+      "title": "循环就是让程序重复做事",
+      "content": "当你发现自己想重复做一件类似的事时，就可以考虑用循环，而不是复制粘贴很多行相同代码。"
     },
     {
-      "id": "loops-for",
+      "id": "loops-analogy",
+      "type": "analogy",
+      "title": "像老师按名单点名",
+      "content": "for 循环很像老师拿着名单，一个一个点过去；名单里的每个人都会被处理一次。"
+    },
+    {
+      "id": "loops-explanation-for",
       "type": "explanation",
-      "title": "`for` 像按顺序点名",
-      "content": "当你有一组东西要一个个处理时，`for` 很常见。可以把它想成老师点名：名单上的人一个接一个被叫到。",
-      "exampleTitle": "`for` 示例",
-      "exampleCode": "for name in [\"小林\", \"小周\", \"小陈\"]:\n    print(name)"
+      "title": "`for` 适合处理一组东西",
+      "content": "当你有一个列表、一组项目，或者确定次数时，for 循环通常是最直观的选择。"
     },
     {
-      "id": "loops-while",
+      "id": "loops-example-for",
       "type": "example",
-      "title": "`while` 像“只要还没结束，就继续”",
-      "content": "`while` 更像守门员规则：只要条件还成立，就继续执行。它适合处理“满足条件就继续”的场景。",
-      "exampleTitle": "`while` 示例",
-      "exampleCode": "count = 1\nwhile count <= 3:\n    print(count)\n    count = count + 1"
+      "title": "重复输出欢迎语",
+      "content": "先从简单的范围开始，感受“程序自动重复”这件事。",
+      "exampleTitle": "for 循环示例",
+      "exampleCode": "for number in range(3):\n    print(\"欢迎学习 Python\")"
     },
     {
-      "id": "loops-warning",
-      "type": "warning",
-      "title": "别让循环停不下来",
-      "content": "如果循环条件永远都成立，程序就可能一直转下去。特别是 `while`，一定要留意循环里有没有让条件发生变化。",
-      "bullets": [
-        "循环不是越久越好，而是该停时要停。",
-        "写 `while` 时，要想清楚它什么时候结束。"
-      ]
+      "id": "loops-explanation-while",
+      "type": "explanation",
+      "title": "`while` 适合“条件成立就继续”",
+      "content": "while 更像守门规则：只要条件还成立，循环就继续执行。"
+    },
+    {
+      "id": "loops-example-while",
+      "type": "example",
+      "title": "让计数逐步变化",
+      "content": "while 循环里常常需要修改某个变量，否则条件可能一直不变。",
+      "exampleTitle": "while 计数",
+      "exampleCode": "count = 0\nwhile count < 3:\n    print(count)\n    count = count + 1"
+    },
+    {
+      "id": "loops-pitfall",
+      "type": "pitfall",
+      "title": "死循环通常来自“条件不变”",
+      "content": "如果 while 条件一直成立，或者循环体里没有让它发生变化，程序就可能一直跑下去。"
+    },
+    {
+      "id": "loops-tip",
+      "type": "tip",
+      "title": "先学会读循环，再学会自己写",
+      "content": "面对循环不要急着害怕。先问自己：重复的是什么？会重复几次？什么时候停？这样就容易多了。"
+    },
+    {
+      "id": "loops-recap",
+      "type": "recap",
+      "title": "这一章先记住什么",
+      "content": "for 更像按顺序处理一组东西；while 更像按条件持续执行；循环必须有停下来的机制。"
+    }
+  ],
+  "practiceTasks": [
+    {
+      "id": "loops-practice-1",
+      "title": "找出重复动作",
+      "prompt": "看到三行几乎一样的 `print(\"欢迎\")` 时，说明哪类结构可能更合适？",
+      "hints": [
+        "想想什么结构专门负责“重复”。"
+      ],
+      "expectedOutcome": "能判断这类场景适合循环。"
+    },
+    {
+      "id": "loops-practice-2",
+      "title": "检查 while 会不会停",
+      "prompt": "观察一个 while 示例，判断循环体里有没有让条件变化的代码。",
+      "hints": [
+        "重点找计数变量有没有变化。"
+      ],
+      "expectedOutcome": "能初步判断是否有死循环风险。"
+    }
+  ],
+  "reviewChecklist": [
+    {
+      "id": "loops-review-1",
+      "text": "我知道循环的目标是减少重复代码。"
+    },
+    {
+      "id": "loops-review-2",
+      "text": "我知道 `for` 和 `while` 的场景不完全一样。"
+    },
+    {
+      "id": "loops-review-3",
+      "text": "我知道循环必须有明确的停止条件。"
     }
   ],
   "quiz": [
     {
       "id": "loops-q1",
       "type": "single_choice",
-      "prompt": "循环最适合解决哪类问题？",
-      "options": ["重复执行相似任务", "给变量起名字", "安装 Python"],
-      "answer": "重复执行相似任务",
-      "explanation": "循环的核心作用就是减少重复代码，让程序重复完成一类事情。",
-      "knowledgePoint": "循环作用"
+      "prompt": "如果你想按顺序处理一组项目，通常更常见的是哪种循环？",
+      "options": [
+        "for",
+        "while",
+        "if"
+      ],
+      "answer": "for",
+      "explanation": "for 常用于遍历一组东西。",
+      "knowledgePoint": "for"
     },
     {
       "id": "loops-q2",
       "type": "true_false",
-      "prompt": "`while` 循环通常要考虑什么时候结束。",
+      "prompt": "`while` 只要条件还成立，就会继续执行。",
       "answer": true,
-      "explanation": "如果不考虑结束条件，`while` 可能会一直执行下去。",
+      "explanation": "这正是 while 的基本逻辑。",
       "knowledgePoint": "while"
     },
     {
       "id": "loops-q3",
       "type": "fill_blank",
-      "prompt": "如果想按顺序处理一组名单，最常见的循环关键字是 ____。",
-      "answer": "for",
-      "explanation": "处理一组有顺序的项目时，`for` 很常见。",
-      "knowledgePoint": "for"
+      "prompt": "如果循环条件一直成立，程序可能进入 ______ 循环。",
+      "answer": "死",
+      "explanation": "条件一直不变会导致死循环。",
+      "knowledgePoint": "死循环"
+    },
+    {
+      "id": "loops-q4",
+      "type": "single_choice",
+      "prompt": "下面哪一项最容易导致 while 停不下来？",
+      "options": [
+        "循环里没有修改计数变量",
+        "用了 print()",
+        "变量名太长"
+      ],
+      "answer": "循环里没有修改计数变量",
+      "explanation": "如果条件依赖的变量不变，循环就可能一直成立。",
+      "knowledgePoint": "循环控制"
+    },
+    {
+      "id": "loops-q5",
+      "type": "true_false",
+      "prompt": "面对循环时，可以先问自己“重复的是什么、什么时候停”。",
+      "answer": true,
+      "explanation": "这是读懂循环的有效方法。",
+      "knowledgePoint": "读循环"
+    },
+    {
+      "id": "loops-q6",
+      "type": "fill_blank",
+      "prompt": "循环的价值之一，是减少大量重复的 ______。",
+      "answer": "代码",
+      "explanation": "循环能让程序自动处理重复任务。",
+      "knowledgePoint": "循环价值"
     }
   ]
 }
