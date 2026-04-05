@@ -2,8 +2,8 @@
   "slug": "input-and-output",
   "order": 3,
   "title": "输入、输出和简单运算",
-  "summary": "让程序会接收输入、显示结果，并做最基础的计算。",
-  "estimatedMinutes": 24,
+  "summary": "让程序会接收输入、显示结果，并把看起来像数字的输入转换后再计算。",
+  "estimatedMinutes": 12,
   "difficultyLabel": "循序渐进",
   "prerequisiteSlug": "variables-and-types",
   "tags": [
@@ -14,22 +14,26 @@
   ],
   "learningGoals": [
     "知道 `print()` 和 `input()` 分别负责输出和输入。",
-    "能让程序接收用户输入并显示结果。",
-    "理解输入内容默认更像字符串。",
-    "能做最基础的加减乘除运算。"
+    "能把 `print()`、`input()`、`int()` 这几种写法按顺序读懂。",
+    "理解输入内容默认更像字符串，做计算前常常要先转换。",
+    "能写出接收输入、转换数字、输出结果的基础代码。"
   ],
   "summaryPoints": [
-    "程序和人的基本沟通方式，就是输入和输出。",
-    "`print()` 用于显示结果，`input()` 用于接收用户输入。",
-    "`input()` 拿到的内容默认是字符串。",
-    "要做数学计算时，常常需要先把输入转换成数字。"
+    "程序和人的基础沟通方式，就是输入和输出。",
+    "`print()` 是把内容显示出来，`input()` 是等用户输入，`int()` 是把合适的文字变成整数。",
+    "`input()` 拿到的内容默认是字符串，所以看起来像数字也不能直接当数字用。",
+    "读代码时，可以从外到内、从右到左慢慢看懂每一步。"
   ],
   "sections": [
     {
       "id": "io-concept",
       "type": "concept",
       "title": "程序为什么需要输入和输出",
-      "content": "如果程序不能接收信息，也不能把结果告诉你，它就很难真正帮上忙。输入和输出，就是程序和人之间最基础的沟通方式。"
+      "content": "如果程序不能接收信息，也不能把结果告诉你，它就很难真正帮上忙。输入和输出，就是程序和人之间最基础的沟通方式。",
+      "bullets": [
+        "输入：你把信息交给程序。",
+        "输出：程序把结果显示给你。"
+      ]
     },
     {
       "id": "io-analogy",
@@ -40,50 +44,96 @@
     {
       "id": "io-explanation-print",
       "type": "explanation",
-      "title": "`print()` 负责把内容说出来",
-      "content": "`print()` 可以把文字、变量值，或者计算结果显示到屏幕上。它是最常见的输出方式。"
+      "title": "先认识 `print()`：让程序把话说出来",
+      "content": "`print()` 可以把文字、变量值，或者计算结果显示到屏幕上。你在代码里看到 `print(...)`，可以先把它读成“把括号里的内容显示出来”。"
     },
     {
       "id": "io-example-print",
       "type": "example",
-      "title": "最简单的输出示例",
-      "content": "先让程序把一句固定的话显示出来，再慢慢过渡到显示变量和结果。",
+      "title": "先读懂最简单的输出",
+      "content": "这一行代码不用拆太复杂。看到 `print(\"欢迎开始学习 Python\")`，就把它读成“打印出欢迎开始学习 Python 这句话”。",
       "exampleTitle": "输出欢迎语",
-      "exampleCode": "print(\"欢迎开始学习 Python\")"
+      "exampleCode": "print(\"欢迎开始学习 Python\")",
+      "bullets": [
+        "`print` 是函数名，可以理解成“打印”或“显示”。",
+        "`()` 说明现在要调用这个函数。",
+        "引号里的文字，就是要显示出来的内容。"
+      ]
     },
     {
       "id": "io-explanation-input",
       "type": "explanation",
-      "title": "`input()` 负责接收用户输入",
-      "content": "当程序需要你提供名字、年龄、数量这类信息时，就可以用 `input()` 暂停下来等待输入。"
+      "title": "再认识 `input()`：先停下来等你输入",
+      "content": "当程序需要你提供名字、年龄、数量这类信息时，就可以用 `input()` 暂停下来等待输入。你看到 `input(\"请输入...\")` 时，可以先读成“显示这句提示，然后等用户输入”。"
     },
     {
       "id": "io-example-input",
       "type": "example",
-      "title": "接收名字再输出",
-      "content": "把用户输入保存进变量后，你就能把它再次输出，形成最基础的交互。",
+      "title": "把输入保存进变量再输出",
+      "content": "这一小段代码可以分两步读。第一行先问名字并保存结果；第二行再把问候语显示出来。零基础阶段，能把每一行在做什么说清楚就已经很好。",
       "exampleTitle": "问名字",
-      "exampleCode": "name = input(\"请输入你的名字：\")\nprint(\"你好，\" + name)"
+      "exampleCode": "name = input(\"请输入你的名字：\")\nprint(\"你好，\" + name)",
+      "bullets": [
+        "第一行可以读成：把 `input()` 得到的结果，放进 `name` 这个变量里。",
+        "右边的 `input(\"请输入你的名字：\")` 会先显示提示语，再等待输入。",
+        "第二行可以读成：把“你好，”和变量 `name` 里的内容拼起来后显示出来。"
+      ]
+    },
+    {
+      "id": "io-tip-read-code",
+      "type": "tip",
+      "title": "读这种写法时，先找最外层动作",
+      "content": "看到一行稍微复杂的代码，不用慌。先看最外层是谁在做事，再看括号里交给它什么内容。比如 `print(total)`，最外层动作就是“显示”；比如 `age = int(input(...))`，最外层先是“把结果存进 age”，里面再去看输入和转换。",
+      "bullets": [
+        "先找等号左边：结果最后放到哪里。",
+        "再看等号右边：这个结果是怎么一步步得到的。"
+      ]
     },
     {
       "id": "io-pitfall",
       "type": "pitfall",
       "title": "输入看起来像数字，也可能只是文字",
-      "content": "`input()` 接收到的内容默认是字符串，所以 `\"5\"` 看起来像数字，但不一定能直接拿去做你想要的数学运算。"
+      "content": "`input()` 接收到的内容默认是字符串，所以 `\"5\"` 看起来像数字，但本质上还是文字。你要做数学计算时，通常不能只看“长得像不像数字”，而要看它现在到底是什么类型。"
+    },
+    {
+      "id": "io-explanation-int",
+      "type": "explanation",
+      "title": "`int()` 是把合适的文字转换成整数",
+      "content": "如果用户输入的是 `\"5\"` 这种看起来像整数的内容，就可以用 `int()` 把它变成真正的整数 5。你看到 `int(something)`，可以先读成“把 something 转成整数试试”。"
+    },
+    {
+      "id": "io-example-convert",
+      "type": "example",
+      "title": "输入转换要逐行读",
+      "content": "这类代码是本章最重要的基础交互。关键不是背下来，而是能按顺序读懂：先输入，后转换，再计算，最后输出。",
+      "exampleTitle": "输入年龄并在明年加 1",
+      "exampleCode": "print(\"请输入你的年龄：\")\nage_text = input()\nage = int(age_text)\nnext_year_age = age + 1\nprint(\"你明年大约\", next_year_age, \"岁\")",
+      "bullets": [
+        "第 1 行：`print(\"请输入你的年龄：\")`，读作“先把提示语显示出来”。",
+        "第 2 行：`age_text = input()`，读作“等待用户输入，并把输入的文字放进 age_text”。",
+        "第 3 行：`age = int(age_text)`，读作“把 age_text 里那段像数字的文字转换成整数，再放进 age”。",
+        "第 4 行：`next_year_age = age + 1`，读作“用整数 age 加 1，把结果保存到 next_year_age”。",
+        "第 5 行：`print(\"你明年大约\", next_year_age, \"岁\")`，读作“把这句提示和计算结果一起显示出来”。"
+      ]
     },
     {
       "id": "io-example-math",
       "type": "example",
-      "title": "简单运算从这里开始",
-      "content": "只要变量里装的是数字，就可以做加减乘除。等你学会类型转换后，就能把用户输入也拿来计算。",
+      "title": "输入数量后做简单计算",
+      "content": "学会转换之后，用户输入就能参与真正的数学运算。这里的重点不是公式复杂，而是理解“先转成数字，再计算”这个顺序。",
       "exampleTitle": "计算总价",
-      "exampleCode": "price = 12\ncount = 3\ntotal = price * count\nprint(total)"
+      "exampleCode": "price = 12\ncount = int(input(\"请输入购买数量：\"))\ntotal = price * count\nprint(\"总价是\", total)",
+      "bullets": [
+        "`price = 12` 先准备好单价。",
+        "`count = int(input(...))` 可以读成“先输入，再转整数，最后存起来”。",
+        "`total = price * count` 才是真正的数学计算。"
+      ]
     },
     {
       "id": "io-recap",
       "type": "recap",
       "title": "这一章先记住什么",
-      "content": "记住 `print()` 是输出，`input()` 是输入；输入默认更像字符串；数字变量可以直接做基础运算。"
+      "content": "记住四件事：`print()` 是输出，`input()` 是输入，`int()` 常用于把输入转成整数；读代码时先看最外层动作，再看里面一步步怎么得到结果。"
     }
   ],
   "practiceTasks": [
@@ -92,32 +142,62 @@
       "title": "设计一句提示语",
       "prompt": "如果你想让用户输入年龄，请写一句清楚的提示语，适合放进 `input()` 里。",
       "hints": [
-        "提示语越具体，用户越容易知道该输入什么。"
+        "提示语越具体，用户越容易知道该输入什么。",
+        "最好直接告诉用户要输入的是年龄。"
       ],
       "expectedOutcome": "能写出清楚的输入提示，比如“请输入你的年龄：”。"
     },
     {
       "id": "io-practice-2",
-      "title": "读懂变量和运算",
-      "prompt": "看 `price = 12`、`count = 3`、`total = price * count`，说出 total 最终会是多少。",
+      "title": "把一行代码读成自然语言",
+      "prompt": "看到 `count = int(input(\"请输入数量：\"))`，请用自己的话说出这一行依次做了什么。",
       "hints": [
-        "先看乘法。"
+        "可以按“先……再……最后……”的顺序说。",
+        "别漏掉“转换成整数”这一步。"
       ],
-      "expectedOutcome": "知道 total 的结果是 36。"
+      "expectedOutcome": "能说出程序会先显示提示并等待输入，再把输入转换成整数，最后存入 `count`。"
+    },
+    {
+      "id": "io-practice-3",
+      "title": "判断什么时候要用 `int()`",
+      "prompt": "下面两个场景，哪个更需要 `int()`：A. 输入名字后显示问候语；B. 输入购买数量后计算总价。请说明原因。",
+      "hints": [
+        "想想后面要不要做数学计算。",
+        "名字通常是文字，数量通常要参与计算。"
+      ],
+      "expectedOutcome": "能判断购买数量更需要 `int()`，因为后面要参与数学运算。"
+    },
+    {
+      "id": "io-practice-4",
+      "title": "读懂变量和运算",
+      "prompt": "看 `price = 12`、`count = 3`、`total = price * count`，说出 total 最终会是多少，并解释为什么。",
+      "hints": [
+        "先看乘法。",
+        "把变量值代进去再算。"
+      ],
+      "expectedOutcome": "知道 total 的结果是 36，并能说明是 12 乘以 3 得到的。"
     }
   ],
   "reviewChecklist": [
     {
       "id": "io-review-1",
-      "text": "我知道 `print()` 用来显示信息。"
+      "text": "我知道 `print()` 用来显示信息，看到它时会先想到“把内容输出出来”。"
     },
     {
       "id": "io-review-2",
-      "text": "我知道 `input()` 用来接收用户输入。"
+      "text": "我知道 `input()` 用来接收用户输入，看到它时会先想到“先显示提示，再等待输入”。"
     },
     {
       "id": "io-review-3",
-      "text": "我知道 `input()` 得到的值默认更像字符串。"
+      "text": "我知道 `input()` 得到的值默认更像字符串，即使它看起来像数字。"
+    },
+    {
+      "id": "io-review-4",
+      "text": "我知道 `int()` 常用于把输入转换成整数，好让后面的加减乘除真正按数字计算。"
+    },
+    {
+      "id": "io-review-5",
+      "text": "我知道读 `age = int(input(...))` 这类代码时，可以按“先输入，再转换，最后保存”来理解。"
     }
   ],
   "quiz": [
@@ -178,6 +258,27 @@
       "answer": "输出",
       "explanation": "接收信息是输入，显示结果是输出。",
       "knowledgePoint": "输入输出"
+    },
+    {
+      "id": "io-q7",
+      "type": "single_choice",
+      "prompt": "看到 `age = int(input(\"请输入年龄：\"))` 时，下面哪种理解最准确？",
+      "options": [
+        "先输入年龄，再把输入内容转成整数，最后存进 age",
+        "先把 age 变成字符串，再输出出来",
+        "先打印 age，再让用户输入"
+      ],
+      "answer": "先输入年龄，再把输入内容转成整数，最后存进 age",
+      "explanation": "这行代码的顺序就是输入、转换、保存。",
+      "knowledgePoint": "输入转换"
+    },
+    {
+      "id": "io-q8",
+      "type": "true_false",
+      "prompt": "如果用户输入的是购买数量，后面又要计算总价，通常更适合先用 `int()` 转换。",
+      "answer": true,
+      "explanation": "数量通常要参与数学运算，所以先转换成整数会更合适。",
+      "knowledgePoint": "int"
     }
   ]
 }
