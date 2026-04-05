@@ -2,8 +2,8 @@
   "slug": "mini-project",
   "order": 8,
   "title": "综合小练习",
-  "summary": "把前面几章的知识拼起来，做一个像样的入门小程序。",
-  "estimatedMinutes": 32,
+  "summary": "把前面几章的知识真正拼起来，按步骤完成一个能跑的小项目。",
+  "estimatedMinutes": 12,
   "difficultyLabel": "入门闭环",
   "prerequisiteSlug": "lists-and-dicts",
   "tags": [
@@ -15,12 +15,14 @@
     "理解小项目是把前面学过的知识组合起来。",
     "学会先拆解步骤，再一段一段实现。",
     "知道一个入门项目通常会用到输入、判断、函数和数据结构。",
+    "能看懂“从需求到代码”的基本过程。",
     "建立“我已经能写出一个完整小程序”的成就感。"
   ],
   "summaryPoints": [
     "项目不是突然变复杂，而是基础知识的组合。",
+    "先看一段能跑的代码，再拆步骤和语法，更容易建立整体感觉。",
     "先拆步骤，再逐个实现，比直接开写更稳。",
-    "一个小项目里常会同时用到变量、判断、函数和数据结构。",
+    "一个小项目里常会同时用到变量、输入输出、判断、函数和数据结构。",
     "能独立完成一个小项目，是入门阶段的重要里程碑。"
   ],
   "sections": [
@@ -37,50 +39,84 @@
       "content": "前面每章学的内容，像一块块积木：变量、输入输出、判断、循环、函数、数据结构。项目就是把它们组合成一个能跑的小成品。"
     },
     {
-      "id": "project-explanation-plan",
-      "type": "explanation",
-      "title": "先列步骤，再写代码",
-      "content": "做项目时不要一上来就敲代码。先问自己：用户会输入什么？程序要做什么判断？最后要输出什么？"
+      "id": "project-example-final",
+      "type": "example",
+      "title": "先看一个完整但不长的小项目",
+      "content": "先别急着分析语法，先看这段代码到底在做什么。它模拟一个简易点餐结算：读入数量，计算总价，再根据金额决定是否提示满减。",
+      "exampleTitle": "简易点餐结算程序",
+      "exampleCode": "menu = {\"name\": \"午餐便当\", \"price\": 18}\ncount = int(input(\"请输入购买份数：\"))\ntotal = menu[\"price\"] * count\n\nif total >= 40:\n    print(menu[\"name\"])\n    print(\"总价：\", total)\n    print(\"你可以使用满减优惠\")\nelse:\n    print(menu[\"name\"])\n    print(\"总价：\", total)\n    print(\"还没有达到优惠门槛\")"
     },
     {
-      "id": "project-example-flow",
+      "id": "project-explanation-overview",
+      "type": "explanation",
+      "title": "先整体读，再拆语法",
+      "content": "这段代码虽然比前几章长一点，但本质仍是熟悉的组合。字典保存商品信息，`input()` 负责接收用户输入，`int()` 把输入转成数字，乘法算出总价，`if/else` 根据金额给出不同提示。看项目代码时，先抓住“它想完成什么”，再回头看每一行用了哪些语法。"
+    },
+    {
+      "id": "project-explanation-requirements",
+      "type": "explanation",
+      "title": "从需求到代码，先把项目拆成 4 步",
+      "content": "这个点餐项目可以先拆成 4 个动作：第 1 步，准备商品信息；第 2 步，让用户输入份数；第 3 步，计算总价；第 4 步，根据总价输出不同提示。这样拆开后，你会发现项目并没有引入神秘新知识，只是在有顺序地调用前面学过的内容。"
+    },
+    {
+      "id": "project-example-stage1",
       "type": "example",
-      "title": "一个购物小程序的骨架",
-      "content": "这个例子会接收数量、计算总价，再根据金额给出提示。",
-      "exampleTitle": "迷你结算程序",
-      "exampleCode": "price = 12\ncount = int(input(\"请输入购买数量：\"))\ntotal = price * count\nif total >= 50:\n    print(\"总价：\", total)\n    print(\"可免配送费\")\nelse:\n    print(\"总价：\", total)"
+      "title": "先只完成前两步：准备数据和读输入",
+      "content": "项目不必一次写完。先做最小可运行版本，只让程序记住商品信息，并把用户输入的份数读进来。",
+      "exampleTitle": "阶段 1：先拿到输入",
+      "exampleCode": "menu = {\"name\": \"午餐便当\", \"price\": 18}\ncount = int(input(\"请输入购买份数：\"))\nprint(menu[\"name\"])\nprint(count)"
+    },
+    {
+      "id": "project-explanation-stage1",
+      "type": "explanation",
+      "title": "阶段 1 用到了哪些前置知识",
+      "content": "这里先用了字典，因为商品有名字和价格两个相关信息，放在一起更自然。接着用了 `input()` 和 `int()`，因为用户输入的内容默认像字符串，真正做计算前要把它变成数字。最后的两个 `print()` 只是为了先确认数据拿到了，这是一种很实用的小步验证方式。"
+    },
+    {
+      "id": "project-example-stage2",
+      "type": "example",
+      "title": "再补上计算和判断，项目就成形了",
+      "content": "当输入已经拿稳后，再加上总价计算和条件判断。你会看到，项目是一步一步长出来的，不是一下子写完的。",
+      "exampleTitle": "阶段 2：补上结算逻辑",
+      "exampleCode": "menu = {\"name\": \"午餐便当\", \"price\": 18}\ncount = int(input(\"请输入购买份数：\"))\ntotal = menu[\"price\"] * count\n\nif total >= 40:\n    print(\"总价：\", total)\n    print(\"你可以使用满减优惠\")\nelse:\n    print(\"总价：\", total)\n    print(\"还没有达到优惠门槛\")"
+    },
+    {
+      "id": "project-explanation-stage2",
+      "type": "explanation",
+      "title": "阶段 2 让你看到需求是怎么落成代码的",
+      "content": "“算总价”这句需求，落到代码里就是 `total = menu[\"price\"] * count`。这里同时用到了变量、字典取值和乘法。“金额达到门槛时提示优惠”这句需求，落到代码里就是 `if total >= 40`。你可以把这一过程理解成：先用自然语言写需求，再把每一句需求翻译成一小段代码。"
+    },
+    {
+      "id": "project-example-function",
+      "type": "example",
+      "title": "函数能让项目主流程更清楚",
+      "content": "当某一步很明确，比如“计算总价”，就可以提成函数。这样主流程读起来更像一份清楚的操作步骤。",
+      "exampleTitle": "把计算总价单独放进函数",
+      "exampleCode": "def get_total(price, count):\n    return price * count\n\nmenu = {\"name\": \"午餐便当\", \"price\": 18}\ncount = int(input(\"请输入购买份数：\"))\ntotal = get_total(menu[\"price\"], count)\nprint(\"总价：\", total)"
     },
     {
       "id": "project-explanation-functions",
       "type": "explanation",
-      "title": "项目里也可以用函数整理步骤",
-      "content": "当某个步骤明显独立，比如“计算总价”或“打印订单摘要”，就可以考虑提成函数，让主流程更清楚。"
-    },
-    {
-      "id": "project-example-collections",
-      "type": "example",
-      "title": "用字典保存商品信息",
-      "content": "如果项目里需要记录商品名和价格，字典会比一堆散乱变量更清楚。",
-      "exampleTitle": "商品信息",
-      "exampleCode": "product = {\"name\": \"笔记本\", \"price\": 12}\nprint(product[\"name\"])"
+      "title": "什么时候该考虑用函数",
+      "content": "如果某个步骤名字很清楚，而且你希望主流程少一点细节，就可以把它提成函数。对零基础学习者来说，函数最直接的价值不是“高级”，而是让代码更像按步骤执行的说明书。"
     },
     {
       "id": "project-tip",
       "type": "tip",
       "title": "项目调试时，一次只确认一小步",
-      "content": "不要等全部写完才运行。每完成一小步就跑一下，确认当前结果对不对，这样问题更容易定位。"
+      "content": "不要等全部写完才运行。每完成一小步就跑一下，确认当前结果对不对，这样问题更容易定位。比如先确认输入能不能拿到，再确认总价算得对不对，最后再确认分支提示是否正确。"
     },
     {
       "id": "project-pitfall",
       "type": "pitfall",
       "title": "别急着追求“大而全”",
-      "content": "入门项目的重点不是功能多，而是能把前面知识顺畅串起来。一个能跑的小项目，比一个半截停住的大项目更有价值。"
+      "content": "入门项目的重点不是功能多，而是能把前面知识顺畅串起来。一个能跑的小项目，比一个半截停住的大项目更有价值。先完成一个简洁版本，再考虑加新功能，这样更稳。"
     },
     {
       "id": "project-recap",
       "type": "recap",
       "title": "这一章先记住什么",
-      "content": "项目就是基础知识的组合；先拆步骤再实现；边写边验证，会比憋到最后一起调试更轻松。"
+      "content": "项目就是基础知识的组合；可以先看完整代码建立感觉，再把项目拆成步骤；每一步都对应前面学过的知识；边写边验证，会比憋到最后一起调试更轻松。"
     }
   ],
   "practiceTasks": [
@@ -101,6 +137,26 @@
         "想想变量、输入输出、判断和函数。"
       ],
       "expectedOutcome": "能把项目和前面章节知识对应起来。"
+    },
+    {
+      "id": "project-practice-3",
+      "title": "把需求翻译成代码动作",
+      "prompt": "看到“如果总价达到 40 元，就提示可以使用满减优惠”这句需求时，说出它对应的条件判断应该在比较什么。",
+      "hints": [
+        "先想清楚要比较的是哪个变量。",
+        "门槛数字是 40。"
+      ],
+      "expectedOutcome": "能说出程序需要判断 `total >= 40` 这样的条件。"
+    },
+    {
+      "id": "project-practice-4",
+      "title": "按阶段检查项目",
+      "prompt": "如果你已经写完了读取份数的代码，但还没写计算总价，当前最适合运行什么检查来确认阶段 1 没问题？",
+      "hints": [
+        "先验证当前拿到的数据对不对。",
+        "可以先输出商品名和份数。"
+      ],
+      "expectedOutcome": "知道先用 `print()` 检查当前变量值，而不是等全部写完再一起排错。"
     }
   ],
   "reviewChecklist": [
@@ -115,6 +171,14 @@
     {
       "id": "project-review-3",
       "text": "我知道边写边运行检查，比最后一起排错更稳。"
+    },
+    {
+      "id": "project-review-4",
+      "text": "我能把一个小项目拆成“准备数据、读取输入、计算结果、输出提示”这样的阶段。"
+    },
+    {
+      "id": "project-review-5",
+      "text": "我知道项目里的每一步，通常都能对应到前面学过的某个知识点。"
     }
   ],
   "quiz": [
@@ -175,6 +239,27 @@
       "answer": "价值",
       "explanation": "完整的小闭环能更好地建立理解和信心。",
       "knowledgePoint": "项目实践"
+    },
+    {
+      "id": "project-q7",
+      "type": "single_choice",
+      "prompt": "在点餐小项目里，哪一步最适合用来练习把需求翻译成条件判断？",
+      "options": [
+        "判断是否达到优惠门槛",
+        "给变量起名字",
+        "写注释"
+      ],
+      "answer": "判断是否达到优惠门槛",
+      "explanation": "“达到门槛就提示优惠”正是很典型的条件判断需求。",
+      "knowledgePoint": "需求到代码"
+    },
+    {
+      "id": "project-q8",
+      "type": "true_false",
+      "prompt": "如果项目还没写完，也应该在每个阶段先运行一下看看当前结果。",
+      "answer": true,
+      "explanation": "分阶段验证能更早发现问题，也更容易定位问题。",
+      "knowledgePoint": "阶段验证"
     }
   ]
 }
