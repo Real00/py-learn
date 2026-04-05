@@ -45,6 +45,23 @@ def test_chapter_detail_contains_practice_and_review_fields():
     assert response.status_code == 200
     assert len(data["practiceTasks"]) >= 2
     assert len(data["reviewChecklist"]) >= 3
+    assert any("Python 常见用途" in item["text"] for item in data["reviewChecklist"])
+
+
+def test_python_overview_chapter_explains_real_world_python_usage():
+    app = create_app()
+    client = app.test_client()
+
+    response = client.get("/api/course/chapters/python-overview")
+    data = response.get_json()
+
+    assert response.status_code == 200
+    usage_section = next((section for section in data["sections"] if section["id"] == "overview-usage-map"), None)
+    assert usage_section is not None
+    assert any("自动化" in bullet for bullet in usage_section.get("bullets", []))
+    assert any(task["id"] == "overview-practice-3" for task in data["practiceTasks"])
+    assert len(data["quiz"]) >= 7
+    assert any(question["knowledgePoint"] == "Python 应用场景" for question in data["quiz"])
 
 
 def test_missing_chapter_returns_404():

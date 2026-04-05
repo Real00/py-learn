@@ -10,7 +10,7 @@
       </p>
 
       <div class="mt-5 grid grid-cols-2 gap-3">
-        <div class="rounded-[22px] bg-[color:var(--color-secondary)] p-4">
+        <div class="rounded-[22px] bg-[color:var(--color-secondary)] p-4 ring-1 ring-[color:var(--color-border)]">
           <p class="text-xs text-[color:var(--color-muted-foreground)]">完成章节</p>
           <p class="mt-2 text-2xl font-bold text-[color:var(--color-foreground)]">
             {{ progress.completedCount }}/{{ course.course?.chapters.length ?? 0 }}
@@ -30,17 +30,19 @@
       :key="chapter.slug"
       class="p-5"
     >
-      <div class="flex items-start justify-between gap-3">
-        <div>
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div class="min-w-0 flex-1">
           <p class="font-semibold text-[color:var(--color-foreground)]">{{ chapter.title }}</p>
           <p class="mt-1 text-sm text-[color:var(--color-muted-foreground)]">{{ chapter.summary }}</p>
         </div>
-        <PillBadge :tone="records[chapter.slug]?.completed ? 'success' : 'warning'">
-          {{ records[chapter.slug]?.completed ? '已完成' : '进行中' }}
-        </PillBadge>
+        <div class="flex shrink-0 justify-start sm:justify-end">
+          <PillBadge :tone="getChapterStatus(chapter.slug).tone">
+            {{ getChapterStatus(chapter.slug).label }}
+          </PillBadge>
+        </div>
       </div>
 
-      <div class="mt-4 flex items-center justify-between text-sm text-[color:var(--color-secondary-foreground)]">
+      <div class="mt-4 flex flex-col gap-2 text-sm text-[color:var(--color-secondary-foreground)] sm:flex-row sm:items-center sm:justify-between">
         <span>最近学习：{{ formatDate(records[chapter.slug]?.lastVisitedAt ?? null) }}</span>
         <span>得分：{{ records[chapter.slug]?.score ?? 0 }}</span>
       </div>
@@ -69,4 +71,27 @@ const progress = useProgressStore()
 
 const chapters = computed(() => course.course?.chapters ?? [])
 const records = computed(() => progress.records)
+
+function getChapterStatus(chapterSlug: string) {
+  const record = records.value[chapterSlug]
+
+  if (!record) {
+    return {
+      label: '未开始',
+      tone: 'default' as const,
+    }
+  }
+
+  if (record.completed) {
+    return {
+      label: '已完成',
+      tone: 'success' as const,
+    }
+  }
+
+  return {
+    label: '进行中',
+    tone: 'warning' as const,
+  }
+}
 </script>

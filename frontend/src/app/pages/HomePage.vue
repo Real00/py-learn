@@ -2,7 +2,7 @@
   <div class="space-y-5">
     <CardSurface class="overflow-hidden p-6">
       <div class="relative">
-        <div class="absolute inset-x-0 top-0 h-36 rounded-full bg-[radial-gradient(circle,_rgba(15,123,255,0.18),_transparent_72%)]" />
+        <div class="absolute inset-x-0 top-0 h-36 rounded-full bg-[radial-gradient(circle,_rgba(92,116,145,0.18),_transparent_72%)]" />
         <PillBadge class="relative">为零基础成年人设计</PillBadge>
         <h1 class="relative mt-4 text-4xl font-semibold leading-tight text-[color:var(--color-foreground)]">
           先学会看懂，<br />
@@ -62,21 +62,38 @@
         </RouterLink>
       </div>
 
-      <CardSurface
+      <component
         v-for="chapter in pageState.highlightedChapters"
         :key="chapter.slug"
-        class="flex items-center gap-4 p-4"
+        :is="chapter.unlocked ? RouterLink : 'div'"
+        v-bind="chapter.unlocked && chapter.link ? { to: chapter.link } : {}"
+        class="block"
+        :class="chapter.unlocked ? 'cursor-pointer' : ''"
       >
-        <div class="flex h-12 w-12 items-center justify-center rounded-[18px] bg-[color:var(--color-secondary)] text-lg font-semibold text-[color:var(--color-primary)]">
-          {{ chapter.order }}
-        </div>
-        <div class="min-w-0 flex-1">
-          <p class="font-semibold text-[color:var(--color-foreground)]">{{ chapter.title }}</p>
-          <p class="mt-1 text-sm leading-6 text-[color:var(--color-muted-foreground)]">
-            {{ chapter.summary }}
-          </p>
-        </div>
-      </CardSurface>
+        <CardSurface
+          class="flex items-start gap-4 p-4 transition-all duration-200"
+          :class="
+            chapter.unlocked
+              ? 'border-[color:var(--color-border-strong)] hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(31,47,67,0.10)]'
+              : 'bg-white/65 opacity-75'
+          "
+        >
+          <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-[18px] bg-[color:var(--color-secondary)] text-lg font-semibold text-[color:var(--color-primary)]">
+            {{ chapter.order }}
+          </div>
+          <div class="min-w-0 flex-1">
+            <div class="flex items-start justify-between gap-3">
+              <p class="font-semibold text-[color:var(--color-foreground)]">{{ chapter.title }}</p>
+              <PillBadge :tone="chapter.unlocked ? 'default' : 'warning'">
+                {{ chapter.unlocked ? '可进入' : '待解锁' }}
+              </PillBadge>
+            </div>
+            <p class="mt-1 text-sm leading-6 text-[color:var(--color-muted-foreground)]">
+              {{ chapter.summary }}
+            </p>
+          </div>
+        </CardSurface>
+      </component>
     </section>
   </div>
 </template>
