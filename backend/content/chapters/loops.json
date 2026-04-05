@@ -2,8 +2,8 @@
   "slug": "loops",
   "order": 5,
   "title": "循环",
-  "summary": "学会让程序重复执行一类任务，而不是一行一行手写重复代码。",
-  "estimatedMinutes": 28,
+  "summary": "学会先看循环代码，再拆解 for/while 的作用、停止条件和变量变化，避免死循环。",
+  "estimatedMinutes": 35,
   "difficultyLabel": "效率升级",
   "prerequisiteSlug": "conditions",
   "tags": [
@@ -15,13 +15,14 @@
   "learningGoals": [
     "理解循环是在重复执行一类动作。",
     "分清 `for` 和 `while` 的典型使用场景。",
-    "能读懂基础的循环结构。",
+    "能先看代码，再逐行解释循环怎么运行。",
+    "能看懂循环里变量是怎么变化的。",
     "知道死循环为什么危险。"
   ],
   "summaryPoints": [
-    "循环能把重复动作交给程序自动完成。",
+    "先看一段小代码，再拆解它在重复什么、什么时候停。",
     "`for` 常用于“按顺序处理一组东西”，`while` 常用于“条件成立就继续”。",
-    "循环里通常会有某种变化，防止永远停不下来。",
+    "循环里要特别关注变量变化和停止条件，避免死循环。",
     "能读懂循环，比一开始就手写复杂循环更重要。"
   ],
   "sections": [
@@ -38,18 +39,32 @@
       "content": "for 循环很像老师拿着名单，一个一个点过去；名单里的每个人都会被处理一次。"
     },
     {
-      "id": "loops-explanation-for",
-      "type": "explanation",
-      "title": "`for` 适合处理一组东西",
-      "content": "当你有一个列表、一组项目，或者确定次数时，for 循环通常是最直观的选择。"
-    },
-    {
       "id": "loops-example-for",
       "type": "example",
       "title": "重复输出欢迎语",
       "content": "先从简单的范围开始，感受“程序自动重复”这件事。",
       "exampleTitle": "for 循环示例",
       "exampleCode": "for number in range(3):\n    print(\"欢迎学习 Python\")"
+    },
+    {
+      "id": "loops-explanation-for",
+      "type": "explanation",
+      "title": "`for` 适合处理一组东西",
+      "content": "先看完上面的代码，再回头理解 `for` 会更顺。只要你已经有一个列表、一组项目，或者确定次数时，for 循环通常都是最直观的选择。"
+    },
+    {
+      "id": "loops-example-shopping-list",
+      "type": "example",
+      "title": "逐个处理购物清单",
+      "content": "现实里，for 循环最常见的用途之一，就是把一组东西挨个拿出来处理。比如购物清单、待办事项、名单点名，都很适合。先看代码，再看它怎么工作。",
+      "exampleTitle": "遍历购物清单",
+      "exampleCode": "items = [\"牛奶\", \"鸡蛋\", \"面包\"]\nfor item in items:\n    print(\"要买：\", item)"
+    },
+    {
+      "id": "loops-explanation-compare",
+      "type": "explanation",
+      "title": "`for` 和 `while` 怎么选",
+      "content": "可以先用一句人话区分。`for` 更像“手里已经有一组东西，按顺序一个个处理”；`while` 更像“先定一个条件，只要条件还成立就继续”。所以名单、购物清单、固定 5 次提醒，这类场景通常先想到 `for`；而“余额还够就继续买”“密码没输对就继续提示”这类场景，更容易想到 `while`。"
     },
     {
       "id": "loops-explanation-while",
@@ -64,6 +79,26 @@
       "content": "while 循环里常常需要修改某个变量，否则条件可能一直不变。",
       "exampleTitle": "while 计数",
       "exampleCode": "count = 0\nwhile count < 3:\n    print(count)\n    count = count + 1"
+    },
+    {
+      "id": "loops-explanation-stop-step",
+      "type": "explanation",
+      "title": "逐行看 while 怎么停下来",
+      "content": "先看第一行把 `count` 设成 0。程序来到第二行，检查 `count < 3`，也就是“0 小于 3 吗”，答案是是，所以进入循环。第三行先输出 0，第四行再把 `count` 改成 1。程序会回到第二行重新检查，这次变成“1 小于 3 吗”，仍然成立，所以继续。下一轮结束后 `count` 会变成 2，再下一轮结束后 `count` 会变成 3。此时程序再次回到第二行，问题变成“3 小于 3 吗”，答案是否，所以不再进入循环。你可以看到，循环停下不是因为它“自动差不多了”，而是因为变量变化把条件推成了不成立。"
+    },
+    {
+      "id": "loops-example-login-retry",
+      "type": "example",
+      "title": "更真实的循环例子：登录最多重试 3 次",
+      "content": "成年人在工作中更常见的循环，不是单纯打印文字，而是反复给机会、反复检查条件。下面这段代码表示：只要尝试次数还没到 3 次，就继续让用户输入密码；每输错一次，就减少一次剩余机会。这里先不引入新关键字，只聚焦“条件控制次数”这件事。",
+      "exampleTitle": "限制登录重试次数",
+      "exampleCode": "attempts = 0\nwhile attempts < 3:\n    password = input(\"请输入密码：\")\n    attempts = attempts + 1\n    if password == \"python123\":\n        print(\"这次输入是正确密码\")\n    else:\n        print(\"密码错误，还剩\", 3 - attempts, \"次机会\")"
+    },
+    {
+      "id": "loops-warning-condition-change",
+      "type": "warning",
+      "title": "别让条件永远不变",
+      "content": "如果 while 的条件依赖 `count`，但循环体里没有改动 `count`，程序就会一直满足条件。写 while 时，先确认“条件会不会变成不成立”。"
     },
     {
       "id": "loops-pitfall",
@@ -82,6 +117,14 @@
       "type": "recap",
       "title": "这一章先记住什么",
       "content": "for 更像按顺序处理一组东西；while 更像按条件持续执行；循环必须有停下来的机制。"
+    },
+    {
+      "id": "loops-example-sum",
+      "type": "example",
+      "title": "用循环累计总分",
+      "content": "循环不只是重复打印，也常用来做“累计”。例如把几次测验成绩加起来，最后得到总分。",
+      "exampleTitle": "累计分数",
+      "exampleCode": "scores = [80, 90, 75]\ntotal = 0\nfor score in scores:\n    total = total + score\nprint(total)"
     }
   ],
   "practiceTasks": [
@@ -102,6 +145,34 @@
         "重点找计数变量有没有变化。"
       ],
       "expectedOutcome": "能初步判断是否有死循环风险。"
+    },
+    {
+      "id": "loops-practice-3",
+      "title": "判断该用 for 还是 while",
+      "prompt": "下面两个场景分别更适合 for 还是 while：1. 按顺序处理 5 个待办事项；2. 一直等待用户输入正确密码才结束。",
+      "hints": [
+        "一个看“数量/列表”，一个看“条件是否达成”。"
+      ],
+      "expectedOutcome": "能说出第一个更适合 for，第二个更适合 while。"
+    },
+    {
+      "id": "loops-practice-4",
+      "title": "找出循环什么时候结束",
+      "prompt": "阅读 `count = 0` 到 `count = count + 1` 的 while 示例，说明 count 变到多少时循环会停。",
+      "hints": [
+        "先看条件是 `count < 3`。"
+      ],
+      "expectedOutcome": "能说出当 count 变成 3 时循环结束。"
+    },
+    {
+      "id": "loops-practice-5",
+      "title": "解释登录重试为什么不会无限继续",
+      "prompt": "阅读“最多尝试 3 次登录”的循环示例，说明它靠什么机制避免一直要求用户输入密码。",
+      "hints": [
+        "先看 `attempts < 3` 这个条件。",
+        "再看 `attempts = attempts + 1` 怎么让条件一步步走向不成立。"
+      ],
+      "expectedOutcome": "能说出这段代码靠次数上限和变量变化避免无限循环。"
     }
   ],
   "reviewChecklist": [
@@ -116,6 +187,18 @@
     {
       "id": "loops-review-3",
       "text": "我知道循环必须有明确的停止条件。"
+    },
+    {
+      "id": "loops-review-4",
+      "text": "我能先看代码，再逐行说出循环是怎么结束的。"
+    },
+    {
+      "id": "loops-review-5",
+      "text": "我知道 while 里如果条件相关变量不变，就有死循环风险。"
+    },
+    {
+      "id": "loops-review-6",
+      "text": "我能根据场景大致判断什么时候更适合用 `for`，什么时候更适合用 `while`。"
     }
   ],
   "quiz": [
@@ -176,6 +259,40 @@
       "answer": "代码",
       "explanation": "循环能让程序自动处理重复任务。",
       "knowledgePoint": "循环价值"
+    },
+    {
+      "id": "loops-q7",
+      "type": "single_choice",
+      "prompt": "下面哪个场景更适合 `while`？",
+      "options": [
+        "按顺序处理购物清单",
+        "重复执行固定 3 次",
+        "一直等到输入正确密码"
+      ],
+      "answer": "一直等到输入正确密码",
+      "explanation": "while 更适合“条件成立就继续”的场景。",
+      "knowledgePoint": "while 场景"
+    },
+    {
+      "id": "loops-q8",
+      "type": "true_false",
+      "prompt": "如果 while 的条件依赖某个变量，这个变量通常需要在循环里发生变化。",
+      "answer": true,
+      "explanation": "否则条件可能一直成立，循环就停不下来。",
+      "knowledgePoint": "停止条件"
+    },
+    {
+      "id": "loops-q9",
+      "type": "single_choice",
+      "prompt": "下面哪种描述最适合 `for` 的常见场景？",
+      "options": [
+        "只要条件成立就继续",
+        "已经有一组项目，准备一个个处理",
+        "先定义函数再决定要不要执行"
+      ],
+      "answer": "已经有一组项目，准备一个个处理",
+      "explanation": "`for` 常见于遍历列表、名单、待办事项这类已知项目。",
+      "knowledgePoint": "for 与 while 对照"
     }
   ]
 }

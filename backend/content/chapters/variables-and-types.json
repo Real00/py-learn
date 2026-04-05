@@ -2,8 +2,8 @@
   "slug": "variables-and-types",
   "order": 2,
   "title": "变量和数据类型",
-  "summary": "学会把信息存起来，并分清文字、数字和真假值各自适合做什么。",
-  "estimatedMinutes": 24,
+  "summary": "学会把信息先存进变量，再分清文字、数字和真假值分别该怎么用。",
+  "estimatedMinutes": 30,
   "difficultyLabel": "打基础",
   "prerequisiteSlug": "python-overview",
   "tags": [
@@ -14,14 +14,16 @@
   ],
   "learningGoals": [
     "知道变量是给数据起名字的方式。",
+    "理解变量保存的值可以在后面被更新。",
     "分清字符串、整数、浮点数和布尔值的基本用途。",
     "理解“值是什么类型”会影响它能做什么操作。",
     "能写出更有可读性的变量名。"
   ],
   "summaryPoints": [
-    "变量像有名字的盒子，用来保存数据。",
+    "变量像有名字的盒子，用来保存和重复使用数据。",
+    "变量里的值不是固定不变的，后面可以重新赋值。",
     "字符串适合文字，数字适合计算，布尔值适合真假判断。",
-    "同样的内容写成不同类型，程序的处理方式会不同。",
+    "同样看起来像数字的内容，写成字符串和写成整数，程序处理方式不同。",
     "清楚的变量名会让代码更容易读懂和维护。"
   ],
   "sections": [
@@ -42,18 +44,42 @@
       "content": "如果你有很多抽屉，外面写上“发票”“证件”“充电器”，以后找东西会快很多。变量名就是代码里的标签。"
     },
     {
+      "id": "variables-example-basic",
+      "type": "example",
+      "title": "最基础的变量写法",
+      "content": "等号左边是变量名，右边是你要保存进去的值。先看最短的例子。",
+      "exampleTitle": "保存名字和年龄",
+      "exampleCode": "user_name = \"小李\"\nage = 28\nprint(user_name)\nprint(age)"
+    },
+    {
       "id": "variables-explanation",
       "type": "explanation",
       "title": "为什么要把数据放进变量",
-      "content": "因为现实中的信息往往会反复用到。与其每次都重写一遍，不如先保存起来，后面直接用变量名引用。"
+      "content": "看完上面的代码后，再回头理解变量的意义会更直观。因为现实中的信息往往会反复用到。与其每次都重写一遍，不如先保存起来，后面直接用变量名引用。",
+      "bullets": [
+        "一份数据可能会被多次使用。",
+        "先存起来，后面修改或显示都会更方便。"
+      ]
     },
     {
-      "id": "variables-example",
+      "id": "variables-example-update",
       "type": "example",
-      "title": "最基础的变量写法",
-      "content": "等号左边是变量名，右边是你要保存进去的值。",
-      "exampleTitle": "保存名字和年龄",
-      "exampleCode": "user_name = \"小李\"\nage = 28"
+      "title": "变量里的值可以被更新",
+      "content": "变量不是一次装进去就永远不变。你可以先放一个值，后面再把它改成新的值。",
+      "exampleTitle": "分数被更新",
+      "exampleCode": "score = 60\nprint(score)\nscore = 75\nprint(score)"
+    },
+    {
+      "id": "variables-explanation-update-lines",
+      "type": "explanation",
+      "title": "逐行看懂“变量更新”这段代码",
+      "content": "初学时不要急着一眼看整段，按行拆开最容易理解。",
+      "bullets": [
+        "第 1 行 `score = 60`：先创建变量 `score`，把 60 放进去。",
+        "第 2 行 `print(score)`：把当前的 `score` 显示出来，所以会看到 60。",
+        "第 3 行 `score = 75`：不是再建一个新变量，而是把 `score` 里的值改成 75。",
+        "第 4 行 `print(score)`：这次显示的是更新后的值，所以会看到 75。"
+      ]
     },
     {
       "id": "variables-concept-types",
@@ -68,24 +94,53 @@
       ]
     },
     {
-      "id": "variables-example-2",
+      "id": "variables-example-string-vs-int",
       "type": "example",
-      "title": "同样是数字，看起来也可能不一样",
-      "content": "字符串 \"18\" 看起来像数字，但它本质上还是文字；真正的整数 18 才能直接参与很多数学运算。",
-      "exampleTitle": "字符串和数字不同",
-      "exampleCode": "age_text = \"18\"\nage_number = 18"
+      "title": "字符串数字和整数，看起来像，行为却不同",
+      "content": "很多初学者会把 `\"18\"` 和 `18` 当成同一个东西，但程序不会这样理解。",
+      "exampleTitle": "字符串数字 vs 整数",
+      "exampleCode": "age_text = \"18\"\nage_number = 18\nprint(age_text + \"2\")\nprint(age_number + 2)"
+    },
+    {
+      "id": "variables-explanation-string-vs-int",
+      "type": "explanation",
+      "title": "为什么上面的结果不一样",
+      "content": "关键不在“长得像不像数字”，而在“它到底是什么类型”。",
+      "bullets": [
+        "`age_text` 里装的是字符串，所以 `age_text + \"2\"` 更像把两段文字拼起来，结果会变成 `182`。",
+        "`age_number` 里装的是整数，所以 `age_number + 2` 是数学加法，结果会变成 20。",
+        "看起来差不多的内容，只要类型不同，程序就会按不同规则处理。"
+      ]
+    },
+    {
+      "id": "variables-example-types-overview",
+      "type": "example",
+      "title": "把几种常见类型放在一起看",
+      "content": "把文字、整数、小数和真假值放在一起看，会更容易建立直觉。",
+      "exampleTitle": "四种常见值",
+      "exampleCode": "city = \"北京\"\npeople_count = 32\ntemperature = 36.6\nis_open = False"
+    },
+    {
+      "id": "variables-tip-naming",
+      "type": "tip",
+      "title": "变量名要让人一眼知道它装的是什么",
+      "content": "如果你把年龄写成 `a`，把用户名写成 `b`，几天后连自己都难读懂。变量名不是越短越好，而是越清楚越好。",
+      "bullets": [
+        "`user_age` 比 `a` 更容易懂。",
+        "`is_member` 一看就像真假值。"
+      ]
     },
     {
       "id": "variables-pitfall",
       "type": "pitfall",
-      "title": "变量名太随意，会让自己也看不懂",
-      "content": "如果你把年龄写成 a，把用户名写成 b，代码很快就会失去可读性。变量名不是越短越好，而是越清楚越好。"
+      "title": "不要把“重新赋值”误解成“同时保留旧值”",
+      "content": "当你写 `score = 75` 时，变量 `score` 现在就代表 75 了。初学阶段可以先把它理解成：盒子里的旧内容被新内容替换。"
     },
     {
       "id": "variables-recap",
       "type": "recap",
       "title": "这一章先记住什么",
-      "content": "变量是带名字的数据盒子；类型会影响后续操作；写清楚的变量名，是在给未来的自己省时间。"
+      "content": "变量是带名字的数据盒子；值可以被更新；类型会影响后续操作；写清楚的变量名，是在给未来的自己省时间。"
     }
   ],
   "practiceTasks": [
@@ -106,7 +161,27 @@
       "hints": [
         "先看它是文字、整数、小数还是真假。"
       ],
-      "expectedOutcome": "能把常见值粗略分到字符串、数字和布尔值。"
+      "expectedOutcome": "能把常见值粗略分到字符串、整数、浮点数和布尔值。"
+    },
+    {
+      "id": "variables-practice-3",
+      "title": "读懂变量更新结果",
+      "prompt": "看代码 `count = 1`、`count = 3`、`print(count)`，判断屏幕最终会显示什么，并说一句原因。",
+      "hints": [
+        "关注最后一次给变量赋的值。",
+        "变量更新后，再读取到的是新值。"
+      ],
+      "expectedOutcome": "知道输出结果是 3，并理解变量会被新的值覆盖更新。"
+    },
+    {
+      "id": "variables-practice-4",
+      "title": "区分字符串数字和整数",
+      "prompt": "看 `price_text = \"20\"` 和 `price_number = 20`，再思考 `price_text + \"5\"` 与 `price_number + 5` 会各得到什么。",
+      "hints": [
+        "先判断它是在拼接文字，还是在做数学加法。",
+        "引号里的内容优先当成字符串看。"
+      ],
+      "expectedOutcome": "能说出前者更接近文字拼接，后者是数字运算。"
     }
   ],
   "reviewChecklist": [
@@ -116,10 +191,18 @@
     },
     {
       "id": "variables-review-2",
-      "text": "我知道字符串和数字看起来相似，但处理方式不同。"
+      "text": "我知道变量里的值后面可以被更新。"
     },
     {
       "id": "variables-review-3",
+      "text": "我知道字符串数字和整数看起来相似，但处理方式不同。"
+    },
+    {
+      "id": "variables-review-4",
+      "text": "我知道字符串、整数、浮点数和布尔值各有常见用途。"
+    },
+    {
+      "id": "variables-review-5",
       "text": "我知道变量名应该尽量表达含义。"
     }
   ],
@@ -140,10 +223,10 @@
     {
       "id": "variables-q2",
       "type": "true_false",
-      "prompt": "字符串 \"18\" 和整数 18 在程序里是一回事。",
-      "answer": false,
-      "explanation": "它们看起来像，但类型不同，程序处理方式也不同。",
-      "knowledgePoint": "数据类型"
+      "prompt": "变量里的值在后面的代码里可以被重新赋值更新。",
+      "answer": true,
+      "explanation": "像 `score = 60` 后面再写 `score = 75`，表示同一个变量现在保存新值。",
+      "knowledgePoint": "变量更新"
     },
     {
       "id": "variables-q3",
@@ -169,18 +252,44 @@
     {
       "id": "variables-q5",
       "type": "true_false",
-      "prompt": "浮点数通常用来表示带小数的数字。",
-      "answer": true,
-      "explanation": "像 36.6、99.5 这类带小数的值常用浮点数表示。",
-      "knowledgePoint": "浮点数"
+      "prompt": "字符串 \"18\" 和整数 18 在程序里是一回事。",
+      "answer": false,
+      "explanation": "它们看起来像，但类型不同，程序处理方式也不同。",
+      "knowledgePoint": "数据类型"
     },
     {
       "id": "variables-q6",
       "type": "fill_blank",
-      "prompt": "变量名写得清楚，本质上是在帮未来的 ______ 看懂代码。",
-      "answer": "自己",
-      "explanation": "可读性好的代码最先帮助到的，往往是未来回头维护的自己。",
-      "knowledgePoint": "可读性"
+      "prompt": "浮点数通常用来表示带 ______ 的数字。",
+      "answer": "小数",
+      "explanation": "像 36.6、99.5 这类值，通常属于浮点数。",
+      "knowledgePoint": "浮点数"
+    },
+    {
+      "id": "variables-q7",
+      "type": "single_choice",
+      "prompt": "看代码 `count = 1`、`count = 3`、`print(count)`，最终更可能输出什么？",
+      "options": [
+        "1",
+        "3",
+        "1 和 3 一起输出"
+      ],
+      "answer": "3",
+      "explanation": "最后一次赋值把 `count` 更新成了 3，所以打印时看到的是 3。",
+      "knowledgePoint": "变量更新"
+    },
+    {
+      "id": "variables-q8",
+      "type": "single_choice",
+      "prompt": "下面哪一项更像是在做数学加法？",
+      "options": [
+        "\"18\" + \"2\"",
+        "18 + 2",
+        "\"18\" + 2"
+      ],
+      "answer": "18 + 2",
+      "explanation": "两个整数相加才是明显的数学加法；字符串更像文字拼接。",
+      "knowledgePoint": "字符串和整数"
     }
   ]
 }

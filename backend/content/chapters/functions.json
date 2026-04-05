@@ -2,27 +2,27 @@
   "slug": "functions",
   "order": 6,
   "title": "函数",
-  "summary": "把重复步骤打包成可复用的动作，让代码更清楚、更省力。",
-  "estimatedMinutes": 28,
+  "summary": "把重复步骤打包成可复用的动作，学会用参数和返回值重构代码。",
+  "estimatedMinutes": 40,
   "difficultyLabel": "搭积木",
   "prerequisiteSlug": "loops",
   "tags": [
-    "def",
+    "定义函数",
     "参数",
     "返回值",
     "复用"
   ],
   "learningGoals": [
-    "理解函数是在给一段动作起名字。",
-    "知道参数是把外部信息传给函数的方式。",
-    "知道返回值是函数把结果交出来的方式。",
-    "判断什么样的重复逻辑适合提成函数。"
+    "看懂函数为什么适合用来收拢重复代码。",
+    "理解 def、参数和 return 的基本作用。",
+    "能够顺着调用顺序读懂一个简单函数。",
+    "知道函数名和参数名应该尽量直观。"
   ],
   "summaryPoints": [
     "函数可以把重复步骤打包起来，后面反复调用。",
     "参数让同一个函数适应不同输入。",
     "返回值让函数能把处理结果交回去继续使用。",
-    "函数不是为了炫技，而是为了让代码更清楚。"
+    "先看重复代码，再抽成函数，更容易理解重构的价值。"
   ],
   "sections": [
     {
@@ -38,10 +38,18 @@
       "content": "如果你经常回复类似邮件，就会想做一个模板。函数也是一样，把经常用的步骤做成模板，以后反复用。"
     },
     {
+      "id": "functions-example-refactor",
+      "type": "example",
+      "title": "先看重复代码，再把它抽成函数",
+      "content": "先读重复代码，再看重构后的版本。这样最容易理解为什么要定义函数。",
+      "exampleTitle": "把重复的总价计算改成函数",
+      "exampleCode": "# 先看重复代码\nprice1 = 12\ncount1 = 2\ntotal1 = price1 * count1\nprint(\"第一笔总价：\", total1)\n\nprice2 = 8\ncount2 = 3\ntotal2 = price2 * count2\nprint(\"第二笔总价：\", total2)\n\n# 再把重复计算抽成函数\ndef get_total(price, count):\n    return price * count\n\nprint(\"第一笔总价：\", get_total(12, 2))\nprint(\"第二笔总价：\", get_total(8, 3))"
+    },
+    {
       "id": "functions-explanation-def",
       "type": "explanation",
       "title": "`def` 表示“我要定义一个函数”",
-      "content": "定义函数时，先用 def 开头，再写函数名。函数名最好能说明这段动作在做什么。"
+      "content": "先看代码，再拆句子理解。`def` 后面接函数名，括号里放参数，最后用冒号开始函数体。函数名最好直接说出这段动作在做什么。"
     },
     {
       "id": "functions-example-basic",
@@ -55,7 +63,7 @@
       "id": "functions-explanation-params",
       "type": "explanation",
       "title": "参数让函数更通用",
-      "content": "如果每次问候的人不同，就可以把名字当作参数传进去。函数本身不变，但输入不同，结果也会不同。"
+      "content": "如果每次问候的人不同，就可以把名字当作参数传进去。函数本身不变，但输入不同，结果也会不同。先看调用时传入什么，再看函数里怎样使用它。"
     },
     {
       "id": "functions-example-params",
@@ -63,13 +71,21 @@
       "title": "带参数的函数",
       "content": "通过参数，你就不需要为每个人单独写一遍函数。",
       "exampleTitle": "带名字的问候",
-      "exampleCode": "def greet(name):\n    print(\"你好，\" + name)\n\ngreet(\"小王\")"
+      "exampleCode": "def greet(name):\n    print(\"你好，\" + name)\n\ngreet(\"小王\")\ngreet(\"小李\")"
+    },
+    {
+      "id": "functions-explanation-line-by-line",
+      "type": "example",
+      "title": "逐行看懂 `def`、参数和 `return`",
+      "content": "先看一个最小函数，再按行拆开理解。第一行定义函数名并写出参数；第二行是函数体；第三行把结果交出去；最后一行调用函数并接收结果。",
+      "exampleTitle": "一个把两个数相加的函数",
+      "exampleCode": "def add(a, b):\n    result = a + b\n    return result\n\nprint(add(2, 3))"
     },
     {
       "id": "functions-explanation-return",
       "type": "explanation",
       "title": "返回值让函数把结果交出来",
-      "content": "有时函数不只是打印结果，而是算出一个值再交给外面继续用。这个“交出来”的结果，就是返回值。"
+      "content": "有时函数不只是打印结果，而是算出一个值再交给外面继续用。这个“交出来”的结果，就是返回值。先算出结果，再用 return 送出去。"
     },
     {
       "id": "functions-example-return",
@@ -78,6 +94,18 @@
       "content": "当你想继续使用结果时，return 很有用。",
       "exampleTitle": "返回总价",
       "exampleCode": "def get_total(price, count):\n    return price * count\n\ntotal = get_total(10, 3)\nprint(total)"
+    },
+    {
+      "id": "functions-tip-naming",
+      "type": "tip",
+      "title": "函数名越清楚，越容易读懂",
+      "content": "给函数起名时，尽量直接说出它做什么，例如 `get_total`、`greet`、`say_hello`。名字越具体，后面越好维护。"
+    },
+    {
+      "id": "functions-warning-indent",
+      "type": "warning",
+      "title": "函数体必须缩进",
+      "content": "定义函数后，下一行开始的代码要缩进。缩进表示这些语句属于这个函数，否则 Python 会看不懂哪里是函数体。"
     },
     {
       "id": "functions-pitfall",
@@ -95,21 +123,43 @@
   "practiceTasks": [
     {
       "id": "functions-practice-1",
-      "title": "判断是否适合提函数",
-      "prompt": "当你发现一段“计算总价”的代码在三个地方重复出现时，想想它是不是适合提成函数。",
+      "title": "找出重复动作",
+      "prompt": "当你发现一段“计算总价”的代码在三个地方重复出现时，想想它重复的是哪一部分，以及如果抽成函数，最适合接收什么参数。",
       "hints": [
-        "重复出现通常是明显信号。"
+        "重复出现通常是明显信号。",
+        "先找出完全一样的那一段。"
       ],
-      "expectedOutcome": "能意识到重复逻辑适合提成函数。"
+      "expectedOutcome": "能说出重复部分，并初步判断函数参数应该是什么。"
     },
     {
       "id": "functions-practice-2",
       "title": "读懂参数作用",
-      "prompt": "看 `greet(\"小王\")` 这样的调用，解释参数在这里扮演什么角色。",
+      "prompt": "看 `greet(\"小王\")` 这样的调用，解释参数在这里扮演什么角色，以及函数里为什么不用再写一次名字。",
       "hints": [
-        "参数是外部传进去的信息。"
+        "参数是外部传进去的信息。",
+        "函数内部会直接使用这个值。"
       ],
       "expectedOutcome": "知道参数让同一个函数处理不同输入。"
+    },
+    {
+      "id": "functions-practice-3",
+      "title": "把重复代码改写成函数",
+      "prompt": "把“算饮料总价”和“算文具总价”的重复逻辑，改写成一个 `get_total` 函数的思路，先说出函数名和参数，再说出 return 什么。",
+      "hints": [
+        "先把重复的计算方式提出来。",
+        "参数通常是价格和数量。"
+      ],
+      "expectedOutcome": "能描述如何把重复逻辑抽成一个可复用的函数。"
+    },
+    {
+      "id": "functions-practice-4",
+      "title": "追踪返回值",
+      "prompt": "看一个使用 `return` 的函数，说明函数最后把什么结果交给了外部变量，以及外部变量为什么能继续使用这个结果。",
+      "hints": [
+        "return 后面的值会回到调用处。",
+        "外部变量通常会先接住这个结果。"
+      ],
+      "expectedOutcome": "能追踪函数调用后的结果流向。"
     }
   ],
   "reviewChecklist": [
@@ -124,6 +174,14 @@
     {
       "id": "functions-review-3",
       "text": "我知道返回值是函数把结果交出来。"
+    },
+    {
+      "id": "functions-review-4",
+      "text": "我能先看重复代码，再判断它是否适合提成函数。"
+    },
+    {
+      "id": "functions-review-5",
+      "text": "我知道函数体通常要缩进，而且函数名要尽量直观。"
     }
   ],
   "quiz": [
@@ -184,6 +242,27 @@
       "answer": "参数",
       "explanation": "调用时传入的具体值，对应函数接收的参数。",
       "knowledgePoint": "参数调用"
+    },
+    {
+      "id": "functions-q7",
+      "type": "single_choice",
+      "prompt": "在 `def add(a, b):` 这一行里，`add` 是什么？",
+      "options": [
+        "函数名",
+        "参数",
+        "返回值"
+      ],
+      "answer": "函数名",
+      "explanation": "def 后面的名字就是函数名。",
+      "knowledgePoint": "函数名"
+    },
+    {
+      "id": "functions-q8",
+      "type": "true_false",
+      "prompt": "函数体里的代码通常要缩进，才能表示它属于这个函数。",
+      "answer": true,
+      "explanation": "缩进是 Python 里非常重要的语法规则。",
+      "knowledgePoint": "缩进"
     }
   ]
 }

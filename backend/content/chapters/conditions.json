@@ -2,8 +2,8 @@
   "slug": "conditions",
   "order": 4,
   "title": "条件判断",
-  "summary": "让程序根据不同情况走不同分支，开始真正“做选择”。",
-  "estimatedMinutes": 26,
+  "summary": "让程序根据条件的真假走不同分支，开始真正做选择。",
+  "estimatedMinutes": 28,
   "difficultyLabel": "开始思考逻辑",
   "prerequisiteSlug": "input-and-output",
   "tags": [
@@ -15,53 +15,82 @@
   "learningGoals": [
     "理解条件判断是在让程序做选择。",
     "知道 `if`、`elif`、`else` 各自的基本作用。",
-    "能读懂简单的条件表达式。",
+    "能把常见比较运算符读成人话。",
+    "能按条件真假读懂简单分支代码。",
     "知道缩进会影响哪段代码属于条件分支。"
   ],
   "summaryPoints": [
-    "条件判断本质上是“满足条件就做这件事”。",
+    "条件判断本质上是“满足条件就做这件事，不满足就走另一条路”。",
     "`if` 检查第一个条件，`elif` 用于追加判断，`else` 负责兜底。",
-    "缩进决定哪些代码属于某个分支。",
-    "读条件代码时，先看条件是否成立，再看哪一段会执行。"
+    "比较运算符可以先读成人话，再判断真假。",
+    "读条件代码时，先看条件是真是假，再看哪一段会执行。"
   ],
   "sections": [
     {
       "id": "conditions-concept",
       "type": "concept",
       "title": "条件判断是在让程序做选择",
-      "content": "程序不是只能从上到下机械执行，它也能先判断一个条件是否成立，再决定走哪条路。"
+      "content": "程序不只是从上到下机械执行，它还可以先判断一个条件是否成立，再决定接下来走哪条路。条件判断出现后，程序才开始像一个会看情况做决定的小助手。"
     },
     {
       "id": "conditions-analogy",
       "type": "analogy",
       "title": "像生活中的“如果……就……”",
-      "content": "如果下雨就带伞，如果余额不够就不能付款，这些日常规则都可以翻译成程序里的条件判断。"
-    },
-    {
-      "id": "conditions-explanation-if",
-      "type": "explanation",
-      "title": "`if` 是第一道判断门",
-      "content": "`if` 后面跟着一个条件。当条件为真时，下面缩进的代码会执行。"
+      "content": "如果下雨就带伞，如果余额够就付款，如果没有通过就补交材料。你每天都在用条件做决定，Python 只是把这种规则写成了更精确的代码。"
     },
     {
       "id": "conditions-example-if",
       "type": "example",
       "title": "最基础的条件代码",
-      "content": "先从一个条件出发，观察满足和不满足时程序的表现。",
+      "content": "先把条件读成人话，再看真假。`age >= 18` 可以读成“年龄大于等于 18”。因为 `age` 是 20，所以这个条件是真的，程序会进入 if 分支。",
       "exampleTitle": "判断是否成年",
       "exampleCode": "age = 20\nif age >= 18:\n    print(\"你已经成年\")"
+    },
+    {
+      "id": "conditions-explanation-if",
+      "type": "explanation",
+      "title": "`if` 是第一道判断门",
+      "content": "先看完上面的代码，再回头理解 `if` 会更容易。`if` 后面跟着一个条件。这个条件结果只有两种：真，或者假。如果结果是真，下面缩进的代码会执行；如果结果是假，程序会跳过这段内容，继续往后看。"
+    },
+    {
+      "id": "conditions-tip-operators",
+      "type": "tip",
+      "title": "先把比较运算符读成人话",
+      "content": "看到 `>` 可以读成“大于”，`<` 读成“小于”，`>=` 读成“大于等于”，`<=` 读成“小于等于”，`==` 读成“等于”，`!=` 读成“不等于”。先这样读一遍，你更容易判断条件是真是假。"
+    },
+    {
+      "id": "conditions-explanation-read-branches",
+      "type": "explanation",
+      "title": "按条件真假去读分支",
+      "content": "读条件代码时，不要只看哪一行写在前面，要像在做判断题一样，一条一条看真假。真，就进入这一段；假，就跳过继续往下看。这个阅读顺序比死记语法更重要。"
+    },
+    {
+      "id": "conditions-example-branch-reading",
+      "type": "example",
+      "title": "根据真假判断会走哪一边",
+      "content": "下面这段代码里，`temperature < 10` 可以读成“温度小于 10”。现在 `temperature` 是 6，所以这个条件是真的。既然是真的，就执行第一段，`else` 这一段不会运行。",
+      "exampleTitle": "看温度决定穿什么",
+      "exampleCode": "temperature = 6\nif temperature < 10:\n    print(\"今天要穿厚一点\")\nelse:\n    print(\"正常穿就可以\")"
     },
     {
       "id": "conditions-explanation-else",
       "type": "explanation",
       "title": "`else` 负责兜底情况",
-      "content": "当 if 条件不成立时，else 里的代码就会执行。这样程序就能覆盖“两种不同情况”。"
+      "content": "`else` 不自己写条件，它表示“前面的条件都不成立，那就执行我”。所以它很适合处理另一种情况、默认情况，或者兜底提醒。"
+    },
+    {
+      "id": "conditions-example-else-step",
+      "type": "example",
+      "title": "逐行看为什么会走到 `else`",
+      "content": "按行读这段代码。第 1 行把 `balance` 设成 20。第 2 行的条件 `balance >= 50` 可以读成“余额大于等于 50”。把数字代进去，就是“20 大于等于 50 吗”。答案是否，所以 if 分支不执行。程序继续往下看，发现有一个 `else`，它专门接住“前面条件不成立”的情况，所以最后会打印“余额不足”。",
+      "exampleTitle": "为什么没有进入 if",
+      "exampleCode": "balance = 20\nif balance >= 50:\n    print(\"可以买这本书\")\nelse:\n    print(\"余额不足\")"
     },
     {
       "id": "conditions-example-elif",
       "type": "example",
       "title": "`elif` 让分支不止两个",
-      "content": "如果需要判断多个区间或多种状态，`elif` 可以继续追加判断。",
+      "content": "当一种情况不够用时，可以继续往下补条件。程序会从上往下判断：先看 `if`，不成立再看 `elif`，前面都不成立才走 `else`。",
       "exampleTitle": "成绩等级",
       "exampleCode": "score = 78\nif score >= 90:\n    print(\"优秀\")\nelif score >= 60:\n    print(\"及格\")\nelse:\n    print(\"需要继续努力\")"
     },
@@ -69,19 +98,19 @@
       "id": "conditions-pitfall",
       "type": "pitfall",
       "title": "新手常忽略缩进范围",
-      "content": "很多人以为 if 后面只有一行受影响，或者看漏了缩进。实际上缩进决定了哪几行代码属于这个分支。"
+      "content": "很多人会误以为 if 只影响下一行，或者看漏了缩进。实际上，缩进决定了哪几行属于同一个分支。只要缩进还在那个层级里，这几行就会一起受条件控制。"
     },
     {
       "id": "conditions-warning",
       "type": "warning",
       "title": "不要只看代码顺序，要看条件是否成立",
-      "content": "代码写在文件里并不代表一定执行。遇到条件判断时，要先问自己：当前条件是真是假？"
+      "content": "代码写在文件里，不代表一定会执行。条件判断最容易骗过新手的地方，就是“看见了那行代码，就以为它跑了”。真正决定程序走向的，是条件真假，不是你先看到哪一行。"
     },
     {
       "id": "conditions-recap",
       "type": "recap",
       "title": "这一章先记住什么",
-      "content": "先记住 if 是开始判断，elif 是继续判断，else 是兜底；再记住缩进会决定分支范围。"
+      "content": "先记住 if 是开始判断，elif 是继续判断，else 是兜底；看到比较符号先读成人话；读代码时先判断真假，再决定程序会走哪一个分支。"
     }
   ],
   "practiceTasks": [
@@ -90,18 +119,38 @@
       "title": "把生活规则翻译成 if",
       "prompt": "把“如果今天下雨，就带伞”翻译成一句简单的程序逻辑描述。",
       "hints": [
-        "不一定非要写完整代码，先把判断和动作说清楚。"
+        "先说出条件，再说出满足条件时的动作。"
       ],
       "expectedOutcome": "能说出“先判断是否下雨，成立就执行带伞动作”。"
     },
     {
       "id": "conditions-practice-2",
-      "title": "判断哪一段会执行",
-      "prompt": "假设 `score = 55`，看一段 if/elif/else 代码时，判断最终会走哪个分支。",
+      "title": "把符号读成人话",
+      "prompt": "把 `score >= 60` 和 `age != 18` 分别读成人话，不用写代码执行。",
       "hints": [
-        "按顺序一个个看条件是否成立。"
+        "先把 `>=` 读成“大于等于”，把 `!=` 读成“不等于”。"
       ],
-      "expectedOutcome": "知道程序会进入对应的兜底分支。"
+      "expectedOutcome": "能把条件准确读成自然语言，并理解它们在比较什么。"
+    },
+    {
+      "id": "conditions-practice-3",
+      "title": "判断哪一段会执行",
+      "prompt": "假设 `score = 55`，再看到 `if score >= 90`、`elif score >= 60`、`else` 这样的结构时，判断最终会走哪个分支。",
+      "hints": [
+        "按顺序一个个看条件是否成立。",
+        "55 不大于等于 90，也不大于等于 60。"
+      ],
+      "expectedOutcome": "知道前两个条件都不成立，所以程序会进入兜底的 else 分支。"
+    },
+    {
+      "id": "conditions-practice-4",
+      "title": "逐行解释为什么走到 else",
+      "prompt": "看 `balance = 10` 和 `if balance >= 30` 这类代码时，用自己的话逐行解释为什么最后会走到 `else`。",
+      "hints": [
+        "先代入变量值，再回答这个比较是真是假。",
+        "说明 if 分支为什么不会执行。"
+      ],
+      "expectedOutcome": "能完整说出“条件为假，所以跳过 if，接着执行 else”这条思路。"
     }
   ],
   "reviewChecklist": [
@@ -115,6 +164,14 @@
     },
     {
       "id": "conditions-review-3",
+      "text": "我能把 `>`、`<`、`>=`、`<=`、`==`、`!=` 读成人话。"
+    },
+    {
+      "id": "conditions-review-4",
+      "text": "我会先判断条件真假，再判断程序会走哪个分支。"
+    },
+    {
+      "id": "conditions-review-5",
       "text": "我知道缩进会影响哪一段代码真正执行。"
     }
   ],
@@ -176,6 +233,27 @@
       "answer": "成立",
       "explanation": "条件代码的关键不只是顺序，而是条件真假。",
       "knowledgePoint": "阅读条件代码"
+    },
+    {
+      "id": "conditions-q7",
+      "type": "single_choice",
+      "prompt": "把 `age >= 18` 读成人话，哪一个最合适？",
+      "options": [
+        "年龄大于等于 18",
+        "年龄小于 18",
+        "年龄不等于 18"
+      ],
+      "answer": "年龄大于等于 18",
+      "explanation": "`>=` 应该读成“大于等于”。",
+      "knowledgePoint": "比较运算符"
+    },
+    {
+      "id": "conditions-q8",
+      "type": "true_false",
+      "prompt": "如果 `balance = 20`，那么条件 `balance >= 50` 为假，所以程序会跳过 if 分支。",
+      "answer": true,
+      "explanation": "20 不大于等于 50，所以 if 条件不成立。",
+      "knowledgePoint": "按真假读分支"
     }
   ]
 }
