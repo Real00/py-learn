@@ -2,8 +2,8 @@
   "slug": "lists-and-dicts",
   "order": 7,
   "title": "列表和字典",
-  "summary": "当数据不止一个时，学会用列表和字典把它们组织起来。",
-  "estimatedMinutes": 30,
+  "summary": "当数据不止一个时，学会用列表和字典把它们组织起来，并按顺序或按名字取出需要的信息。",
+  "estimatedMinutes": 32,
   "difficultyLabel": "组织数据",
   "prerequisiteSlug": "functions",
   "tags": [
@@ -14,14 +14,16 @@
   ],
   "learningGoals": [
     "理解列表适合保存一组按顺序排列的数据。",
+    "理解列表可以通过索引取值，也常配合遍历使用。",
     "理解字典适合保存“键和值”的对应关系。",
-    "知道列表和字典的典型读取方式。",
+    "知道列表和字典的结构符号分别在表达什么。",
     "能判断一个场景更适合列表还是字典。"
   ],
   "summaryPoints": [
     "列表适合存一组同类数据，并按顺序访问。",
+    "列表里的方括号、逗号和索引，都是在描述“位置”。",
     "字典适合根据名字快速找到对应内容。",
-    "列表常配合索引使用，字典常配合键使用。",
+    "字典里的花括号、键、冒号和键值对，都是在描述“对应关系”。",
     "选对数据结构，会让后续代码简单很多。"
   ],
   "sections": [
@@ -29,47 +31,131 @@
       "id": "collections-concept",
       "type": "concept",
       "title": "当数据不止一个时，单个变量不够用了",
-      "content": "如果你只有一个名字、一个价格，一个变量就够了；但如果你有很多名字、很多价格，就需要一种能把它们组织起来的结构。"
+      "content": "如果你只有一个名字、一个价格，一个变量就够了；但如果你有很多名字、很多价格，就需要一种能把它们组织起来的结构。",
+      "bullets": [
+        "一组按顺序的数据，通常先考虑列表。",
+        "一组“名字 -> 内容”的关系，通常先考虑字典。"
+      ]
     },
     {
-      "id": "collections-analogy-list",
-      "type": "analogy",
-      "title": "列表像排好顺序的一排盒子",
-      "content": "列表适合保存一组相关内容。你可以按第一个、第二个、第三个去访问它们。"
-    },
-    {
-      "id": "collections-explanation-list",
-      "type": "explanation",
-      "title": "列表适合处理一组有顺序的数据",
-      "content": "比如购物清单、学生名单、待办事项，这些都很适合用列表表示。"
-    },
-    {
-      "id": "collections-example-list",
+      "id": "collections-example-list-basic",
       "type": "example",
-      "title": "列表的最小示例",
-      "content": "列表用方括号表示，里面可以放多个值。",
-      "exampleTitle": "学生名单",
-      "exampleCode": "students = [\"小李\", \"小王\", \"小周\"]\nprint(students[0])"
+      "title": "先看代码：最基础的列表",
+      "content": "先别急着背定义，先看一段很像真实生活的代码。",
+      "exampleTitle": "待办事项列表",
+      "exampleCode": "todos = [\"买牛奶\", \"交电费\", \"回电话\"]\nprint(todos[0])\nprint(todos[1])"
     },
     {
-      "id": "collections-analogy-dict",
-      "type": "analogy",
-      "title": "字典像一本通讯录",
-      "content": "你不是按“第几个联系人”去找，而是按名字去找。字典就是根据键快速找到对应值。"
-    },
-    {
-      "id": "collections-explanation-dict",
+      "id": "collections-explanation-list-symbols",
       "type": "explanation",
-      "title": "字典适合“名字 -> 内容”的关系",
-      "content": "如果你想保存一个人的姓名和年龄、一个商品的名字和价格，就很适合用字典。"
+      "title": "列表的结构符号在表达什么",
+      "content": "看懂符号，后面读代码会轻松很多。",
+      "bullets": [
+        "`[]` 表示“这里是一个列表”。",
+        "列表里的每一项用逗号隔开，表示它们是同一组里的不同元素。",
+        "`todos[0]` 中外层的 `[]` 是按位置取值，不是重新定义列表。",
+        "索引从 0 开始，所以 `todos[0]` 是第一项，`todos[1]` 是第二项。"
+      ]
     },
     {
-      "id": "collections-example-dict",
+      "id": "collections-example-list-index",
       "type": "example",
-      "title": "字典的最小示例",
-      "content": "字典用花括号表示，每个键都对应一个值。",
-      "exampleTitle": "保存用户信息",
-      "exampleCode": "user = {\"name\": \"小李\", \"age\": 28}\nprint(user[\"name\"])"
+      "title": "先看代码：列表索引怎么取值",
+      "content": "列表很适合“第一个、第二个、第三个”这样的读取方式。",
+      "exampleTitle": "点餐结果",
+      "exampleCode": "foods = [\"面包\", \"鸡蛋\", \"咖啡\"]\nfirst_food = foods[0]\nthird_food = foods[2]\nprint(first_food)\nprint(third_food)"
+    },
+    {
+      "id": "collections-explanation-list-index-lines",
+      "type": "explanation",
+      "title": "逐行看懂列表索引代码",
+      "content": "按行拆开看，比一口气读完整段更容易。",
+      "bullets": [
+        "第 1 行创建了一个列表，按顺序放了三项食物。",
+        "第 2 行 `foods[0]` 取出第 1 项，也就是 `面包`，再交给变量 `first_food`。",
+        "第 3 行 `foods[2]` 取出第 3 项，也就是 `咖啡`。",
+        "后面两行 `print(...)` 只是把刚取出来的内容显示到屏幕上。"
+      ]
+    },
+    {
+      "id": "collections-example-list-loop",
+      "type": "example",
+      "title": "先看代码：列表常常配合遍历",
+      "content": "当你想把列表里的每一项都处理一遍时，遍历就很自然。",
+      "exampleTitle": "逐个显示购物清单",
+      "exampleCode": "items = [\"苹果\", \"牙刷\", \"纸巾\"]\nfor item in items:\n    print(\"今天要买：\" + item)"
+    },
+    {
+      "id": "collections-explanation-list-loop",
+      "type": "explanation",
+      "title": "遍历列表时，语法在做什么",
+      "content": "你可以先把它理解成：把列表里的内容一个个拿出来处理。",
+      "bullets": [
+        "`for item in items:` 的意思是：从 `items` 这个列表里，每次拿出一个元素，临时叫做 `item`。",
+        "第一次循环时，`item` 是 `苹果`；第二次是 `牙刷`；第三次是 `纸巾`。",
+        "缩进的那一行 `print(...)` 会重复执行，每次都用当前的 `item`。",
+        "如果你已经知道要“逐个处理一组东西”，通常就要想到列表和遍历。"
+      ]
+    },
+    {
+      "id": "collections-example-dict-basic",
+      "type": "example",
+      "title": "先看代码：最基础的字典",
+      "content": "当你更关心“这个名字对应什么内容”时，字典就比列表更顺手。",
+      "exampleTitle": "用户资料",
+      "exampleCode": "user = {\"name\": \"小李\", \"age\": 28, \"city\": \"上海\"}\nprint(user[\"name\"])\nprint(user[\"city\"])"
+    },
+    {
+      "id": "collections-explanation-dict-symbols",
+      "type": "explanation",
+      "title": "字典的结构符号在表达什么",
+      "content": "字典不是按第几个找，而是按键找值。",
+      "bullets": [
+        "`{}` 表示“这里是一个字典”。",
+        "每一组 `\"name\": \"小李\"` 都是在写“键 -> 值”的对应关系。",
+        "冒号左边是键，冒号右边是值。",
+        "`user[\"name\"]` 的意思是：去字典里找到键 `name` 对应的值。"
+      ]
+    },
+    {
+      "id": "collections-example-dict-lines",
+      "type": "example",
+      "title": "先看代码：逐行读取字典信息",
+      "content": "字典常见场景不是“第几个”，而是“这个字段叫什么”。",
+      "exampleTitle": "商品信息",
+      "exampleCode": "product = {\"title\": \"保温杯\", \"price\": 89, \"in_stock\": True}\ntitle = product[\"title\"]\nprice = product[\"price\"]\nprint(title)\nprint(price)"
+    },
+    {
+      "id": "collections-explanation-dict-lines",
+      "type": "explanation",
+      "title": "逐行看懂字典取值代码",
+      "content": "这段代码里最重要的是“按键取值”的思路。",
+      "bullets": [
+        "第 1 行创建了一个字典，里面保存了商品标题、价格和是否有货。",
+        "第 2 行 `product[\"title\"]` 是按键 `title` 找到对应值 `保温杯`。",
+        "第 3 行 `product[\"price\"]` 是按键 `price` 找到对应值 89。",
+        "最后两行把取到的值打印出来，所以屏幕会看到商品标题和价格。"
+      ]
+    },
+    {
+      "id": "collections-example-real-scene",
+      "type": "example",
+      "title": "更真实的使用场景：课程清单和课程详情",
+      "content": "现实里常常不是“只能用列表”或“只能用字典”，而是看你眼下要解决什么问题。",
+      "exampleTitle": "列表和字典各管一件事",
+      "exampleCode": "course_names = [\"Python 入门\", \"Excel 自动化\", \"数据清洗\"]\ncourse_info = {\"title\": \"Python 入门\", \"minutes\": 15, \"is_free\": True}\n\nprint(course_names[1])\nprint(course_info[\"minutes\"])"
+    },
+    {
+      "id": "collections-explanation-choose-structure",
+      "type": "explanation",
+      "title": "什么时候用列表，什么时候用字典",
+      "content": "可以先问自己一个问题：我现在更关心“顺序”，还是更关心“字段名和对应值”？",
+      "bullets": [
+        "像待办事项、菜名列表、学生名单，这类“一组项目”更适合列表。",
+        "像用户资料、商品详情、配置项，这类“名字 -> 内容”更适合字典。",
+        "如果你想按第几个取，用列表会更自然。",
+        "如果你想按某个字段名直接找值，用字典会更自然。"
+      ]
     },
     {
       "id": "collections-pitfall",
@@ -81,7 +167,7 @@
       "id": "collections-recap",
       "type": "recap",
       "title": "这一章先记住什么",
-      "content": "列表更适合按顺序存一组数据；字典更适合保存键和值的对应关系；选对结构比死背语法更重要。"
+      "content": "列表更适合按顺序存一组数据；字典更适合保存键和值的对应关系；索引和遍历是列表的高频操作；按键取值是字典的高频操作。"
     }
   ],
   "practiceTasks": [
@@ -102,6 +188,35 @@
         "想想是不是通过名字找对应值。"
       ],
       "expectedOutcome": "能判断这类场景更适合字典。"
+    },
+    {
+      "id": "collections-practice-3",
+      "title": "判断列表索引结果",
+      "prompt": "看代码 `cities = [\"北京\", \"上海\", \"深圳\"]` 和 `print(cities[1])`，说出最终会显示什么。",
+      "hints": [
+        "索引从 0 开始，不是从 1 开始。",
+        "第 0 项才是第一项。"
+      ],
+      "expectedOutcome": "知道输出结果是 `上海`，并理解列表索引从 0 开始。"
+    },
+    {
+      "id": "collections-practice-4",
+      "title": "读懂一段列表遍历",
+      "prompt": "看 `for task in tasks:` 这种写法，用自己的话解释它想做什么，不要求一字不差。",
+      "hints": [
+        "重点不是背语法，而是说清“一个个拿出来处理”。"
+      ],
+      "expectedOutcome": "能说出程序会把列表里的每一项依次取出并执行同样的操作。"
+    },
+    {
+      "id": "collections-practice-5",
+      "title": "判断字典取值方式",
+      "prompt": "如果有 `user = {\"name\": \"小王\", \"age\": 31}`，你想取出年龄，应该更接近写成什么？",
+      "hints": [
+        "不是按第几个找，而是按键找。",
+        "想想 `age` 在这里扮演什么角色。"
+      ],
+      "expectedOutcome": "能理解字典要按键取值，比如 `user[\"age\"]`。"
     }
   ],
   "reviewChecklist": [
@@ -111,10 +226,18 @@
     },
     {
       "id": "collections-review-2",
-      "text": "我知道字典适合保存键和值的对应关系。"
+      "text": "我知道列表可以通过索引取值，而且索引从 0 开始。"
     },
     {
       "id": "collections-review-3",
+      "text": "我知道遍历列表时，本质上是在把元素一个个拿出来处理。"
+    },
+    {
+      "id": "collections-review-4",
+      "text": "我知道字典适合保存键和值的对应关系，并能按键取值。"
+    },
+    {
+      "id": "collections-review-5",
       "text": "我知道该先想场景，再决定用列表还是字典。"
     }
   ],
@@ -129,7 +252,7 @@
         "函数"
       ],
       "answer": "列表",
-      "explanation": "列表天然强调顺序。",
+      "explanation": "列表天然强调顺序，按位置取值更自然。",
       "knowledgePoint": "列表"
     },
     {
@@ -151,23 +274,23 @@
     {
       "id": "collections-q4",
       "type": "single_choice",
-      "prompt": "保存 `{\"name\": \"小李\", \"age\": 28}` 这种数据，更像在使用？",
+      "prompt": "看 `foods = [\"面包\", \"鸡蛋\", \"咖啡\"]` 时，`foods[2]` 取到的是？",
       "options": [
-        "字典",
-        "列表",
-        "循环"
+        "面包",
+        "鸡蛋",
+        "咖啡"
       ],
-      "answer": "字典",
-      "explanation": "它是键和值的对应关系。",
-      "knowledgePoint": "键值对"
+      "answer": "咖啡",
+      "explanation": "索引从 0 开始，所以 2 对应第 3 项。",
+      "knowledgePoint": "列表索引"
     },
     {
       "id": "collections-q5",
       "type": "true_false",
-      "prompt": "面对一组待办事项时，列表通常比字典更自然。",
+      "prompt": "看到 `for item in items:` 时，可以先理解成“把列表里的元素一个个拿出来处理”。",
       "answer": true,
-      "explanation": "待办事项通常更强调顺序和一组项目。",
-      "knowledgePoint": "选择结构"
+      "explanation": "这是遍历列表时最实用的初学理解方式。",
+      "knowledgePoint": "遍历"
     },
     {
       "id": "collections-q6",
@@ -176,6 +299,32 @@
       "answer": "字典",
       "explanation": "字典就是按键找值。",
       "knowledgePoint": "结构选择"
+    },
+    {
+      "id": "collections-q7",
+      "type": "single_choice",
+      "prompt": "保存 `{\"name\": \"小李\", \"age\": 28}` 这种数据，更像在使用？",
+      "options": [
+        "字典",
+        "列表",
+        "循环"
+      ],
+      "answer": "字典",
+      "explanation": "它表达的是键和值的对应关系，不是单纯的顺序列表。",
+      "knowledgePoint": "键值对"
+    },
+    {
+      "id": "collections-q8",
+      "type": "single_choice",
+      "prompt": "下面哪个场景更适合优先考虑列表？",
+      "options": [
+        "保存一周七天的值班名单",
+        "保存商品标题对应价格",
+        "保存用户名对应手机号"
+      ],
+      "answer": "保存一周七天的值班名单",
+      "explanation": "一周名单更像一组按顺序排列的项目，优先考虑列表。",
+      "knowledgePoint": "何时用列表"
     }
   ]
 }
