@@ -1,4 +1,23 @@
+import pytest
+
 from app import create_app
+
+
+CHAPTERS_TWO_THROUGH_EIGHT = [
+    "variables-and-types",
+    "input-and-output",
+    "conditions",
+    "loops",
+    "functions",
+    "lists-and-dicts",
+    "mini-project",
+]
+
+
+def get_chapter_detail(client, slug):
+    response = client.get(f"/api/course/chapters/{slug}")
+    assert response.status_code == 200
+    return response.get_json()
 
 
 def test_healthcheck():
@@ -62,6 +81,36 @@ def test_python_overview_chapter_explains_real_world_python_usage():
     assert any(task["id"] == "overview-practice-3" for task in data["practiceTasks"])
     assert len(data["quiz"]) >= 7
     assert any(question["knowledgePoint"] == "Python 应用场景" for question in data["quiz"])
+
+
+@pytest.mark.parametrize("slug", CHAPTERS_TWO_THROUGH_EIGHT)
+def test_chapters_two_through_eight_meet_new_density_requirements(slug):
+    app = create_app()
+    client = app.test_client()
+
+    data = get_chapter_detail(client, slug)
+
+    assert len(data["sections"]) >= 9, f"{slug} should include at least 9 sections"
+    assert len(data["practiceTasks"]) >= 3, f"{slug} should include at least 3 practice tasks"
+    assert len(data["reviewChecklist"]) >= 4, f"{slug} should include at least 4 review checklist items"
+    assert len(data["quiz"]) >= 7, f"{slug} should include at least 7 quiz questions"
+
+
+def test_code_example_driven_chapters_include_required_syntax_examples():
+    app = create_app()
+    client = app.test_client()
+
+    io_chapter = get_chapter_detail(client, "input-and-output")
+    io_section_ids = {section["id"] for section in io_chapter["sections"]}
+
+    assert "io-example-convert" in io_section_ids
+    assert any("input()" in section.get("exampleCode", "") for section in io_chapter["sections"])
+
+    functions_chapter = get_chapter_detail(client, "functions")
+    functions_section_ids = {section["id"] for section in functions_chapter["sections"]}
+
+    assert "functions-example-refactor" in functions_section_ids
+    assert any("return" in section.get("exampleCode", "") for section in functions_chapter["sections"])
 
 
 def test_missing_chapter_returns_404():
