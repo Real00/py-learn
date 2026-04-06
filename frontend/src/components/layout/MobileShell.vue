@@ -14,7 +14,7 @@
       <RouterLink
         v-if="progress.progress.currentChapterSlug"
         :to="`/course/${progress.progress.currentChapterSlug}`"
-        class="rounded-full bg-white/70 px-4 py-2 text-xs font-semibold text-[color:var(--color-secondary-foreground)] ring-1 ring-[color:var(--color-border)] transition-colors hover:bg-white"
+        class="rounded-full border border-[color:var(--color-primary)] bg-[color:var(--color-primary)] px-4 py-2 text-xs font-semibold !text-white shadow-[0_10px_24px_rgba(13,124,255,0.24)] transition-all duration-200 hover:brightness-105"
       >
         继续学习
       </RouterLink>

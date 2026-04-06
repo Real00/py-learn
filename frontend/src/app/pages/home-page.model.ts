@@ -35,6 +35,6 @@ export function buildHomePageState(chapters: CourseChapterSummary[], progress: L
     progressRatio: totalChapters === 0 ? 0 : completedCount / totalChapters,
     highlightedChapters,
     continueLink: progress.currentChapterSlug ? `/course/${progress.currentChapterSlug}` : '/course',
-    continueLabel: progress.currentChapterSlug ? '继续上次学习' : '从第一章开始',
+    continueLabel: progress.currentChapterSlug ? '继续学习' : '从第一章开始',
   }
 }

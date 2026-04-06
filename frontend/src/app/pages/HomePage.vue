@@ -13,7 +13,12 @@
         </p>
 
         <div class="relative mt-6 grid gap-3 sm:grid-cols-2">
-          <Button as="a" :href="pageState.continueLink" class="w-full">
+          <Button
+            as="a"
+            :href="pageState.continueLink"
+            variant="primary"
+            class="w-full bg-[color:var(--color-primary)] text-white"
+          >
             {{ pageState.continueLabel }}
           </Button>
           <Button as="a" href="#journey" variant="secondary" class="w-full">

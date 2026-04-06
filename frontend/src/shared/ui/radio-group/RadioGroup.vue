@@ -7,7 +7,11 @@
       v-for="option in options"
       :key="option.value"
       class="flex cursor-pointer items-center gap-3 rounded-2xl border border-[color:var(--color-border)] bg-white px-4 py-3 text-sm text-[color:var(--color-foreground)] transition-colors hover:border-[color:var(--color-primary)]"
-      :class="modelValue === option.value ? 'border-[color:var(--color-primary)] bg-[color:var(--color-secondary)]' : ''"
+      :class="
+        modelValue === option.value
+          ? 'border-[color:var(--color-primary)] bg-[color:var(--color-primary)] text-white shadow-[0_10px_24px_rgba(13,124,255,0.22)] [&_span]:text-white'
+          : ''
+      "
     >
       <input
         class="h-4 w-4 accent-[color:var(--color-primary)]"

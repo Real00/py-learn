@@ -59,7 +59,7 @@ describe('ProgressPage', () => {
     }
   })
 
-  it('shows not-started state for chapters without a record', () => {
+  it('shows locked state for chapters gated by previous progress', () => {
     const wrapper = mount(ProgressPage, {
       global: {
         stubs: {
@@ -69,6 +69,56 @@ describe('ProgressPage', () => {
     })
 
     expect(wrapper.text()).toContain('进行中')
+    expect(wrapper.text()).toContain('待解锁')
+  })
+
+  it('shows not-started state for unlocked chapters without a record', () => {
+    const progress = useProgressStore()
+    progress.progress = {
+      version: '1.1.0',
+      currentChapterSlug: 'python-overview',
+      chapterRecords: {
+        'python-overview': {
+          chapterSlug: 'python-overview',
+          completed: true,
+          score: 100,
+          answers: {},
+          lastVisitedAt: '2026-04-05T09:00:00.000Z',
+          completedAt: '2026-04-05T09:05:00.000Z',
+        },
+      },
+    }
+
+    const wrapper = mount(ProgressPage, {
+      global: {
+        stubs: {
+          RouterLink: RouterLinkStub,
+        },
+      },
+    })
+
+    expect(wrapper.text()).toContain('已完成')
     expect(wrapper.text()).toContain('未开始')
+  })
+
+  it('keeps locked chapters marked as pending unlock on first open', () => {
+    const progress = useProgressStore()
+    progress.progress = {
+      version: '1.1.0',
+      currentChapterSlug: null,
+      chapterRecords: {},
+    }
+
+    const wrapper = mount(ProgressPage, {
+      global: {
+        stubs: {
+          RouterLink: RouterLinkStub,
+        },
+      },
+    })
+
+    expect(wrapper.text()).toContain('继续学习')
+    expect(wrapper.text().match(/待解锁/g)?.length).toBe(1)
+    expect(wrapper.text()).not.toContain('变量和数据类型继续学习')
   })
 })

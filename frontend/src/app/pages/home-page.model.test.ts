@@ -20,7 +20,7 @@ describe('buildHomePageState', () => {
       { currentChapterSlug: 'intro', chapterRecords: {}, version: 'v1' },
     )
 
-    expect(state.continueLabel).toBe('继续上次学习')
+    expect(state.continueLabel).toBe('继续学习')
     expect(state.continueLink).toBe('/course/intro')
   })
 

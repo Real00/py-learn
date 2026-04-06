@@ -48,7 +48,11 @@
       </div>
 
       <div class="mt-4">
-        <RouterLink :to="`/course/${chapter.slug}`" class="text-sm font-semibold text-[color:var(--color-primary)]">
+        <RouterLink
+          v-if="isChapterUnlocked(chapter.slug)"
+          :to="`/course/${chapter.slug}`"
+          class="inline-flex items-center justify-center rounded-md bg-[color:var(--color-primary)] px-4 py-2 text-sm font-semibold !text-white shadow-sm transition-colors hover:brightness-105"
+        >
           {{ records[chapter.slug]?.completed ? '回顾这一章' : '继续学习' }}
         </RouterLink>
       </div>
@@ -70,10 +74,22 @@ const course = useCourseStore()
 const progress = useProgressStore()
 
 const chapters = computed(() => course.course?.chapters ?? [])
+const orderedChapterSlugs = computed(() => course.orderedChapterSlugs)
 const records = computed(() => progress.records)
+
+function isChapterUnlocked(chapterSlug: string) {
+  return progress.isUnlocked(orderedChapterSlugs.value, chapterSlug)
+}
 
 function getChapterStatus(chapterSlug: string) {
   const record = records.value[chapterSlug]
+
+  if (!isChapterUnlocked(chapterSlug)) {
+    return {
+      label: '待解锁',
+      tone: 'warning' as const,
+    }
+  }
 
   if (!record) {
     return {

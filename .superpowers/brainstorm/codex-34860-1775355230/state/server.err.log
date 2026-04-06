@@ -1,0 +1,17 @@
+node:fs:1955
+  binding.unlink(getValidatedPath(path));
+          ^
+
+Error: EPERM: operation not permitted, unlink 'D:\code\python-learn\.superpowers\brainstorm\codex-34860-1775355230\state\server-info'
+    at Object.unlinkSync (node:fs:1955:11)
+    at shutdown (C:\Users\junru\.codex\superpowers\skills\brainstorming\scripts\server.cjs:304:37)
+    at Timeout._onTimeout (C:\Users\junru\.codex\superpowers\skills\brainstorming\scripts\server.cjs:321:24)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'unlink',
+  path: 'D:\\code\\python-learn\\.superpowers\\brainstorm\\codex-34860-1775355230\\state\\server-info'
+}
+
+Node.js v22.22.0

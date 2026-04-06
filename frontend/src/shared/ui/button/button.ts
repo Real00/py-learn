@@ -5,7 +5,8 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-[color:var(--color-primary)] text-[color:var(--color-primary-foreground)] shadow-sm hover:brightness-105',
+        primary:
+          'bg-[color:var(--color-primary)] !text-white shadow-sm hover:brightness-105 [&_*]:!text-white',
         secondary: 'border border-[color:var(--color-border)] bg-white text-[color:var(--color-foreground)] shadow-sm hover:bg-[color:var(--color-secondary)]',
         ghost: 'bg-transparent text-[color:var(--color-muted-foreground)] hover:bg-[color:var(--color-secondary)]',
       },
