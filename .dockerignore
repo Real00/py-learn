@@ -1,0 +1,12 @@
+.git
+.github
+.codex
+.superpowers
+.worktrees
+backend/.pytest_cache
+backend/.venv
+frontend/dist
+frontend/node_modules
+pytest-cache-files-*
+**/__pycache__
+**/.DS_Store
